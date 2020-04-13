@@ -1,0 +1,91 @@
+<ul class="d-flex justify-content-between align-content-center m-0">
+  <li>
+    <a mat-button [routerLink]="'/home'" routerLinkActive="router-link-active">
+      Home
+    </a>
+  </li>
+  <li>
+    <a
+      mat-button
+      [routerLink]="'/aboutus'"
+      routerLinkActive="router-link-active"
+    >
+      Rreth nesh
+    </a>
+  </li>
+  <li>
+    <a
+      mat-button
+      [matMenuTriggerFor]="menu"
+      disableRipple
+      #matMenuTrigger="matMenuTrigger"
+      [routerLink]="'/services'"
+      (mouseenter)="matMenuTrigger.openMenu()"
+      routerLinkActive="router-link-active"
+    >
+      Sherbime
+    </a>
+    <mat-menu #menu="matMenu" opened>
+      <div (mouseleave)="matMenuTrigger.closeMenu()">
+        <a
+          mat-menu-item
+          [routerLink]="['/services/pressure-equipment']"
+          routerLinkActive="link-active"
+          >Imobiljare</a
+        >
+        <a
+          mat-menu-item
+          routerLinkActive="link-active"
+          [routerLink]="['services/inspection-of-lifting-machinery']"
+        >
+          Vleresim i pasurive te paluajtshme</a
+        >
+        <a
+          mat-menu-item
+          routerLinkActive="link-active"
+          [routerLink]="['services/volumetric-inspection']"
+        >
+          Projektim dhe punime topografike</a
+        >
+        <a
+          mat-menu-item
+          routerLinkActive="link-active"
+          [routerLink]="['services/certification-of-personel']"
+        >
+          Konsulence mjedisore</a
+        >
+        <a
+          mat-menu-item
+          routerLinkActive="link-active"
+          [routerLink]="['services/certifications-petroleum']"
+        >
+          E-Apliki me ekspertize tekniko-ligjore</a
+        >
+        <a
+          mat-menu-item
+          routerLinkActive="link-active"
+          [routerLink]="['services/project-compliance-certificate']"
+        >
+          Sisteme te menaxhimit te sigurise Ushqimore dhe bujqesise
+        </a>
+        <a
+          mat-menu-item
+          routerLinkActive="link-active"
+          [routerLink]="['services/project-compliance-certificate']"
+        >
+          Ndermjetesim
+        </a>
+      </div>
+    </mat-menu>
+  </li>
+  <li>
+    <a
+      mat-button
+      [routerLink]="['/contact']"
+      routerLinkActive="router-link-active"
+    >
+      Contact
+    </a>
+  </li>
+  <li></li>
+</ul>
