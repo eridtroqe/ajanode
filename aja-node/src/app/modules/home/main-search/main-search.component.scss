@@ -1,22 +1,29 @@
 .bg-image {
- // background-image: url('../../../../assets/wallpaper/wallpaper.jpg');
+ background-image: url('../../../../assets/wallpaper/wallpaper.jpg');
   //   background: rgb(102,179,76);
   height: 600px;
   background-size: cover;
-  background-position: 50% 30%;
+  background-position: 50%;
   background-repeat: no-repeat;
-  filter: blur(5px);
+  // filter: blur(5px);
   background-blend-mode: multiply;
-  z-index: 1;
+  z-index: -1;
+  opacity: 0.18;
 }
+
+// .bg-image::before{
+
+//   opacity: 1;
+
+// }
 mat-card {
   padding: 0;
   border-radius: 0;
   height: fit-content;
 }
 .logo {
-  height: auto;
-  width: 30rem;
+  // height: auto;
+  width: 35rem;
   z-index: 5;
   margin: 0 auto;
   //   position: absolute;
@@ -25,10 +32,31 @@ mat-card {
 }
 
 mat-card-content {
-  position: absolute;
-  top: 10%;
-  left: 25%;
+   position: absolute;
+   top: 15%;
+   left: 32%;
 }
+
+input{
+  padding-left: 1rem;
+  font-size: large;
+}
+
+input::placeholder{
+  font-size: large;
+  font-weight: 700;
+  color: rgba(36, 20, 20, 0.6);
+}
+
+mat-form-field{
+  margin-top: 3rem;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline{
+  color: rgba(36, 20, 20, 1);
+}
+
+
 
 // ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
 //   color: white;

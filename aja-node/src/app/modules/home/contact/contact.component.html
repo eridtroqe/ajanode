@@ -1,13 +1,30 @@
-<div class="container" style="margin-top: 88px;">
+<div class="container">
   <div class="row  justify-content-center">
     <h1 class="title">Kontakt</h1>
   </div>
   <div class="row">
-    <form>
-      <mat-form-field appearance="fill">
+    <form class="d-flex flex-column m-auto">
+      <mat-form-field color="primary" appearance="fill">
         <mat-label>Emri</mat-label>
-        <input matInput>
+        <input matInput type="text">
       </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>E-mail</mat-label>
+        <input matInput type="email">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Adresa</mat-label>
+        <input matInput type="text">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Tel</mat-label>
+        <input matInput type="tel">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Mesazhi</mat-label>
+        <textarea matInput rows="7"></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary">Dergo</button>
     </form>
   </div>
 </div>
