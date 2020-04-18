@@ -16,12 +16,17 @@ const routes: Routes = [
   {
     path: 'aboutus',
     loadChildren: () =>
-      import('./modules/home/aboutus/aboutus.module').then(m => m.AboutusModule)
+      import('./modules/aboutus/aboutus.module').then(m => m.AboutusModule)
   },
   {
     path: 'contact',
     loadChildren: () =>
-      import('./modules/home/contact/contact.module').then(m => m.ContactModule)
+      import('./modules/contact/contact.module').then(m => m.ContactModule)
+  },
+  {
+    path: 'real-estate',
+    loadChildren: () =>
+      import('./modules/real-estate/real-estate.module').then(m => m.RealEstateModule)
   }
 ];
 

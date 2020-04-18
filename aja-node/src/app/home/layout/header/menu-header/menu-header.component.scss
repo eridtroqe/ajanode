@@ -1,9 +1,14 @@
-li {
-  list-style: none;
-  a:hover {
-    color: greenyellow;
+
+ul{
+  height: 100%;
+  li {
+    list-style: none;
+    a:hover {
+      color: greenyellow;
+    }
   }
 }
+
 // ::ng-deep.mat-menu-panel {
 //   max-width: none !important;
 // }

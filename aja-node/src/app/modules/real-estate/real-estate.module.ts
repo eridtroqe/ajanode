@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ContactComponent } from './contact.component';
+import { RealEstateComponent } from './real-estate.component';
+import { MaterialModule } from 'src/app/material.module';
 import { Route, RouterModule } from '@angular/router';
-import { MaterialModule } from '../../../material.module';
 
 const routes: Route[] = [
   {
     path: '',
-    component: ContactComponent
+    component: RealEstateComponent
   }
 ];
 
@@ -17,6 +17,6 @@ const routes: Route[] = [
     RouterModule.forChild(routes),
     MaterialModule
   ],
-  declarations: [ContactComponent]
+  declarations: [RealEstateComponent]
 })
-export class ContactModule { }
+export class RealEstateModule { }
