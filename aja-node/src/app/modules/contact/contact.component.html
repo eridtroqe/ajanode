@@ -14,6 +14,14 @@
         <input matInput type="email" formControlName="email">
       <mat-error *ngIf="form.get('email').invalid">Please enter email.</mat-error>
       </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Sherbimi</mat-label>
+        <mat-select formControlName="service">
+          <mat-option [value]="'Imobiljare'">Imobiljare</mat-option>
+          <mat-option [value]="'Sherbime te tjera'">Sherbime te tjera</mat-option>
+        </mat-select>
+      <mat-error *ngIf="form.get('service').invalid">Please select service.</mat-error>
+      </mat-form-field>
       <!-- <mat-form-field appearance="fill">
         <mat-label>Adresa</mat-label>
         <input matInput type="text">

@@ -21,8 +21,9 @@ export class ContactComponent implements OnInit {
     this.form = new FormGroup({
       name: new FormControl('', {validators: [Validators.required]}),
       email: new FormControl('', {validators: [Validators.required]}),
-      phone: new FormControl('', {validators: [Validators.required]}),
-      message: new FormControl('', {validators: [Validators.required]}),
+      service: new FormControl(''),
+      phone: new FormControl(''),
+      message: new FormControl(''),
     });
   }
 
@@ -35,6 +36,7 @@ export class ContactComponent implements OnInit {
     const emailForm: Mail = {
       name: this.form.value.name,
       email: this.form.value.email,
+      service: this.form.value.service,
       phone: this.form.value.phone,
       message: this.form.value.message
     }
