@@ -8,6 +8,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
+
+
 
 
 const material = [
@@ -19,7 +25,10 @@ const material = [
   MatMenuModule,
   MatInputModule,
   MatFormFieldModule,
-  MatSelectModule
+  MatSelectModule,
+  MatChipsModule,
+  MatDividerModule,
+  MatPaginatorModule
 ];
 
 @NgModule({
