@@ -1,0 +1,22 @@
+ul > li {
+  list-style: none;
+  a:hover {
+    color: greenyellow;
+  }
+}
+
+.footer{
+  padding: 5rem 2rem;
+  background-color:  darken($color: #31394d, $amount: 4);
+  color: whitesmoke;
+}
+
+fa-icon{
+  font-size: 2rem;
+  margin: 0 1rem;
+  color: greenyellow;
+}
+
+.socials{
+  margin-top: 7rem;
+}
