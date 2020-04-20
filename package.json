@@ -3,19 +3,26 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node ./backend/server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "nodemon ./backend/server.js"
+    "server": "nodemon ./backend/server.js",
+    "postinstall": "ng build --output-path ./backend/aja-angular"
   },
   "private": true,
+  "main": "./backend/server.js",
+  "engines": {
+    "node": "12.13.0"
+  },
   "dependencies": {
     "@angular/animations": "9.0.0",
     "@angular/cdk": "^9.1.1",
     "@angular/common": "9.0.0",
     "@angular/compiler": "9.0.0",
+    "@angular/cli": "~9.0.6",
+    "@angular/compiler-cli": "~9.0.6",
     "@angular/core": "9.0.0",
     "@angular/forms": "9.0.0",
     "@angular/google-maps": "^9.1.1",
@@ -46,8 +53,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.6",
-    "@angular/cli": "~9.0.6",
-    "@angular/compiler-cli": "~9.0.6",
     "@angular/language-service": "~9.0.6",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
