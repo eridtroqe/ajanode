@@ -9,6 +9,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use("/", express.static(path.join(__dirname,"aja-angular")));
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -23,5 +24,8 @@ app.use((req, res, next) => {
 });
 
 app.post("/api/email", EmailController.sendEmail);
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname,"aja-angular", "index.html"));
+});
 
 module.exports = app;
