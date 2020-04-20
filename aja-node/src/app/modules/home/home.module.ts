@@ -6,6 +6,8 @@ import { MaterialModule } from '../../material.module';
 import { MainSearchComponent } from './main-search/main-search.component';
 import { FiltersComponent } from '../../home/layout/filters/filters.component';
 import { WhatWeDoComponent } from './what-we-do/what-we-do.component';
+import { ServiceCardComponent } from './service-card/service-card.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const routes: Route[] = [
   {
@@ -15,12 +17,13 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes), MaterialModule],
+  imports: [CommonModule, RouterModule.forChild(routes), MaterialModule, FontAwesomeModule],
   declarations: [
     HomeComponent,
     MainSearchComponent,
     FiltersComponent,
-    WhatWeDoComponent
+    WhatWeDoComponent,
+    ServiceCardComponent
   ]
 })
 export class HomeModule {}
