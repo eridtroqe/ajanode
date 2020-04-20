@@ -11,7 +11,7 @@ constructor(private http: HttpClient) { }
 
 sendMail(email: Mail){
 
-  this.http.post('api/email', email).subscribe();
+  this.http.post('http://localhost:3000/api/email', email).subscribe();
 }
 
 }
