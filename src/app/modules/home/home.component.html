@@ -1,0 +1,46 @@
+<!-- <mat-sidenav-container class="main-search" autosize>
+  <mat-sidenav position="end" opened mode="size">
+    <app-filters> </app-filters>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-main-search></app-main-search>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+<div>
+  <!-- <mat-drawer
+    #drawer
+    class="filter-sidenav"
+    scrollable="false"
+    mode="side"
+    position="end"
+  >
+    <app-filters> </app-filters>
+  </mat-drawer> -->
+  <app-main-search></app-main-search>
+  <app-what-we-do></app-what-we-do>
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <h2 class="title">Our Services</h2>
+    </div>
+    <div class="row justify-content-center">
+      <app-service-card [icon]="faHome" [title]="'Imobiljare'" [routerLink]="['/real-estate']" routerLinkActive="router-link-active" ></app-service-card>
+      <app-service-card [icon]="faHandHoldingUsd" [title]="'Vleresim pasurish'"></app-service-card>
+      <app-service-card [icon]="faMapMarkedAlt" [title]="'Projektim dhe punime topografike'"></app-service-card>
+      <app-service-card [icon]="faEnvira" [title]="'Konsulence mjedisore'"></app-service-card>
+      <app-service-card [icon]="faAt" [title]="'E-Apliki'"></app-service-card>
+      <app-service-card [icon]="faLock" [title]="'Sisteme te menaxhimit te sigurise'"></app-service-card>
+      <app-service-card [icon]="faHandsHelping" [title]="'Ndermjetesim'"></app-service-card>
+    </div>
+  </div>
+  <!-- <button
+    type="button"
+    mat-raised-button
+    class="filters mat-elevation-z7"
+    (click)="drawer.toggle()"
+  >
+    <mat-icon>filter_list</mat-icon>
+    Filtro
+  </button> -->
+</div>

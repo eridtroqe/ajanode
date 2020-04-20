@@ -1,0 +1,53 @@
+@import "~@angular/material/theming";
+
+.price-description {
+    .price {
+       font-size: 2rem;
+  
+      mat-icon {
+        font-size: 2rem;
+        height: 2rem;
+        width: 2rem;
+        margin-right: 1rem;
+        vertical-align: middle;
+      }
+    }
+  }
+  
+  .card {
+    @include mat-elevation-transition;
+    @include mat-elevation(1);
+    transition: all 0.4s;
+    padding-bottom: 0;
+  .description 
+  {
+      div{
+          font-weight: 800;
+  
+      }
+      span{
+          opacity: .4;
+      }
+  
+  } 
+    &:hover {
+      @include mat-elevation(8);
+      transform: translateY(-1rem);
+    }
+  }
+  
+  @mixin app-card-theme($theme) {
+      $primary: map-get($map: $theme, $key: primary);
+      $accent: map-get($map: $theme, $key: accent);
+  
+      app-real-estate{
+          .price{
+              color: mat-color($accent, 800);
+              span{
+                  font-weight: 500;
+                  letter-spacing: .1rem;
+              }
+          }
+      }
+  
+  }
