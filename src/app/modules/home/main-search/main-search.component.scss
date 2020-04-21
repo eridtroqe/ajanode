@@ -1,3 +1,5 @@
+// @import "~@angular/material/theming";
+
 .bg-image {
   background-image: url("../../../../assets/wallpaper/wallpaper.jpg");
   height: 700px;
@@ -38,6 +40,7 @@ input {
 }
 
 .search-input {
+  // @include mat-color()
   width: 35rem;
 }
 
@@ -63,3 +66,15 @@ mat-form-field {
     background-size: 100% 100%;
   }
 }
+
+// @mixin main-search-input-theme($theme){
+//   $accent: map-get($theme, accent);
+//   mat-form-field{
+
+//   .search-input {
+//     color:  mat-color($accent, 200);
+//     width: 35rem;
+//   }
+// }
+
+// }

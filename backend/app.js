@@ -7,6 +7,18 @@ const EmailController = require("./controllers/email");
 
 const app = express();
 
+
+mongoose
+  .connect(
+    "mongodb+srv://erid:" + process.env.MONGO_ATLAS_PW + "@cluster0-ambpl.mongodb.net/node-angular?retryWrites=true&w=majority",
+    { useNewUrlParser: true, useUnifiedTopology: true  })
+  .then(() => {
+    console.log("Connected to database!");
+  })
+  .catch(() => {
+    console.log("Connection failed!");
+  });
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/", express.static(path.join(__dirname,"aja-angular")));
