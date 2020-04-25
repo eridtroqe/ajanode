@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "server": "nodemon ./backend/server.js",
-    "postinstall": "ng build --output-path ./backend/aja-angular"
+    "postinstall": "ng build --prod --output-path ./backend/aja-angular"
   },
   "private": true,
   "main": "./backend/server.js",
