@@ -1,3 +1,19 @@
-<p style="margin-top: 150px;">
-  login works!
-</p>
+<div class="container animated fadeInDownBig">
+<div class="row">
+<mat-card class="col-md-7 m-auto">
+  <!-- <mat-spinner *ngIf="isLoading"></mat-spinner> -->
+  <form>
+    <mat-form-field>
+      <input matInput name="email"  type="email" placeholder="E-Mail">
+      <!-- <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error> -->
+    </mat-form-field>
+    <mat-form-field>
+      <input type="password" name="password"  matInput placeholder="Password">
+      <!-- <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error> -->
+    </mat-form-field>
+    
+  </form>
+  <mat-card-actions><button mat-raised-button color="accent" type="submit">Login</button></mat-card-actions>
+</mat-card>
+</div>
+</div>
