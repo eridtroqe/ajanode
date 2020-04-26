@@ -1,7 +1,7 @@
-// @import "~@angular/material/theming";
+//@import "~@angular/material/theming";
 
 .bg-image {
-  background-image: url("../../../../assets/wallpaper/wallpaper.jpg");
+  background-image: url("~/assets/wallpaper/wallpaper.webp");
   height: 700px;
   background-size: cover;
   background-position: 50%;
@@ -13,7 +13,7 @@
 
   // background-size: 110% 110%;
   // background-position: center center;
-  animation: shrink 5s infinite alternate;
+  // animation: shrink 5s infinite alternate;
 }
 
 mat-card {
@@ -73,7 +73,7 @@ mat-form-field {
 
 //   .search-input {
 //     color:  mat-color($accent, 200);
-//     width: 35rem;
+//     // width: 35rem;
 //   }
 // }
 
