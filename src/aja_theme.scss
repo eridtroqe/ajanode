@@ -1,7 +1,7 @@
 @import '~@angular/material/theming';
 @import './color_palettes.scss';
 @import './app/modules/real-estate/real-estate.component.scss';
-// @import './app/modules/home/main-search/main-search.component.scss';
+//@import './app/modules/home/main-search/main-search.component.scss';
 
 $aja-typography: mat-typography-config(
   $font-family: 'Montserrat'
@@ -13,4 +13,4 @@ $aja-app-accent: mat-palette($aja-green, 900, 50, 100);
 $aja-app-theme: mat-light-theme($aja-app-primary, $aja-app-accent);
 @include angular-material-theme($aja-app-theme);
 @include app-card-theme($aja-app-theme);
-// @include main-search-input-theme($aja-app-theme);
+//@include main-search-input-theme($aja-app-theme);
