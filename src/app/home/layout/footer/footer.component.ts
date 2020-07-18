@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MapInfoWindow, MapMarker } from '@angular/google-maps';
-import { faFacebook, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-footer',
@@ -18,7 +18,7 @@ export class FooterComponent {
 
   faFacebookF = faFacebook;
   faTwitter = faTwitter;
-  faInstagram = faInstagram
+  faInstagram = faInstagram;
 
   addMarker(event: google.maps.MouseEvent) {
     this.markerPositions.push(event.latLng.toJSON());

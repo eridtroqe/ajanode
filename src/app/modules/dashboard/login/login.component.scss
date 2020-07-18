@@ -1,23 +1,22 @@
 :host {
   display: block;
-  margin: 18rem auto;
+  margin: 13rem auto;
 }
 
 mat-card {
- padding: 3rem;
-
+  padding: 3rem;
 }
 mat-form-field {
   width: 100%;
-  margin: .8rem 0.5rem;
+  margin: 0.8rem 0.5rem;
 }
 
-button {
-  float: right;
-//   width: 10rem;
-padding: .5rem 5rem;
-//   height: 3rem;
-
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+  button {
+    padding: 0.5rem 5rem;
+  }
 }
 mat-spinner {
   margin: auto;

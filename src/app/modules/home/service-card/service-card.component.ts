@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { faFacebook, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 
 @Component({
@@ -11,7 +11,7 @@ export class ServiceCardComponent implements OnInit {
   @Input()
   icon = faFacebook;
   @Input()
-  title: string='title';
+  title = 'title';
   constructor() { }
 
   ngOnInit() {

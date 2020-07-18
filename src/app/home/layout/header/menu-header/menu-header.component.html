@@ -29,7 +29,7 @@
       <div id="menu-list" (mouseleave)="matMenuTrigger.closeMenu()">
         <a
           mat-menu-item
-          [routerLink]="['/real-estate']"
+          [routerLink]="['real-estate']"
           routerLinkActive="link-active"
           >Imobiljare</a
         >
@@ -87,5 +87,28 @@
       Contact
     </a>
   </li>
+  <ng-container *ngIf="userIsAuth$ | async; else logout">
+  <li>
+    <a
+      mat-button
+      [routerLink]="['/dashboard']"
+      routerLinkActive="router-link-active"
+    >
+      Dashboard
+    </a>
+  </li>
+  <li>
+    <a mat-button (click)="onLogout()">
+     <mat-icon>power_settings_new</mat-icon>
+    </a>
+  </li>
+</ng-container>
+<ng-template #logout>
+  <li>
+    <a mat-button  (click)="onLogin()">
+     <mat-icon fontSet="material-icons-outlined">lock</mat-icon>
+    </a>
+  </li>
+</ng-template>
   <li></li>
 </ul>

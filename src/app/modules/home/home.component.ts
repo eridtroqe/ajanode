@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { faHome, faHandHoldingUsd, faMapMarkedAlt, faAt, faLock, faHandsHelping } from "@fortawesome/free-solid-svg-icons";
-import { faEnvira } from "@fortawesome/free-brands-svg-icons";
+import { faHome, faHandHoldingUsd, faMapMarkedAlt, faAt, faLock, faHandsHelping } from '@fortawesome/free-solid-svg-icons';
+import { faEnvira } from '@fortawesome/free-brands-svg-icons';
 
 
 @Component({

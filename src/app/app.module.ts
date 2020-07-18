@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +21,12 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { LoginComponent } from './modules/dashboard/login/login.component';
+import { FormsModule } from '@angular/forms';
+import { AuthInterceptor, ErrorInterceptor } from './modules/dashboard/login/auth-interceptor';
+import { AuthGuard } from './auth.guard';
+import { AuthEffects } from './store/effects/auth.effects';
+import { PropertyEffects } from './store/effects/property.effects';
+import { reducers } from './store/app.state';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -40,20 +46,24 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
     MaterialModule,
     AppRoutingModule,
     GoogleMapsModule,
     FontAwesomeModule,
     PerfectScrollbarModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(reducers, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([AuthEffects, PropertyEffects])
   ],
   providers: [
+    AuthGuard,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-    }
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
