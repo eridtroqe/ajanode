@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Post } from 'src/app/model/auth.iterface';
 
 @Component({
   selector: 'app-card-real-estate',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardRealEstateComponent implements OnInit {
 
+  @Input() property: Post;
   constructor() { }
 
   ngOnInit() {

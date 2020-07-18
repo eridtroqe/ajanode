@@ -28,7 +28,7 @@ export class ContactComponent implements OnInit {
   }
 
 
-  onSendMail(){
+  onSendMail() {
     if (this.form.invalid) {
       return;
     }
@@ -39,7 +39,7 @@ export class ContactComponent implements OnInit {
       service: this.form.value.service,
       phone: this.form.value.phone,
       message: this.form.value.message
-    }
+    };
 
     this.be.sendMail(emailForm);
 

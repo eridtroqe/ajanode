@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { RouterModule, Route } from '@angular/router';
 import { MaterialModule } from 'src/app/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor, ErrorInterceptor } from './login/auth-interceptor';
 
 
 const routes: Route[] = [
@@ -18,9 +20,14 @@ const routes: Route[] = [
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
     MaterialModule
   ],
-  declarations: [DashboardComponent]
+  declarations: [DashboardComponent],
+  providers: [
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ]
 })
 export class DashboardModule { }
