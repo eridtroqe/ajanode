@@ -3,6 +3,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
+const userRoutes = require("./routes/user");
+const propertysRoutes = require("./routes/posts");
 const EmailController = require("./controllers/email");
 
 const app = express();
@@ -36,6 +38,9 @@ app.use((req, res, next) => {
 });
 
 app.post("/api/email", EmailController.sendEmail);
+app.use("/api/user", userRoutes);
+app.use("/api/propertys", propertysRoutes);
+
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname,"aja-angular", "index.html"));
 });
