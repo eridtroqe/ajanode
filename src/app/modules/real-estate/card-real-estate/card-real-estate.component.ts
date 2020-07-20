@@ -9,9 +9,12 @@ import { Post } from 'src/app/model/auth.iterface';
 export class CardRealEstateComponent implements OnInit {
 
   @Input() property: Post;
+  url: string;
+
   constructor() { }
 
   ngOnInit() {
+    this.url = this.property.imagePath[0];
   }
 
 }
