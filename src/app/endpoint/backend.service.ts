@@ -18,7 +18,7 @@ export class BackendService {
     this.http.post(BACKEND_URL + '/email', email).subscribe();
   }
 
-  addProperty(property: Post, imagePath: Array<File>): Observable<PostResponse> {
+  addProperty(property: Post, imagePath: Array<File>): Observable<any> {
     const postData = new FormData();
     postData.append('title', property.title);
     postData.append('description', property.description);
@@ -35,12 +35,16 @@ export class BackendService {
     }
 
     postData.forEach(value => console.log('PostDAta ', value));
-    return this.http.post<PostResponse>(BACKEND_URL + '/propertys', postData);
+    return this.http.post<any>(BACKEND_URL + '/propertys', postData, {reportProgress: true, observe: 'events'});
   }
 
   getProperties(postsPerPage: number, currentPage: number): Observable<PropertiesResponse> {
     const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`;
     return  this.http.get<PropertiesResponse>(BACKEND_URL + '/propertys' + queryParams);
+  }
+
+  getProperty(id: string): Observable<Post> {
+    return  this.http.get<Post>(BACKEND_URL + '/propertys/' + id);
   }
 
 

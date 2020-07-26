@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { BackendService } from 'src/app/endpoint/backend.service';
 import { FormGroup, FormControl, Validators, FormGroupDirective } from '@angular/forms';
 import { Mail } from 'src/app/model/email.interface';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-contact',
@@ -13,6 +14,7 @@ export class ContactComponent implements OnInit {
   @ViewChild(FormGroupDirective) myForm;
 
   form: FormGroup;
+  faEnvelope = faEnvelope;
 
   constructor(private be: BackendService) { }
 

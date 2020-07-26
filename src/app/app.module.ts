@@ -27,6 +27,8 @@ import { AuthGuard } from './auth.guard';
 import { AuthEffects } from './store/effects/auth.effects';
 import { PropertyEffects } from './store/effects/property.effects';
 import { reducers } from './store/app.state';
+import {ToastrModule} from 'ngx-toastr';
+
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -53,6 +55,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FontAwesomeModule,
     PerfectScrollbarModule,
     StoreModule.forRoot(reducers, {}),
+    ToastrModule.forRoot({
+                          // positionClass: 'toast-top-center',
+                          closeButton: true,
+                          preventDuplicates: true
+                        }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([AuthEffects, PropertyEffects])
   ],

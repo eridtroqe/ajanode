@@ -2,3 +2,11 @@
 .logo {
   max-height: 64px;
 }
+
+.mat-toolbar.mat-primary {
+  opacity: .95;
+}
+
+mat-toolbar-row:first-of-type {
+  background-image: linear-gradient(to left, #293041 45%, transparent 80%) ;
+}

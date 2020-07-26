@@ -8,4 +8,7 @@ export const loginRequest = createAction(`[${featureKey}] loginRequest`, props<{
 export const loginSuccess = createAction(`[${featureKey}] loginSuccess`, props<{ token: string, email: string }>());
 export const loginFailure = createAction(`[${featureKey}] loginFailure`, props<{ error: string }>());
 
+export const authTrue = createAction(`[${featureKey}] authTrue`);
+export const authFalse = createAction(`[${featureKey}] authFalse`);
+
 export const logout = createAction(`[${featureKey}] logout`);

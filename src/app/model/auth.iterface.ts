@@ -8,7 +8,7 @@ export interface User {
 
 
 export interface Post {
-    id?: string;
+    _id?: string;
     title: string;
     description: string;
     address: string;
@@ -33,3 +33,11 @@ export interface PropertiesResponse {
     properties: Array<any>;
     postsCount: number;
 }
+
+export enum UploadStatus {
+    Ready = 'Ready',
+    Requested = 'Requested',
+    Started = 'Started',
+    Failed = 'Failed',
+    Completed = 'Completed'
+  }

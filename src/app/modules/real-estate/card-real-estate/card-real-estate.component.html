@@ -1,4 +1,4 @@
-<mat-card class="card">
+<mat-card class="card" (click)="navigateToDetails(property._id)">
   <img mat-card-image [src]="url" [alt]="property.title">
   <mat-card-title class="my-2">{{ property.title }}</mat-card-title>
   <mat-card-subtitle class="d-flex align-items-center my-3">
@@ -7,7 +7,8 @@
   </mat-card-subtitle>
   <mat-card-content style="margin-bottom: 0;">
     <mat-chip-list>
-      <mat-chip color="warn" selected>{{ property.type }}</mat-chip>
+      <mat-chip *ngIf="property.type === 'Sale'" color="warn" selected>Shitet</mat-chip>
+      <mat-chip *ngIf="property.type === 'Rent'" color="accent" selected>Jepet me qera</mat-chip>
     </mat-chip-list>
     <mat-card-content class="py-1 price-description">
       <div class="row d-flex p-3">
@@ -15,7 +16,7 @@
           <mat-icon>euro</mat-icon>
           <span>{{ property.price }}</span>
         </div>
-        <div class=" col-md-4 align-self-end">/ muaj</div>
+        <div *ngIf="property.type === 'Rent'" class=" col-md-4 align-self-end">/ muaj</div>
       </div>
 
     </mat-card-content>

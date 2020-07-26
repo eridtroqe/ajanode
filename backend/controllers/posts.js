@@ -48,7 +48,7 @@ exports.getPropertys = (req, res, next) => {
   const pageSize = +req.query.pagesize;
   const currentPage = +req.query.page;
   const postQuery = Post.find();
-  let fetchedPosts;
+  let fetchedPosts = [];
   if (pageSize && currentPage) {
     postQuery.skip(pageSize * (currentPage - 1))
       .limit(pageSize);
@@ -70,3 +70,18 @@ exports.getPropertys = (req, res, next) => {
       });
     });
 }
+
+exports.getProperty = (req, res, next) => {
+  Post.findById(req.params.id).then(post => {
+    if (post) {
+      res.status(200).json(post);
+    } else {
+      res.status(404).json({ message: "Post not found!" });
+    }
+  })
+    .catch(error => {
+      res.status(500).json({
+        message: "Fetching post failed!"
+      });
+    });
+};

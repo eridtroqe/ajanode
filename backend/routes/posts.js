@@ -9,5 +9,6 @@ const router = express.Router();
 
 router.post("", checkAuth, extractFile, PostController.addProperty);
 router.get("", extractFile, PostController.getPropertys);
+router.get("/:id", PostController.getProperty);
 
 module.exports = router;

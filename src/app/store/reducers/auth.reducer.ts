@@ -27,6 +27,8 @@ const authReducer = createReducer(
             error: null
         })),
     on(authActions.loginFailure, (state: State, {error}) => ({...state, error: 'Incorrect email or password.'})),
+    on(authActions.authTrue, (state: State) => ({...state, isAuthenticated: true})),
+    on(authActions.authFalse, (state: State) => ({...state, isAuthenticated: false})),
     on(authActions.logout, () => initialState),
 );
 

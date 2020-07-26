@@ -58,6 +58,7 @@
 }
 
 .service-box:hover {
+  cursor: pointer;
   .icon {
     color: yellowgreen;
     transition: all 0.4s;

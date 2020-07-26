@@ -8,11 +8,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from './endpoint/auth.service';
 import { Store } from '@ngrx/store';
+import { getIsAuth } from './store/reducers/auth.reducer';
 
 
 @Injectable()
   export class AuthGuard implements CanActivate {
-    constructor(private authService: AuthService, 
+    isAuthStore: boolean;
+    constructor(private authService: AuthService,
                 private router: Router,
                 private store: Store) {}
 
@@ -21,11 +23,13 @@ import { Store } from '@ngrx/store';
       state: RouterStateSnapshot
     ): boolean | Observable<boolean> | Promise<boolean> {
       const isAuth = this.authService.getToken();
-
+      this.store.select(getIsAuth).subscribe(val => this.isAuthStore = val);
       if (!isAuth) {
         this.router.navigate(['/login']);
         return false;
       }
-      return true;
+      if (isAuth && this.isAuthStore === true) {
+        return true;
+      }
     }
   }

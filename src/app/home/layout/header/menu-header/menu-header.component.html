@@ -4,7 +4,7 @@
       Home
     </a>
   </li>
-  <li>
+  <!-- <li>
     <a
       mat-button
       [routerLink]="'/aboutus'"
@@ -12,6 +12,9 @@
     >
       Rreth nesh
     </a>
+  </li> -->
+  <li>
+    <a mat-button [routerLink]="['real-estate']" routerLinkActive="router-link-active">Imobiliare</a>
   </li>
   <li>
     <a
@@ -27,12 +30,12 @@
     </a>
     <mat-menu #menu="matMenu" opened xPosition="before">
       <div id="menu-list" (mouseleave)="matMenuTrigger.closeMenu()">
-        <a
+        <!-- <a
           mat-menu-item
           [routerLink]="['real-estate']"
           routerLinkActive="link-active"
           >Imobiljare</a
-        >
+        > -->
         <a
           mat-menu-item
           routerLinkActive="link-active"
@@ -84,7 +87,7 @@
       [routerLink]="['/contact']"
       routerLinkActive="router-link-active"
     >
-      Contact
+      Kontakt
     </a>
   </li>
   <ng-container *ngIf="userIsAuth$ | async; else logout">

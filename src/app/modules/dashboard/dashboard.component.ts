@@ -1,12 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AuthService } from 'src/app/endpoint/auth.service';
-import { Subscription } from 'rxjs';
+import { AuthService } from '../../endpoint/auth.service';
+import { Subscription, Observable } from 'rxjs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { mimeType } from '../../mime-type.validator';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.state';
-import { addPropertyRequest } from 'src/app/store/actions/property.actions';
-
+import { addPropertyRequest } from '../../store/actions/property.actions';
+import { getProgress, getInProgress, getReady, getFailed, isLoadingProperty, getCompleted } from '../../store/reducers/property.reducer';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -14,13 +15,24 @@ import { addPropertyRequest } from 'src/app/store/actions/property.actions';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   form: FormGroup;
-  isLoading: false;
   imagePreview = [];
   filesToUpload: Array<File> = [];
 
+  progress$: Observable<number>;
+  error$: Observable<string>;
+
+  isInProgress$: Observable<boolean>;
+  isReady$: Observable<boolean>;
+  hasFailed$: Observable<boolean>;
+  isLoading$: Observable<boolean>;
+
+  faSpinner = faSpinner;
+
+  completeSub: Subscription;
+
   constructor(private authService: AuthService,
-    private store: Store<AppState>,
-    private fb: FormBuilder) { }
+              private store: Store<AppState>,
+              private fb: FormBuilder) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -40,10 +52,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
       }]
     });
 
+    this.progress$ = this.store.select(getProgress);
+    this.isInProgress$ = this.store.select(getInProgress);
+    this.isReady$ = this.store.select(getReady);
+    this.hasFailed$ = this.store.select(getFailed);
+    this.isLoading$ = this.store.select(isLoadingProperty);
+    // this.completeSub =  this.store.select(getCompleted).subscribe(val => {
+    //   if(val){
+    //   this.form.enable();
+    //   this.form.markAsPristine();
+    //   this.form.reset();
+    //   }
+    // });
   }
 
   ngOnDestroy() {
-
+  //  this.completeSub.unsubscribe();
   }
 
   onAddPost() {
@@ -52,7 +76,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     this.store.dispatch(addPropertyRequest({payload: this.form.value, imagePath: this.filesToUpload}));
-
+    this.form.disable();
   }
 
   onImagePicked(event: Event) {

@@ -1,4 +1,4 @@
-<!-- <div class="container"> -->
+<div class="container">
 <div class="row" *ngIf="properties$ | async as properties">
  <div class="col-md-4 p-3" *ngFor="let property of properties"> 
   <app-card-real-estate  [property]='property'></app-card-real-estate>
@@ -10,4 +10,5 @@ class="col-md-12"
 [pageSize]="postsPerPage"
 [pageSizeOptions]="[8,16,24,32]"
 [showFirstLastButtons]="true"></mat-paginator>
+</div>
 </div>

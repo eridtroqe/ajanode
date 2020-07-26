@@ -6,6 +6,7 @@ import { MaterialModule } from 'src/app/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor, ErrorInterceptor } from './login/auth-interceptor';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 const routes: Route[] = [
@@ -22,7 +23,8 @@ const routes: Route[] = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
-    MaterialModule
+    MaterialModule,
+    FontAwesomeModule
   ],
   declarations: [DashboardComponent],
   providers: [
