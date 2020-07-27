@@ -21,6 +21,7 @@ export interface Post {
     price: string;
     imagePath?: Array<string>;
     creator?: string;
+    date?: string;
 }
 
 export interface PostResponse {

@@ -49,6 +49,7 @@ exports.getPropertys = (req, res, next) => {
   const currentPage = +req.query.page;
   const postQuery = Post.find();
   let fetchedPosts = [];
+  postQuery.sort({date: 'desc'});
   if (pageSize && currentPage) {
     postQuery.skip(pageSize * (currentPage - 1))
       .limit(pageSize);

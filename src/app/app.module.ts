@@ -30,6 +30,7 @@ import { reducers } from './store/app.state';
 import {ToastrModule} from 'ngx-toastr';
 
 
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };

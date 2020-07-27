@@ -1,18 +1,14 @@
-<app-header
-  (sidenavToggle)="sidenav.toggle()"
-  class="fixed-top"
-></app-header>
 <mat-sidenav-container>
-  <mat-sidenav #sidenav  role="navigation"  position="start">
+
+  <mat-sidenav #sidenav role="navigation" position="start" fixedInViewport='true'>
     <app-sidenav (closeSidenav)="sidenav.close()"></app-sidenav>
   </mat-sidenav>
-  <mat-sidenav #filter role="navigation"  position="end">
+  <!-- <mat-sidenav #filter role="navigation"  position="end">
     <app-sidenav (closeSidenav)="sidenav.close()"></app-sidenav>
-  </mat-sidenav>
+  </mat-sidenav> -->
   <mat-sidenav-content>
-
+    <app-header (sidenavToggle)="sidenav.toggle()" class="fixed-top"></app-header>
     <router-outlet></router-outlet>
-
     <app-footer></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>

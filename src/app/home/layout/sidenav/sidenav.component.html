@@ -1,1 +1,38 @@
-<p>sidenav works!</p>
+<mat-nav-list>
+    <a [routerLink]="[ '/']">
+        <img fxFlexFill style="height: inherit;"
+            src="../../../assets/Logo/Intertek-wester-balkans-first-logo-usage-gray-background.png">
+    </a>
+    <a mat-list-item [routerLink]="[ '/home']" (click)="onClose()">
+        Home
+    </a>
+    <a mat-list-item [routerLink]="[ '/aboutus']" (click)="onClose()">
+      Imobiliare
+    </a>
+
+    <a mat-list-item [matMenuTriggerFor]="menu" #matMenuTrigger="matMenuTrigger" routerLinkActive="router-link-active">
+       Sherbimet
+    </a>
+    <mat-menu #menu="matMenu">
+        <div>
+            <a mat-menu-item [routerLink]="['services/pressure-equipment']"
+                routerLinkActive="router-link-active"
+                (click)="onClose()"
+                >Vleresim i pasurive te paluajtshme</a>
+            <a mat-menu-item [routerLink]="['services/inspection-of-lifting-machinery']"
+            (click)="onClose()"
+            >Projektim dhe punime topografike</a>
+            <a mat-menu-item [routerLink]="['services/volumetric-inspection']" (click)="onClose()">Konsulence mjedisore</a>
+            <a mat-menu-item [routerLink]="['services/certification-of-personel']" (click)="onClose()">E-apliki me ekspertize tekniko-ligjore</a>
+            <a mat-menu-item [routerLink]="['services/certifications-petroleum']" (click)="onClose()">
+            Sisteme te menaxhimit te sigurise ushqimore dhe bujqesise
+            </a>
+            <a mat-menu-item [routerLink]="['services/project-compliance-certificate']" (click)="onClose()">
+            Ndermjetesim
+            </a>
+        </div>
+    </mat-menu>
+    <a mat-list-item [routerLink]="[ '/contact']" (click)="onClose()">
+        Kontakt
+    </a>
+</mat-nav-list>

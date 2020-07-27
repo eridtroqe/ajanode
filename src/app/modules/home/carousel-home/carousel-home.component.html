@@ -1,0 +1,7 @@
+<owl-carousel-o [options]="customOptions" class="py-5">
+
+    <ng-template carouselSlide *ngFor="let slide of properties" [id]='slide._id'>
+      <app-card-real-estate [property]="slide"></app-card-real-estate>
+    </ng-template>
+
+</owl-carousel-o>

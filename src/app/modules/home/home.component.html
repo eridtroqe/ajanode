@@ -1,23 +1,6 @@
-<!-- <mat-sidenav-container class="main-search" autosize>
-  <mat-sidenav position="end" opened mode="size">
-    <app-filters> </app-filters>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <app-main-search></app-main-search>
-  </mat-sidenav-content>
-</mat-sidenav-container> -->
-
-  <!-- <mat-drawer
-    #drawer
-    class="filter-sidenav"
-    scrollable="false"
-    mode="side"
-    position="end"
-  >
-    <app-filters> </app-filters>
-  </mat-drawer> -->
   <app-main-search></app-main-search>
   <app-what-we-do></app-what-we-do>
+  <app-carousel-home [properties]="recentProperties$ | async"></app-carousel-home>
   <div class="container">
     <div class="row justify-content-center">
       <h2 class="title">Our Services</h2>
@@ -32,12 +15,3 @@
       <app-service-card [icon]="faHandsHelping" [title]="'Ndermjetesim'"></app-service-card>
     </div>
   </div>
-  <!-- <button
-    type="button"
-    mat-raised-button
-    class="filters mat-elevation-z7"
-    (click)="drawer.toggle()"
-  >
-    <mat-icon>filter_list</mat-icon>
-    Filtro
-  </button> -->

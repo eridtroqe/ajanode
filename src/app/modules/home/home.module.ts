@@ -8,6 +8,9 @@ import { FiltersComponent } from '../../home/layout/filters/filters.component';
 import { WhatWeDoComponent } from './what-we-do/what-we-do.component';
 import { ServiceCardComponent } from './service-card/service-card.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { CarouselHomeComponent } from './carousel-home/carousel-home.component';
+import { SharedModule } from '../../shared/shared.module';
 
 const routes: Route[] = [
   {
@@ -17,13 +20,20 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes), MaterialModule, FontAwesomeModule],
+  imports: [CommonModule,
+            RouterModule.forChild(routes),
+            MaterialModule, 
+            FontAwesomeModule,
+            CarouselModule,
+            SharedModule
+          ],
   declarations: [
     HomeComponent,
     MainSearchComponent,
     FiltersComponent,
     WhatWeDoComponent,
-    ServiceCardComponent
+    ServiceCardComponent,
+    CarouselHomeComponent
   ]
 })
 export class HomeModule {}

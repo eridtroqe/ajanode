@@ -11,7 +11,8 @@ const postSchema = mongoose.Schema({
   floor: { type: String, required: true},
   type: { type: String, required: true},
   price: { type: String, required: true},
-  imagePath: [{ type: String, required: true }]
+  imagePath: [{ type: String, required: true }],
+  date: { type: Date, default: Date.now }
 });
 
 module.exports = mongoose.model("Post", postSchema);

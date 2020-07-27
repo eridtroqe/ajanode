@@ -12,7 +12,7 @@ import { authFalse, authTrue } from './store/actions/auth.actions';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private http: HttpClient, 
+  constructor(private http: HttpClient,
               private authService: AuthService,
               private store: Store<AppState>) {}
 

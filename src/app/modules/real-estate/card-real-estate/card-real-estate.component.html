@@ -1,5 +1,7 @@
 <mat-card class="card" (click)="navigateToDetails(property._id)">
-  <img mat-card-image [src]="url" [alt]="property.title">
+  <!-- <div style="width: 100%; height: 280px; display: block;"> -->
+   <img mat-card-image  [src]="url" [alt]="property.title">
+  <!-- </div> -->
   <mat-card-title class="my-2">{{ property.title }}</mat-card-title>
   <mat-card-subtitle class="d-flex align-items-center my-3">
     <mat-icon>location_on</mat-icon> &nbsp;

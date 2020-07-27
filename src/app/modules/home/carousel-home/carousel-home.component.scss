@@ -1,0 +1,8 @@
+::ng-deep .owl-carousel .owl-stage-outer{
+    overflow: visible;
+}
+
+::ng-deep .owl-carousel .owl-item img{
+    display: flex;
+    width: calc(100% + 32px);
+}
