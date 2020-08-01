@@ -11,6 +11,16 @@ ul > li {
   color: whitesmoke;
 }
 
+.menus li  , 
+.services li  , 
+.address li  {
+  line-height: 1.2rem;
+  margin-bottom: .7rem;
+}
+a{
+  color: #FFF;
+}
+
 fa-icon{
   font-size: 2rem;
   margin: 0 1rem;
