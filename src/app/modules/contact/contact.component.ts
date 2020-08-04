@@ -24,7 +24,7 @@ export class ContactComponent implements OnInit {
       name: new FormControl('', {validators: [Validators.required]}),
       email: new FormControl('', {validators: [Validators.required]}),
       service: new FormControl(''),
-      phone: new FormControl(''),
+      phone: new FormControl('', {validators: [Validators.required]}),
       message: new FormControl(''),
     });
   }

@@ -9,6 +9,8 @@ import { Post } from 'src/app/model/auth.iterface';
 })
 export class CarouselHomeComponent implements OnInit {
 
+  isDragging: boolean;
+
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -16,27 +18,34 @@ export class CarouselHomeComponent implements OnInit {
     autoplayTimeout: 4000,
     autoplayHoverPause: true,
     touchDrag: true,
-    pullDrag: true,
+    pullDrag: false,
+    stagePadding: 5,
     dots: true,
-    margin: 15,
+    margin: 7,
     navSpeed: 700,
-    navText: ['<', '>'],
+    // navText: ['<', '>'],
     responsive: {
       0: {
-        items: 1
+        items: 1,
+        stagePadding: 10,
+        margin: 10
       },
       400: {
-        items: 2
+        items: 1
       },
       740: {
+        items: 2
+      },
+      1024: {
         items: 3
       },
-      940: {
+      1440: {
         items: 4
+      },
+      2550: {
+        items: 6
       }
-    },
-    nav: true,
-    rewind: true
+    }
   }
 
  @Input() properties: Array<Post>;

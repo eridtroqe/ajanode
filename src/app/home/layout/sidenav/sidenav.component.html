@@ -11,24 +11,24 @@
     </a>
 
     <a mat-list-item [matMenuTriggerFor]="menu" #matMenuTrigger="matMenuTrigger" routerLinkActive="router-link-active">
-       Sherbimet
+       Shërbimet
     </a>
     <mat-menu #menu="matMenu">
         <div>
             <a mat-menu-item [routerLink]="['services/pressure-equipment']"
                 routerLinkActive="router-link-active"
                 (click)="onClose()"
-                >Vleresim i pasurive te paluajtshme</a>
+                >Vlerësim i pasurive të paluajtshme</a>
             <a mat-menu-item [routerLink]="['services/inspection-of-lifting-machinery']"
             (click)="onClose()"
-            >Projektim dhe punime topografike</a>
-            <a mat-menu-item [routerLink]="['services/volumetric-inspection']" (click)="onClose()">Konsulence mjedisore</a>
-            <a mat-menu-item [routerLink]="['services/certification-of-personel']" (click)="onClose()">E-apliki me ekspertize tekniko-ligjore</a>
+            >Projektime dhe punime topografike</a>
+            <a mat-menu-item [routerLink]="['services/volumetric-inspection']" (click)="onClose()">Konsulencë mjedisore</a>
+            <a mat-menu-item [routerLink]="['services/certification-of-personel']" (click)="onClose()">E-apliki me ekspertizë tekniko-ligjore</a>
             <a mat-menu-item [routerLink]="['services/certifications-petroleum']" (click)="onClose()">
-            Sisteme te menaxhimit te sigurise ushqimore dhe bujqesise
+            Sisteme të menaxhimit të sigurisë ushqimore dhe bujqësisë
             </a>
             <a mat-menu-item [routerLink]="['services/project-compliance-certificate']" (click)="onClose()">
-            Ndermjetesim
+            Ndërmjetësim
             </a>
         </div>
     </mat-menu>

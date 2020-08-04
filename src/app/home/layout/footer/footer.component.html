@@ -16,49 +16,49 @@
             </li>
             <li>
               <a [routerLink]="'/services'" routerLinkActive="router-link-active">
-                Sherbime
+                Shërbime
               </a>
             </li>
             <li>
               <a  [routerLink]="['/contact']" routerLinkActive="router-link-active">
-                Contact
+                Kontakt
               </a>
             </li>
           </ul>
           <ul class="col-md-5 services">
             <li>
               <a  [routerLink]="'/home'" routerLinkActive="router-link-active">
-                Imobiljare
+                Imobiliare
               </a>
             </li>
             <li>
               <a  [routerLink]="'/aboutus'" routerLinkActive="router-link-active">
-                Vleresim i pasurive te paluajtshme
+                Vlerësim i pasurive të paluajtshme
               </a>
             </li>
             <li>
               <a  [routerLink]="'/services'" routerLinkActive="router-link-active">
-                Projektim dhe punime topografike
+                Projektime dhe punime topografike
               </a>
             </li>
             <li>
               <a  [routerLink]="['/contact']" routerLinkActive="router-link-active">
-                Konsulence mjedisore
+                Konsulencë mjedisore
               </a>
             </li>
             <li>
               <a  [routerLink]="['/contact']" routerLinkActive="router-link-active">
-                E-Apliki me ekspertize tekniko-ligjore
+                E-Apliki me ekspertizë tekniko-ligjore
               </a>
             </li>
             <li>
               <a [routerLink]="['/contact']" routerLinkActive="router-link-active">
-                Sisteme te menaxhimit te sigurise ushqimore dhe bujqesise
+                Sisteme të menaxhimit të sigurisë ushqimore dhe bujqësisë
               </a>
             </li>
             <li>
               <a  [routerLink]="['/contact']" routerLinkActive="router-link-active">
-                Ndermjetesim
+                Ndërmjetësim
               </a>
             </li>
           </ul>
@@ -70,29 +70,43 @@
             </li>
             <li>
               <a [routerLink]="'/aboutus'" routerLinkActive="router-link-active">
-                E-mail: anxhelomullai@gmail.com
+                E-mail: ajafirstchoice@gmail.com
               </a>
             </li>
             <li>
               <a disableRipple [routerLink]="'/services'" routerLinkActive="router-link-active">
-                Tel: +355 69 34 80 315
+                Tel: +355 69 22 58 711
               </a>
             </li>
           </ul>
         </div>
       </div>
         </section>
-        <google-map class="col-md-4 col-sm-12" height="320px" width="100%" [center]="center" [zoom]="zoom" (mapClick)="addMarker($event)"
+        <!-- <google-map class="col-md-4 col-sm-12" height="320px" width="100%" [center]="center" [zoom]="zoom" (mapClick)="addMarker($event)"
           (mapMousemove)="move($event)" (mapRightclick)="removeLastMarker()">
           <map-marker #marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
             [options]="markerOptions" (mapClick)="openInfoWindow(marker)"></map-marker>
           <map-info-window>Info Window content</map-info-window>
-        </google-map>
+        </google-map> -->
+
+
+
+<!-- verion 2 of maps--> 
+<google-map class="col-md-4 col-sm-12" height="350px" width="100%" [zoom]="zoom" [center]="center"
+[options]="options" >
+  
+  <map-marker #markerElem *ngFor="let marker of markers" 
+  [position]="marker.position" [label]="marker.label"
+  [title]="marker.title" [options]="marker.options" (mapClick)="openInfo(markerElem, marker.info)" >
+  
+  </map-marker>
+  <map-info-window>{{ infoContent }}</map-info-window>
+</google-map>      
   
 <div class="container">
         <div class="row">
           <div class="col-12 socials">
-            <span class="row justify-content-center align-items-center">Follow us</span>
+            <span class="row justify-content-center align-items-center">Follow</span>
             <div class="row  justify-content-center align-items-center my-4">
               <svg width="0" height="0">
                 <radialGradient id="rg" r="150%" cx="30%" cy="107%">
@@ -114,6 +128,6 @@
     </div>
   </div>
 <div class="d-flex py-3 justify-content-center">
-  <span>&copy; {{ copyDate }} Designed By Aja Solutions</span>
+  <span>&copy; {{ copyDate }} Dizenjuar Nga Ajafirstchoice</span>
 </div>
 </div>

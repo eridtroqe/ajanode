@@ -1,7 +1,7 @@
-<owl-carousel-o [options]="customOptions" class="py-5">
+<owl-carousel-o [options]="customOptions" (dragging)="isDragging = $event.dragging">
 
     <ng-template carouselSlide *ngFor="let slide of properties" [id]='slide._id'>
-      <app-card-real-estate [property]="slide"></app-card-real-estate>
+      <app-card-real-estate [owlRouterLink]="['/real-estate', slide._id]" [stopLink]="isDragging" [property]="slide"></app-card-real-estate>
     </ng-template>
 
 </owl-carousel-o>

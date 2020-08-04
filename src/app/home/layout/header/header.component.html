@@ -1,18 +1,19 @@
 <mat-toolbar color="primary" class="mat-elevation-z10" >
-  <mat-toolbar-row class="contact">
+  <mat-toolbar-row class="contact d-none d-sm-block ">
     <app-contact-header class="mat-body-1"></app-contact-header>
   </mat-toolbar-row>
   <mat-toolbar-row >
-    <button mat-button class="d-md-none" (click)="openSideMenu()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <div class="col-7">
+
+    <div class="col-xs-9 col-md-7">
       <img
         class="logo"
         src="../../../../assets/logo/aja_logo_white.png"
         alt="logo"
       />
     </div>
+    <button mat-button class="d-md-none col-xs-3" (click)="openSideMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
     <app-menu-header class="d-none d-md-block col-5"></app-menu-header>
   </mat-toolbar-row>
 </mat-toolbar>

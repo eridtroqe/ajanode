@@ -7,11 +7,11 @@
       <fa-icon class="col-12" [icon]="faEnvelope" size="xs"></fa-icon>
       <div class="col-12 mb-2">
         <label>E-mail:</label>
-        <div>anxhelomullai@gmail.com</div>
+        <div>ajafirstchoice@gmail.com</div>
       </div>
       <div class="col-12 mb-2">
         <label>Telefon:</label>
-        <div>+355 69 34 80 315</div>
+        <div>+355 69 22 58 711</div>
       </div>
       <div class="col-12 mb-2">
         <label>Adresa:</label>
@@ -23,36 +23,36 @@
       <div class="row">
       <mat-form-field class="col-md-6" color="primary" appearance="fill">
         <mat-label>Emri</mat-label>
-        <input matInput type="text" formControlName="name">
-      <mat-error *ngIf="form.get('name').invalid">Please enter name.</mat-error>
+        <input matInput type="text" formControlName="name" required>
+      <mat-error *ngIf="form.get('name').invalid">Vendosni emrin.</mat-error>
       </mat-form-field>
       <mat-form-field class="col-md-6" appearance="fill">
         <mat-label>E-mail</mat-label>
-        <input matInput type="email" formControlName="email">
-      <mat-error *ngIf="form.get('email').invalid">Please enter email.</mat-error>
+        <input matInput type="email" formControlName="email" required>
+      <mat-error *ngIf="form.get('email').invalid">Vendosni emailin.</mat-error>
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field class="col-md-6" appearance="fill">
         <mat-label>Tel</mat-label>
-        <input matInput type="tel" formControlName="phone">
-      <mat-error *ngIf="form.get('phone').invalid">Please enter phone.</mat-error>
+        <input matInput type="tel" formControlName="phone" required>
+      <mat-error *ngIf="form.get('phone').invalid">Vendosni numrin e telefonit.</mat-error>
       </mat-form-field>
       <mat-form-field class="col-md-6" appearance="fill">
-        <mat-label>Sherbimi</mat-label>
+        <mat-label>Shërbimi</mat-label>
         <mat-select formControlName="service">
-          <mat-option [value]="'Imobiljare'">Imobiljare</mat-option>
-          <mat-option [value]="'Sherbime te tjera'">Sherbime te tjera</mat-option>
+          <mat-option [value]="'Imobiliare'">Imobiliare</mat-option>
+          <mat-option [value]="'Shërbime të tjera'">Shërbime të tjera</mat-option>
         </mat-select>
-      <mat-error *ngIf="form.get('service').invalid">Please select service.</mat-error>
+      <mat-error *ngIf="form.get('service').invalid">Zgjodhni një shërbim.</mat-error>
       </mat-form-field>
     </div>
       <mat-form-field appearance="fill">
         <mat-label>Mesazhi</mat-label>
         <textarea matInput rows="7" formControlName="message"></textarea>
-      <mat-error *ngIf="form.get('message').invalid && form.get('message')">Please enter message.</mat-error>
+      <mat-error *ngIf="form.get('message').invalid && form.get('message')">Vendosni mesazhin.</mat-error>
       </mat-form-field>
-      <button mat-raised-button class="col-md-4 align-self-end" color="primary" type="submit">Dergo</button>
+      <button mat-raised-button class="col-md-4 align-self-end" color="primary" type="submit">Dërgo</button>
     </form>
     </mat-card>
 </div>

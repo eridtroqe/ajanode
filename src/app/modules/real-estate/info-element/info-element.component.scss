@@ -1,8 +1,12 @@
+@import "~@angular/material/theming";
+
+
 :host{
     padding: 1rem;
 }
 fa-icon{
     font-size: 2rem;
+    color: #47536c;
 }
 
 .label{

@@ -1,7 +1,7 @@
 //@import "~@angular/material/theming";
 
 .bg-image {
-  background-image: url("~/assets/wallpaper/wallpaper.webp");
+  background-image: url("~/assets/wallpaper/wallpaper.jpg");
   height: 550px;
   background-size: cover;
   background-position: 50%;
@@ -22,7 +22,8 @@ mat-card {
   height: fit-content;
 }
 .logo {
-  width: 35rem;
+  width: 100%;
+  height: auto;
   z-index: 5;
   margin: 0 auto;
 }

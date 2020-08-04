@@ -25,27 +25,40 @@
   </div>
   <div class="container my-4">
     <div class="row">
-      <mat-card class="col-md-8">
-        <img mat-card-image [src]="property.imagePath[0]" [alt]="property.title">
-        <mat-card-content>
-          <mat-card-title class="my-2">
-            Pershkrimi
-          </mat-card-title>
-          <div class="my-2"> {{ property.description}}</div>
-          <mat-divider></mat-divider>
-          <mat-card-title class="mt-2 py-2">
-            Informacion
-          </mat-card-title>
-        <div class="row">
-          <app-info-element class="col-md-6"></app-info-element>
-          <app-info-element class="col-md-6"></app-info-element>
-          <app-info-element class="col-md-6"></app-info-element>
-          <app-info-element class="col-md-6"></app-info-element>
-          <app-info-element class="col-md-6"></app-info-element>
-          <app-info-element class="col-md-6"></app-info-element>
+      <div class="col-md-8">
+        <div class="mat-elevation-z1">
+          <owl-carousel-o [options]="customOptions" #owl>
+
+            <ng-template *ngFor="let slide of property.imagePath" carouselSlide [id]="slide">
+              <img [src]="slide" [alt]="property.title" [title]="property.title" class="main-img">
+            </ng-template>
+
+          </owl-carousel-o>
         </div>
-        </mat-card-content>
-      </mat-card>
+        <img *ngFor="let img of property.imagePath" class="nav-img" [src]="img" (click)="owl.to(img)">
+        <mat-card>
+          <mat-card-content>
+            <mat-card-title class="my-2">
+              Përshkrimi
+            </mat-card-title>
+            <div class="my-2"> {{ property.description}}</div>
+            <mat-divider></mat-divider>
+            <mat-card-title class="mt-2 py-2">
+              Informacion
+            </mat-card-title>
+            <div class="row">
+              <app-info-element *ngIf="property.rooms" [label]="'Dhoma'" [value]="property.rooms" class="col-md-6">
+              </app-info-element>
+              <app-info-element *ngIf="property.sip" [label]="'Sipërfaqja (m²)'" [value]="property.sip"
+                class="col-md-6"></app-info-element>
+              <app-info-element *ngIf="property.floor" [label]="'Kati'" [value]="property.floor" class="col-md-6">
+              </app-info-element>
+              <app-info-element *ngIf="property.toilets" [label]="'Tualete'" [value]="property.toilets"
+                class="col-md-6"></app-info-element>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
       <app-right-side-info class="col-md-4"></app-right-side-info>
     </div>
   </div>

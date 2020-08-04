@@ -1,9 +1,13 @@
 ::ng-deep .owl-stage{
     padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-bottom: 1rem;
 }
 
 ::ng-deep .owl-carousel .owl-item img{
     display: flex;
     width: calc(100% + 32px);
+}
+
+::ng-deep .owl-theme {
+    box-shadow: none;
 }

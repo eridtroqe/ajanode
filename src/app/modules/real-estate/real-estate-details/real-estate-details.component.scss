@@ -10,12 +10,23 @@
     //             0px 4px 18px 3px rgba(0, 0, 0, 0.12);
 }
 
+::ng-deep .owl-item{
+    background-color: white;
+}
+
+// ::ng-deep .owl-theme {
+//     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+//                 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+//                 0px 1px 3px 0px rgba(0, 0, 0, 0.12)
+// }
+
 mat-card{
     height: fit-content;
 }
 .title{
     font-size: 2.7rem;
     font-weight: 600;
+    line-height: 1;
     color: #31394d;
 }
 .price{
@@ -40,4 +51,15 @@ mat-card{
 
 .sale{
     background-color: #f44336;
+}
+
+.main-img {
+   max-height: 450px;
+   object-fit: fill;
+}
+
+.nav-img {
+   width: calc(100% / 8);
+   height: 100px;
+   object-fit: cover;
 }

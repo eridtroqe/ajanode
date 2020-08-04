@@ -6,6 +6,7 @@ import { Post, UploadStatus } from 'src/app/model/auth.iterface';
 export interface State {
     properties: Array<Post>;
     property: Post;
+    totalProperties: number;
     postsPerPage: number;
     page: number;
     uploadStatus: UploadStatus;
@@ -17,6 +18,7 @@ export interface State {
 export const initialState: State = {
     properties: [],
     property: null,
+    totalProperties: 0,
     postsPerPage: 8,
     page: 1,
     uploadStatus: UploadStatus.Ready,
@@ -51,7 +53,8 @@ const propertyReducer = createReducer(
     on(propertyActions.getPropertiesSuccess, (state: State, {payload}) => (
         {
             ...state,
-            properties: payload.properties
+            properties: payload.properties,
+            totalProperties: payload.postsCount
         }
     ) ),
     on(propertyActions.cancelUpload, (state) => ({ ...state, uploadStatus: UploadStatus.Ready, progress: null })),
@@ -73,6 +76,7 @@ export const getProperty = createSelector(propertyState, state => state.property
 export const getPostsPerPage = createSelector(propertyState, state => state.postsPerPage);
 export const getPage = createSelector(propertyState, state => state.page);
 export const isLoadingProperty = createSelector(propertyState, state => state.loading);
+export const getTotalProperties = createSelector(propertyState, state => state.totalProperties);
 
 export const getStarted = createSelector(propertyState, (state: State): boolean => state.uploadStatus === UploadStatus.Started);
 export const getRequested = createSelector(propertyState, (state: State): boolean => state.uploadStatus === UploadStatus.Requested);

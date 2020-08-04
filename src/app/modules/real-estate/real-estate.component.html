@@ -1,14 +1,15 @@
-<div class="container">
+<div class="container-fluid">
 <div class="row" *ngIf="properties$ | async as properties">
- <div class="col-md-4 p-3" *ngFor="let property of properties"> 
+ <div class="col-md-3 card-padding" *ngFor="let property of properties"> 
   <app-card-real-estate  [property]='property'></app-card-real-estate>
 </div>
 
 <mat-paginator
 class="col-md-12"
-[length]="properties.length"
+[length]="totalProperties$ | async"
 [pageSize]="postsPerPage"
-[pageSizeOptions]="[8,16,24,32]"
+[pageSizeOptions]="[8,12,16,20]"
+(page)="onChangedPage($event)"
 [showFirstLastButtons]="true"></mat-paginator>
 </div>
 </div>

@@ -1,9 +1,7 @@
 <mat-card class="card" (click)="navigateToDetails(property._id)">
-  <!-- <div style="width: 100%; height: 280px; display: block;"> -->
    <img mat-card-image  [src]="url" [alt]="property.title">
-  <!-- </div> -->
-  <mat-card-title class="my-2">{{ property.title }}</mat-card-title>
-  <mat-card-subtitle class="d-flex align-items-center my-3">
+  <mat-card-title class="mb-1">{{ property.title }}</mat-card-title>
+  <mat-card-subtitle class="d-flex align-items-center my-1">
     <mat-icon>location_on</mat-icon> &nbsp;
     <span class="align-middle">{{ property.address }}</span>
   </mat-card-subtitle>
@@ -12,23 +10,22 @@
       <mat-chip *ngIf="property.type === 'Sale'" color="warn" selected>Shitet</mat-chip>
       <mat-chip *ngIf="property.type === 'Rent'" color="accent" selected>Jepet me qera</mat-chip>
     </mat-chip-list>
-    <mat-card-content class="py-1 price-description">
-      <div class="row d-flex p-3">
-        <div class="price d-flex justify-content-start align-items-center align-middle">
+    <mat-card-content class="price-description">
+      <div class="row">
+        <div class="price d-flex align-items-center align-middle">
           <mat-icon>euro</mat-icon>
           <span>{{ property.price }}</span>
+          <div *ngIf="property.type === 'Rent'" class="rent align-self-end">/ muaj</div>
         </div>
-        <div *ngIf="property.type === 'Rent'" class=" col-md-4 align-self-end">/ muaj</div>
       </div>
-
     </mat-card-content>
   </mat-card-content>
   <mat-divider></mat-divider>
-  <mat-card-content>
-    <div class="row justify-content-around description p-3">
+  <mat-card-content style="margin-bottom: 0;">
+    <div class="row justify-content-around  description mt-3">
       <div class="d-flex flex-column">Sip.<span class="mt-2">{{ property.sip }} m<sup>2</sup></span></div>
       <div  class="d-flex flex-column">Dhoma <span class="mt-2">{{ property.rooms }}</span></div>
-      <div  class="d-flex flex-column">Tualet <span class="mt-2">{{ property.toilets }}</span></div>
+      <div  class="d-flex flex-column">Tualete <span class="mt-2">{{ property.toilets }}</span></div>
       <div  class="d-flex flex-column">Kati <span class="mt-2">{{ property.floor }}</span></div>
     </div>
 

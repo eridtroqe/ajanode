@@ -9,6 +9,10 @@ import { InfoElementComponent } from './info-element/info-element.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RightSideInfoComponent } from './right-side-info/right-side-info.component';
 import { SharedModule } from '../../shared/shared.module';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { getPaginatorIntl } from './paginator-init';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
 
 
 const routes: Route[] = [
@@ -28,13 +32,17 @@ const routes: Route[] = [
     RouterModule.forChild(routes),
     MaterialModule,
     FontAwesomeModule,
-    SharedModule
+    SharedModule,
+    CarouselModule
   ],
   declarations: [
                  RealEstateComponent,
                  RealEstateDetailsComponent, 
                  InfoElementComponent,
                  RightSideInfoComponent
-                ]
+                ],
+  providers: [
+    { provide: MatPaginatorIntl, useValue: getPaginatorIntl() }
+  ]
 })
 export class RealEstateModule { }
