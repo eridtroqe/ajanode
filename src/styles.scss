@@ -19,6 +19,22 @@ body {
   margin: 0;
   font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
 }
+
+h1, h2, h3, h4, h5, h6, p, li, a, span, label, textarea, div, mat-card-title {
+  &::selection{
+    background-color: rgba(158, 230, 111, 0.733);
+    color: rgb(0, 0, 0);
+  }
+  &::-moz-selection{
+    background-color: rgba(158, 230, 111, 0.733);
+    color: rgb(0, 0, 0);
+  }
+}
+
+.service-padding{
+  padding-top: 7%;
+  padding-bottom: 7%;
+}
 // .mat-drawer-container{
 //   background-color: whitesmoke;
 //   color: black;

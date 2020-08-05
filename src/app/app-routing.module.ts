@@ -36,7 +36,31 @@ const routes: Routes = [
   {
     path: 'real-estate',
     loadChildren: () => import('./modules/real-estate/real-estate.module').then(m => m.RealEstateModule)
-  }
+  },
+  {
+    path: 'e-apliki',
+    loadChildren: () => import('./modules/e-apliki/e-apliki.module').then(m => m.EAplikiModule)
+  },
+  {
+    path: 'environmental-consultancy',
+    loadChildren: () => import('./modules/environmental-consultancy/environmental-consultancy.module').then(m => m.EnvironmentalConsultancyModule)
+  },
+  {
+    path: 'food-safety',
+    loadChildren: () => import('./modules/food-safety/food-safety.module').then(m => m.FoodSafetyModule)
+  },
+  {
+    path: 'intermediation',
+    loadChildren: () => import('./modules/intermediation/intermediation.module').then(m => m.IntermediationModule)
+  },
+  {
+    path: 'real-estate-appraisal',
+    loadChildren: () => import('./modules/real-estate-appraisal/real-estate-appraisal.module').then(m => m.RealEstateAppraisalModule)
+  },
+  {
+    path: 'topographic-works',
+    loadChildren: () => import('./modules/topographic-works/topographic-works.module').then(m => m.TopographicWorksModule)
+  },
 ];
 
 @NgModule({

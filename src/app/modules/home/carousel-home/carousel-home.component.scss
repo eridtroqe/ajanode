@@ -1,6 +1,9 @@
 ::ng-deep .owl-stage{
-    padding-top: 3rem;
+    padding-top: 1.5rem;
     padding-bottom: 1rem;
+    ::ng-deep .owl-item {
+        width: 320px;
+    }
 }
 
 ::ng-deep .owl-carousel .owl-item img{
@@ -8,6 +11,15 @@
     width: calc(100% + 32px);
 }
 
+
 ::ng-deep .owl-theme {
     box-shadow: none;
+}
+
+h1{
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    color: #47536c;
 }
