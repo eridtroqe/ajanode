@@ -47,5 +47,8 @@ export class BackendService {
     return  this.http.get<Post>(BACKEND_URL + '/propertys/' + id);
   }
 
+  deleteProperty(id: string): Observable<void> {
+    return this.http.delete<void>(BACKEND_URL + '/propertys/' + id);
+  }
 
 }

@@ -10,6 +10,7 @@
     //             0px 4px 18px 3px rgba(0, 0, 0, 0.12);
 }
 
+
 ::ng-deep .owl-item{
     background-color: white;
 }
@@ -55,11 +56,16 @@ mat-card{
 
 .main-img {
    max-height: 450px;
-   object-fit: fill;
+   object-fit: cover;
 }
+
 
 .nav-img {
    width: calc(100% / 8);
    height: 100px;
    object-fit: cover;
+}
+
+::ng-deep .owl-carousel .owl-item .main-img{
+    width: 100%;
 }

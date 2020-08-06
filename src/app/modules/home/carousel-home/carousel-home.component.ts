@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
 import { Post } from 'src/app/model/auth.iterface';
 
 @Component({
@@ -31,20 +31,17 @@ export class CarouselHomeComponent implements OnInit {
         margin: 10
       },
       400: {
-        items: 1,
+        items: 2,
         stagePadding: 10,
         margin: 10
       },
       740: {
-        items: 2
-      },
-      1024: {
         items: 3
       },
-      1440: {
+      1024: {
         items: 4
       },
-      2550: {
+      1440: {
         items: 6
       }
     }

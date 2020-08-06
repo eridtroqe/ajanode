@@ -18,22 +18,29 @@ import {
     globalSuccess,
     getPropertyRequest,
     getPropertySuccess,
-    getPropertyFailure
+    getPropertyFailure,
+    deletePropertyRequest,
+    deletePropertySuccess,
+    deletePropertyFailure
 } from '../actions/property.actions';
-import { map, catchError, mergeMap, concatMap, takeUntil, switchMap, tap } from 'rxjs/operators';
+import { map, catchError, mergeMap, concatMap, takeUntil, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { of, EMPTY } from 'rxjs';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { TypedAction } from '@ngrx/store/src/models';
+import { AppState } from '../app.state';
+import { Store } from '@ngrx/store';
+import { getPostsPerPage, getPage } from '../reducers/property.reducer';
 
 
 @Injectable()
 export class PropertyEffects {
 
     constructor(private actions$: Actions,
-        private router: Router,
-        private toastr: ToastrService,
-        private propertyService: BackendService) { }
+                private router: Router,
+                private store: Store<AppState>,
+                private toastr: ToastrService,
+                private propertyService: BackendService) { }
 
     AddPropertyRequest$ = createEffect(() => {
         return this.actions$.pipe(
@@ -96,6 +103,24 @@ export class PropertyEffects {
                     map(data => getPropertySuccess({ payload: data })),
                     catchError(error => of(getPropertyFailure({ error }))))
             ),
+        );
+    });
+
+    DeletePropertyRequest$ = createEffect(() => {
+        return this.actions$.pipe(
+                ofType(deletePropertyRequest),
+                map(action => action.id),
+                withLatestFrom(this.store.select(getPostsPerPage), 
+                               this.store.select(getPage)), 
+                mergeMap(([id, postsPerPage, currentPage]) =>
+                    this.propertyService.deleteProperty(id).pipe(
+                        switchMap(data => [deletePropertySuccess(), 
+                                          globalSuccess({message: 'Prona u fshi me sukses!'}),
+                                          getPropertiesRequest({postsPerPage, currentPage})
+                                          ]),
+                        catchError(error => of(deletePropertyFailure({error}), 
+                                               globalError({error: 'Një gabim ndodhi gjatë fshirjes së pronës!'}))))
+                    ),
         );
     });
 

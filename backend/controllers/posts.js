@@ -86,3 +86,34 @@ exports.getProperty = (req, res, next) => {
       });
     });
 };
+
+exports.deleteProperty = (req, res, next) => {
+
+  Post.findOneAndDelete({ _id: req.params.id }).then(
+    post => {
+      console.log('impagepath ', post.imagePath);
+      const filenames = [];
+      for (let i = 0; i < post.imagePath.length; i++) {
+        const element = post.imagePath[i];
+        filenames.push(path.basename(element));
+      }
+      const fileStoragePath = path.join(__dirname + '/../images/');
+      console.log(filenames);
+      console.log(fileStoragePath);
+    //  console.log('UNlink ', fileStoragePath + filenames);
+
+      filenames.forEach(
+        file => fs.unlink(fileStoragePath + file, (err) => {
+          if (err) { throw err; }
+        }
+        )
+      );
+
+      res.status(200).json({ message: "Deleted successful!" });      
+
+    }).catch(error => {
+      res.status(500).json({
+        message: "Deleting  failed!"
+      });
+    });
+}

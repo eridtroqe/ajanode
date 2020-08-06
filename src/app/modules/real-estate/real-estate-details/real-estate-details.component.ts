@@ -23,30 +23,12 @@ export class RealEstateDetailsComponent implements OnInit, OnDestroy {
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
+    center: true,
     dots: false,
-    margin: 4,
+    margin: 5,
     navSpeed: 700,
-    responsive: {
-      0: {
-        items: 1
-      },
-      400: {
-        items: 1
-      },
-      740: {
-        items: 1
-      },
-      1024: {
-        items: 1
-      },
-      1440: {
-        items: 1
-      },
-      2550: {
-        items: 1
-      }
-    }
-
+    items: 1,
+    stagePadding: 0,
   }
 
   activeSlides: SlidesOutputData;
@@ -71,9 +53,9 @@ export class RealEstateDetailsComponent implements OnInit, OnDestroy {
     this.activatedRouteSub.unsubscribe();
   }
 
-  // getData(data: SlidesOutputData) {
-  //   this.activeSlides = data;
-  //   console.log(this.activeSlides);
-  // }
+  getData(data: SlidesOutputData) {
+    this.activeSlides = data;
+    console.log(this.activeSlides);
+  }
 
 }

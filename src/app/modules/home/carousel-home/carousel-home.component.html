@@ -1,14 +1,16 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row justify-content-center">
     <h1>Pronat e fundit</h1>
   </div>
-</div>
-<owl-carousel-o [options]="customOptions" (dragging)="isDragging = $event.dragging">
+<owl-carousel-o [options]="customOptions"
+                (dragging)="isDragging = $event.dragging">
 
     <ng-template carouselSlide *ngFor="let slide of properties" [id]='slide._id'>
       <app-card-real-estate  [owlRouterLink]="['/real-estate', slide._id]" [stopLink]="isDragging" [property]="slide"></app-card-real-estate>
     </ng-template>
 
 </owl-carousel-o>
-
-{{isDragging}}
+<div class="row justify-content-center mt-3">
+<button mat-raised-button color="primary" [routerLink]="['/real-estate']" >Shiko më shumë</button>
+</div>
+</div>

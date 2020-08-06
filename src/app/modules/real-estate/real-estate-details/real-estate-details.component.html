@@ -18,7 +18,7 @@
               <div class="chip sale" *ngIf="property.type === 'Sale'">Shitet</div>
             </div>
           </div>
-          <div>{{property.price}} €</div>
+          <div>{{property.price | number}} €</div>
         </div>
       </div>
     </div>
@@ -27,10 +27,10 @@
     <div class="row">
       <div class="col-md-8">
         <div class="mat-elevation-z1">
-          <owl-carousel-o [options]="customOptions" #owl>
+          <owl-carousel-o [options]="customOptions" #owl (initialized)="getData($event)">
 
             <ng-template *ngFor="let slide of property.imagePath" carouselSlide [id]="slide">
-              <img [src]="slide" [alt]="property.title" [title]="property.title" class="main-img">
+              <img  [src]="slide" [alt]="property.title" [title]="property.title" class="main-img">
             </ng-template>
 
           </owl-carousel-o>

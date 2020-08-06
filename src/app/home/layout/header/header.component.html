@@ -1,19 +1,20 @@
 <mat-toolbar color="primary" class="mat-elevation-z10" >
-  <mat-toolbar-row class="contact d-none d-sm-block ">
+  <mat-toolbar-row class="contact d-none d-sm-block">
     <app-contact-header class="mat-body-1"></app-contact-header>
   </mat-toolbar-row>
-  <mat-toolbar-row >
+  <mat-toolbar-row class="justify-content-between">
 
-    <div class="col-xs-9 col-md-7">
+    <div class="col">
       <img
         class="logo"
         src="../../../../assets/logo/aja_logo_white.png"
         alt="logo"
+        [routerLink]="['/home']"
       />
     </div>
     <button mat-button class="d-md-none col-xs-3" (click)="openSideMenu()">
       <mat-icon>menu</mat-icon>
     </button>
-    <app-menu-header class="d-none d-md-block col-5"></app-menu-header>
+    <app-menu-header class="d-none d-md-block col"></app-menu-header>
   </mat-toolbar-row>
 </mat-toolbar>

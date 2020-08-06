@@ -11,6 +11,8 @@ const postSchema = mongoose.Schema({
   floor: { type: String, required: true},
   type: { type: String, required: true},
   price: { type: String, required: true},
+  exclusive: { type: Boolean, required: true, default: false},
+  position: {type: String},
   imagePath: [{ type: String, required: true }],
   date: { type: Date, default: Date.now }
 });

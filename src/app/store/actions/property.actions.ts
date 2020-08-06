@@ -8,6 +8,10 @@ export const addPropertyRequest = createAction(`[${featureKey}] addPropertyReque
 export const addPropertySuccess = createAction(`[${featureKey}] addPropertySuccess`);
 export const addPropertyFailure = createAction(`[${featureKey}] addPropertyFailure`, props<{ error: string }>());
 
+export const deletePropertyRequest = createAction(`[${featureKey}] deletePropertyRequest`, props<{ id: string}>());
+export const deletePropertySuccess = createAction(`[${featureKey}] deletePropertySuccess`);
+export const deletePropertyFailure = createAction(`[${featureKey}] deletePropertyFailure`, props<{ error: string }>());
+
 export const getPropertiesRequest = createAction(`[${featureKey}] getPropertiesRequest`,
 props<{ postsPerPage: number, currentPage: number }>());
 export const getPropertiesSuccess = createAction(`[${featureKey}] getPropertiesSuccess`, props<{ payload: PropertiesResponse }>());

@@ -10,6 +10,6 @@ import { MaterialModule } from '../material.module';
     MaterialModule
   ],
   declarations: [CardRealEstateComponent],
-  exports: [CardRealEstateComponent]
+  exports: [CardRealEstateComponent, MaterialModule]
 })
 export class SharedModule { }

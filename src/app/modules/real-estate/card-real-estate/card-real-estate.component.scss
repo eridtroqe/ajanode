@@ -1,6 +1,7 @@
 @import "~@angular/material/theming";
 :host{
   display: block;
+  height: 100%;
 }
 
 .price-description {
@@ -25,7 +26,6 @@
 
   .mat-card-image{
     height: calc(100% - 200px);
-    max-width: 100%;
     object-fit: cover;
     display: block;
   }

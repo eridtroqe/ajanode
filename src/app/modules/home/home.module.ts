@@ -22,7 +22,6 @@ const routes: Route[] = [
 @NgModule({
   imports: [CommonModule,
             RouterModule.forChild(routes),
-            MaterialModule, 
             FontAwesomeModule,
             CarouselModule,
             SharedModule
