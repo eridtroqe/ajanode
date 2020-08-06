@@ -12,7 +12,7 @@ const postSchema = mongoose.Schema({
   type: { type: String, required: true},
   price: { type: String, required: true},
   exclusive: { type: Boolean, required: true, default: false},
-  position: {type: String},
+  position: {type: Number, default: null},
   imagePath: [{ type: String, required: true }],
   date: { type: Date, default: Date.now }
 });
