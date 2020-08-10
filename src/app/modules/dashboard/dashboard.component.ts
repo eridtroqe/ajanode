@@ -126,7 +126,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   onChangeExclusive(event: MatCheckboxChange) {
     if (event.checked) {
-      this.form.patchValue({ position: null });
+      this.form.patchValue({ position: 0 });
     }
   }
 

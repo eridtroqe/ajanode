@@ -21,18 +21,20 @@ export class CarouselHomeComponent implements OnInit {
     pullDrag: false,
     stagePadding: 5,
     dots: true,
+    // center: true,
+    startPosition: 1,
     margin: 7,
     navSpeed: 700,
     autoplaySpeed: 1000,
     responsive: {
       0: {
         items: 1,
-        stagePadding: 10,
+        // stagePadding: 10,
         margin: 10
       },
       400: {
         items: 2,
-        stagePadding: 10,
+        // stagePadding: 10,
         margin: 10
       },
       740: {
@@ -42,7 +44,7 @@ export class CarouselHomeComponent implements OnInit {
         items: 4
       },
       1440: {
-        items: 6
+        items: 4
       }
     }
   }

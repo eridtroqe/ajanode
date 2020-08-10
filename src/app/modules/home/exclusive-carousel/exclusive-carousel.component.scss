@@ -1,3 +1,5 @@
+@import "../../../../styles_variables.scss";
+
 :host{
     display: block;
     margin-top: 2rem;
@@ -9,3 +11,15 @@ h1{
     white-space: nowrap;
     color: #47536c;
 }
+
+// ::ng-deep .exclusive .owl-item {
+//     width: 320px !important;
+//     // margin-left: 7px;
+// }
+
+// @media only screen and (max-width: map-get($map: $grid-breakpoints, $key: sm)) {
+//     ::ng-deep .exclusive .owl-item {
+//         width: auto !important;
+//         // margin-left: 7px;
+//     }
+// }

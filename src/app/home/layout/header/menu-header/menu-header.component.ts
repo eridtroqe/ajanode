@@ -6,6 +6,8 @@ import { Store } from '@ngrx/store';
 import { getIsAuth } from '../../../../store/reducers/auth.reducer';
 import { Router } from '@angular/router';
 import { logout } from '../../../../store/actions/auth.actions';
+import { setUpdate, setCreateMode } from '../../../../store/actions/property.actions';
+import { Mode } from '../../../../model/auth.iterface';
 
 @Component({
   selector: 'app-menu-header',
@@ -27,6 +29,11 @@ export class MenuHeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+  }
+
+  navigateToDashboard(){
+    this.store.dispatch(setCreateMode({mode: Mode.Create}));
+    this.router.navigate(['dashboard']);
   }
 
   onLogout() {

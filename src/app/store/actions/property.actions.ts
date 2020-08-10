@@ -14,6 +14,7 @@ export const updatePropertySuccess = createAction(`[${featureKey}] updatePropert
 export const updatePropertyFailure = createAction(`[${featureKey}] updatePropertyFailure`, props<{ error: string }>());
 
 export const setUpdate = createAction(`[${featureKey}] setUpdate`, props<{ payload: Post, mode: Mode }>());
+export const setCreateMode = createAction(`[${featureKey}] setCreateMode`, props<{ mode: Mode }>());
 
 export const deletePropertyRequest = createAction(`[${featureKey}] deletePropertyRequest`, props<{ id: string}>());
 export const deletePropertySuccess = createAction(`[${featureKey}] deletePropertySuccess`);

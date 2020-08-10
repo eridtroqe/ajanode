@@ -2,11 +2,11 @@
   <div class="row justify-content-center">
     <h1>Prona Ekskluzive</h1>
   </div>
-<owl-carousel-o [options]="customOptions">
-
+<owl-carousel-o [options]="customOptions" class="exclusive">
     <ng-template carouselSlide *ngFor="let slide of exclusiveProp" [id]='slide._id'>
-      <app-card-real-estate [property]="slide"></app-card-real-estate>
+      <app-card-real-estate  [property]="slide"></app-card-real-estate>
     </ng-template>
+
 
 </owl-carousel-o>
 <!-- <div class="row justify-content-center mt-3">

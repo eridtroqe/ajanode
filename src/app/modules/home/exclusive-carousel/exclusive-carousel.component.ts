@@ -10,8 +10,9 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class ExclusiveCarouselComponent implements OnInit {
 
   customOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: true,
+    loop: false,
+    mouseDrag: false,
+    center: false,
     autoplayTimeout: 4000,
     autoplayHoverPause: true,
     touchDrag: true,
@@ -24,13 +25,13 @@ export class ExclusiveCarouselComponent implements OnInit {
     responsive: {
       0: {
         items: 1,
-        stagePadding: 10,
-        margin: 10
+        // stagePadding: 10,
+        margin: 7
       },
       400: {
         items: 2,
-        stagePadding: 10,
-        margin: 10
+        // stagePadding: 10,
+        margin: 0
       },
       740: {
         items: 3

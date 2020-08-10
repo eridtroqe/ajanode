@@ -70,6 +70,7 @@ const propertyReducer = createReducer(
     ...state,
     exclusive: exclusive.slice().sort((a,b) => a.position - b.position)
     })),
+    on(propertyActions.setCreateMode, (state: State, {mode}) => ({...state, mode, property: null})),
     on(propertyActions.cancelUpload, (state) => ({ ...state, uploadStatus: UploadStatus.Ready, progress: null })),
     on(propertyActions.startedUpload, (state) => ({ ...state, uploadStatus: UploadStatus.Started, progress: 0 })),
     on(propertyActions.progressUpload, (state, { progress }) => ({ ...state, progress })),
