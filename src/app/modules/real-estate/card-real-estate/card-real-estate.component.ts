@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Post } from '../../../model/auth.iterface';
+import { Post, Mode } from '../../../model/auth.iterface';
 import { Router } from '@angular/router';
 import { AppState } from '../../../store/app.state';
 import { Store } from '@ngrx/store';
-import { deletePropertyRequest } from 'src/app/store/actions/property.actions';
+import { deletePropertyRequest, setUpdate } from 'src/app/store/actions/property.actions';
 import { Observable } from 'rxjs';
 import { getIsAuth } from 'src/app/store/reducers/auth.reducer';
 
@@ -35,7 +35,8 @@ export class CardRealEstateComponent implements OnInit {
   this.store.dispatch(deletePropertyRequest({id}));
   }
 
-  updateProperty(){
-
+  gotToUpdate(){
+     this.store.dispatch(setUpdate({payload: this.property, mode: Mode.Update}));
+     this.router.navigate(['dashboard']);
   }
 }

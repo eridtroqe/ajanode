@@ -21,7 +21,13 @@ import {
     getPropertyFailure,
     deletePropertyRequest,
     deletePropertySuccess,
-    deletePropertyFailure
+    deletePropertyFailure,
+    updatePropertyRequest,
+    updatePropertySuccess,
+    updatePropertyFailure,
+    getExclusiveRequest,
+    getExclusiveSuccess,
+    getExclusiveFailure
 } from '../actions/property.actions';
 import { map, catchError, mergeMap, concatMap, takeUntil, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { of, EMPTY } from 'rxjs';
@@ -120,6 +126,35 @@ export class PropertyEffects {
                                           ]),
                         catchError(error => of(deletePropertyFailure({error}), 
                                                globalError({error: 'Një gabim ndodhi gjatë fshirjes së pronës!'}))))
+                    ),
+        );
+    });
+
+    GetExclusiveProperties$ = createEffect(() => {
+        return this.actions$.pipe(
+                ofType(getExclusiveRequest),
+                mergeMap(() =>
+                    this.propertyService.getExclusive().pipe(
+                        map(data => getExclusiveSuccess({exclusive: data.exclusive})),
+                        catchError(error => of(getExclusiveFailure({error}))))
+                    ),
+        );
+    });
+
+
+    UpdatePropertyRequest$ = createEffect(() => {
+        return this.actions$.pipe(
+                ofType(updatePropertyRequest),
+                withLatestFrom(this.store.select(getPostsPerPage), 
+                this.store.select(getPage)), 
+                mergeMap(([action, postsPerPage, currentPage]) =>
+                    this.propertyService.updateProperty(action.id, action.payload, action.imagePath).pipe(
+                        switchMap(data =>[ updatePropertySuccess(),
+                             globalSuccess({message: 'Prona u ndryshua me sukses!'}),
+                             getPropertiesRequest({postsPerPage, currentPage})
+                        ]),
+                        catchError(error => of(updatePropertyFailure({error}), 
+                        globalError({error: 'Një gabim ndodhi gjatë ndryshimit së pronës!'}))))
                     ),
         );
     });

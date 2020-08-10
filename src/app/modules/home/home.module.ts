@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { Routes, Route, RouterModule } from '@angular/router';
-import { MaterialModule } from '../../material.module';
 import { MainSearchComponent } from './main-search/main-search.component';
 import { FiltersComponent } from '../../home/layout/filters/filters.component';
 import { WhatWeDoComponent } from './what-we-do/what-we-do.component';
@@ -11,6 +10,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CarouselHomeComponent } from './carousel-home/carousel-home.component';
 import { SharedModule } from '../../shared/shared.module';
+import { ExclusiveCarouselComponent } from './exclusive-carousel/exclusive-carousel.component';
 
 const routes: Route[] = [
   {
@@ -32,7 +32,8 @@ const routes: Route[] = [
     FiltersComponent,
     WhatWeDoComponent,
     ServiceCardComponent,
-    CarouselHomeComponent
+    CarouselHomeComponent,
+    ExclusiveCarouselComponent
   ]
 })
 export class HomeModule {}

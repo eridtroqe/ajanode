@@ -15,7 +15,12 @@ exports.addProperty = (req, res, next) => {
     toilets: req.body.toilets,
     floor: req.body.floor,
     type: req.body.type,
-    price: req.body.price
+    price: req.body.price,
+    rented: req.body.rented,
+    sold: req.body.sold,
+    prenoted: req.body.prenoted,
+    exclusive: req.body.exclusive,
+    position: req.body.position
   });
 
   if (req.files) {
@@ -23,7 +28,6 @@ exports.addProperty = (req, res, next) => {
       const element = req.files[i];
       post.imagePath.push(url + "/images/" + req.files[i].filename);
     }
-
   }
 
   // post: {
@@ -49,7 +53,7 @@ exports.getPropertys = (req, res, next) => {
   const currentPage = +req.query.page;
   const postQuery = Post.find();
   let fetchedPosts = [];
-  postQuery.sort({date: 'desc'});
+  postQuery.sort({ date: 'desc' });
   if (pageSize && currentPage) {
     postQuery.skip(pageSize * (currentPage - 1))
       .limit(pageSize);
@@ -100,7 +104,7 @@ exports.deleteProperty = (req, res, next) => {
       const fileStoragePath = path.join(__dirname + '/../images/');
       console.log(filenames);
       console.log(fileStoragePath);
-    //  console.log('UNlink ', fileStoragePath + filenames);
+      //  console.log('UNlink ', fileStoragePath + filenames);
 
       filenames.forEach(
         file => fs.unlink(fileStoragePath + file, (err) => {
@@ -109,7 +113,7 @@ exports.deleteProperty = (req, res, next) => {
         )
       );
 
-      res.status(200).json({ message: "Deleted successful!" });      
+      res.status(200).json({ message: "Deleted successful!" });
 
     }).catch(error => {
       res.status(500).json({
@@ -117,3 +121,80 @@ exports.deleteProperty = (req, res, next) => {
       });
     });
 }
+
+exports.updatePost = (req, res, next) => {
+  const url = req.protocol + "://" + req.get("host");
+  let imagePath = req.body.imagePath;
+  console.log('request ', req.body);
+  console.log('files ', req.files);
+  if (req.files) {
+    for (let i = 0; i < req.files.length; i++) {
+      const element = req.files[i];
+      imagePath = [];
+      imagePath.push(url + "/images/" + req.files[i].filename);
+    }
+  }
+  const post = new Post({
+    _id: req.body._id,
+    title: req.body.title,
+    description: req.body.description,
+    address: req.body.address,
+    sip: req.body.sip,
+    typology: req.body.typology,
+    rooms: req.body.rooms,
+    toilets: req.body.toilets,
+    floor: req.body.floor,
+    type: req.body.type,
+    price: req.body.price,
+    rented: req.body.rented,
+    sold: req.body.sold,
+    prenoted: req.body.prenoted,
+    exclusive: req.body.exclusive,
+    position: req.body.position,
+    imagePath: imagePath
+  });
+  console.log('postToUpdate ', post);
+  Post.updateOne({ _id: req.params.id }, post)
+    .then(result => {
+      // console.log('impagepath ', post.imagePath);
+      // const filenames = [];
+      // for (let i = 0; i < post.imagePath.length; i++) {
+      //   const element = post.imagePath[i];
+      //   filenames.push(path.basename(element));
+      // }
+      // const fileStoragePath = path.join(__dirname + '/../images/');
+      // filenames.forEach(
+      //   file => fs.unlink(fileStoragePath + file, (err) => {
+      //     if (err) { throw err; }
+      //   }
+      //   )
+      // );
+      res.status(200).json({ message: "Update successful!" });
+      // if (result.n > 0) {
+      //  // res.status(200).json({ message: "Update successful!" });
+
+      // } else {
+      //   res.status(401).json({ message: "Not authorized!" });
+
+      // }
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "Couldn't update post!"
+      });
+    });
+};
+
+exports.getExclusiveProperties = (req, res, next) => {
+ 
+  console.log('requset ', req);
+ Post.find({exclusive: true})
+ .then( result => {
+   console.log('find exlusive result ', result);
+   res.status(200).json({
+     exclusive: result
+   });
+ }
+
+ ).catch(err  => res.status(500));
+};

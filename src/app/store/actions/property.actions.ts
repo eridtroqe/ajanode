@@ -1,5 +1,5 @@
 import { Action, createAction, createFeatureSelector, createReducer, createSelector, on, props } from '@ngrx/store';
-import { User, Post, PostResponse, PropertiesResponse } from '../../model/auth.iterface';
+import { User, Post, PostResponse, PropertiesResponse, Mode } from '../../model/auth.iterface';
 
 
 export const featureKey = 'property';
@@ -7,6 +7,13 @@ export const featureKey = 'property';
 export const addPropertyRequest = createAction(`[${featureKey}] addPropertyRequest`, props<{ payload: Post, imagePath: Array<File> }>());
 export const addPropertySuccess = createAction(`[${featureKey}] addPropertySuccess`);
 export const addPropertyFailure = createAction(`[${featureKey}] addPropertyFailure`, props<{ error: string }>());
+
+export const updatePropertyRequest = createAction(`[${featureKey}] updatePropertyRequest`, 
+props<{ payload: Post, id: string, imagePath: Array<File> }>());
+export const updatePropertySuccess = createAction(`[${featureKey}] updatePropertySuccess`);
+export const updatePropertyFailure = createAction(`[${featureKey}] updatePropertyFailure`, props<{ error: string }>());
+
+export const setUpdate = createAction(`[${featureKey}] setUpdate`, props<{ payload: Post, mode: Mode }>());
 
 export const deletePropertyRequest = createAction(`[${featureKey}] deletePropertyRequest`, props<{ id: string}>());
 export const deletePropertySuccess = createAction(`[${featureKey}] deletePropertySuccess`);
@@ -16,6 +23,10 @@ export const getPropertiesRequest = createAction(`[${featureKey}] getPropertiesR
 props<{ postsPerPage: number, currentPage: number }>());
 export const getPropertiesSuccess = createAction(`[${featureKey}] getPropertiesSuccess`, props<{ payload: PropertiesResponse }>());
 export const getPropertiesFailure = createAction(`[${featureKey}] getPropertiesFailure`, props<{ error: string }>());
+
+export const getExclusiveRequest = createAction(`[${featureKey}] getExclusiveRequest`);
+export const getExclusiveSuccess = createAction(`[${featureKey}] getExclusiveSuccess`, props<{ exclusive: Array<Post>  }>());
+export const getExclusiveFailure = createAction(`[${featureKey}] getExclusiveFailure`, props<{ error: string }>());
 
 export const getPropertyRequest = createAction(`[${featureKey}] getPropertyRequest`,props<{id: string}>());
 export const getPropertySuccess = createAction(`[${featureKey}] getPropertySuccess`, props<{ payload: Post }>());

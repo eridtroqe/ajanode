@@ -26,6 +26,7 @@ export class RealEstateDetailsComponent implements OnInit, OnDestroy {
     center: true,
     dots: false,
     margin: 5,
+    autoHeight: true,
     navSpeed: 700,
     items: 1,
     stagePadding: 0,

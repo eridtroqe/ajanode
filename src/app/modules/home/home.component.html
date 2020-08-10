@@ -1,12 +1,13 @@
   <app-main-search></app-main-search>
-  <app-what-we-do></app-what-we-do>
+  <!-- <app-what-we-do></app-what-we-do> -->
+  <app-exclusive-carousel [exclusiveProp]="exclusiveProp$ | async"></app-exclusive-carousel>
   <app-carousel-home [properties]="recentProperties$ | async"></app-carousel-home>
   <div class="container">
     <div class="row justify-content-center">
       <h2 class="title">Shërbimet tona</h2>
     </div>
     <div class="row justify-content-center">
-      <app-service-card [icon]="faHome" 
+      <app-service-card [icon]="faHome"
                         [title]="'Imobiliare'" 
                         [routerLink]="['/real-estate']"></app-service-card>
       <app-service-card [icon]="faHandHoldingUsd" 
@@ -21,7 +22,7 @@
       <app-service-card [icon]="faAt" 
                         [title]="'E-Apliki'"
                         [routerLink]="['/e-apliki']"></app-service-card>
-      <app-service-card [icon]="faLock" [title]="'Sisteme të menaxhimit të sigurisë'"></app-service-card>
-      <app-service-card [icon]="faHandsHelping" [title]="'Ndërmjetësim'"></app-service-card>
+      <!-- <app-service-card [icon]="faLock" [title]="'Sisteme të menaxhimit të sigurisë'"></app-service-card>
+      <app-service-card [icon]="faHandsHelping" [title]="'Ndërmjetësim'"></app-service-card> -->
     </div>
   </div>

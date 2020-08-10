@@ -5,9 +5,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { mimeType } from '../../mime-type.validator';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.state';
-import { addPropertyRequest } from '../../store/actions/property.actions';
-import { getProgress, getInProgress, getReady, getFailed, isLoadingProperty, getCompleted } from '../../store/reducers/property.reducer';
+import { addPropertyRequest, updatePropertyRequest } from '../../store/actions/property.actions';
+import { getProgress, getInProgress, getReady, getFailed, isLoadingProperty, getCompleted, getMode, getProperty } from '../../store/reducers/property.reducer';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { MatCheckboxChange } from '@angular/material/checkbox';
+import { Mode, Post } from 'src/app/model/auth.iterface';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -25,58 +27,107 @@ export class DashboardComponent implements OnInit, OnDestroy {
   isReady$: Observable<boolean>;
   hasFailed$: Observable<boolean>;
   isLoading$: Observable<boolean>;
+  mode: string;
+  property: Post;
 
   faSpinner = faSpinner;
 
-  completeSub: Subscription;
+  propertySub: Subscription;
+  modeSub: Subscription;
 
-  constructor(private authService: AuthService,
-              private store: Store<AppState>,
-              private fb: FormBuilder) { }
+  constructor(
+    private authService: AuthService,
+    private store: Store<AppState>,
+    private fb: FormBuilder) {
+  }
 
   ngOnInit() {
+
+    this.modeSub = this.store.select(getMode).subscribe(val => this.mode = val);
+    this.propertySub = this.store.select(getProperty).subscribe(prop => this.property = prop);
+
     this.form = this.fb.group({
-      title: [null, Validators.required],
-      description: [null, Validators.required],
-      address: [null, Validators.required],
-      sip: [null, Validators.required],
-      typology: [null, Validators.required],
-      rooms: [null, Validators.required],
-      toilets: [null, Validators.required],
-      floor: [null, Validators.required],
-      type: [null, Validators.required],
-      price: [null, Validators.required],
-      imagePath: [null, {
+      title: [''],
+      description: [''],
+      address: [''],
+      sip: [''],
+      typology: [''],
+      rooms: [''],
+      toilets: [''],
+      floor: [''],
+      type: ['Rent'],
+      exclusive: false,
+      position: '',
+      rented: false,
+      sold: false,
+      prenoted: false,
+      price: [''],
+      imagePath: [[], {
         validators: Validators.required,
-        asyncValidators: [mimeType]
+        // asyncValidators: [mimeType]
       }]
     });
+
+    if (this.mode === Mode.Update) {
+      this.form.setValue({
+        title: this.property.title,
+        description: this.property.description,
+        address: this.property.address,
+        sip: this.property.sip,
+        typology: this.property.typology,
+        rooms: this.property.rooms,
+        toilets: this.property.toilets,
+        floor: this.property.floor,
+        type: this.property.type,
+        exclusive: this.property.exclusive,
+        position: this.property.position,
+        rented: this.property.rented,
+        sold: this.property.sold,
+        prenoted: this.property.prenoted,
+        price: this.property.price,
+        imagePath: this.property.imagePath
+      });
+      this.imagePreview = this.form.get('imagePath').value;
+    }
+
+    console.log('form ', this.form.value);
 
     this.progress$ = this.store.select(getProgress);
     this.isInProgress$ = this.store.select(getInProgress);
     this.isReady$ = this.store.select(getReady);
     this.hasFailed$ = this.store.select(getFailed);
     this.isLoading$ = this.store.select(isLoadingProperty);
-    // this.completeSub =  this.store.select(getCompleted).subscribe(val => {
-    //   if(val){
-    //   this.form.enable();
-    //   this.form.markAsPristine();
-    //   this.form.reset();
-    //   }
-    // });
   }
 
   ngOnDestroy() {
-  //  this.completeSub.unsubscribe();
+    this.modeSub.unsubscribe();
+    this.propertySub.unsubscribe();
   }
 
-  onAddPost() {
+  isExclusive() {
+    return this.form.get('exclusive').value;
+  }
+
+  isTypeRent() { return this.form.get('type').value === 'Rent' ? true : false; }
+
+  onSavePost() {
     if (this.form.invalid) {
       return;
     }
 
-    this.store.dispatch(addPropertyRequest({payload: this.form.value, imagePath: this.filesToUpload}));
+    console.log(this.form.value);
+    if (this.mode === Mode.Create) {
+      this.store.dispatch(addPropertyRequest({ payload: this.form.value, imagePath: this.filesToUpload }));
+    } else {
+      this.store.dispatch(updatePropertyRequest({ payload: this.form.value, id: this.property._id, imagePath: this.filesToUpload }));
+    }
     this.form.disable();
+  }
+
+  onChangeExclusive(event: MatCheckboxChange) {
+    if (event.checked) {
+      this.form.patchValue({ position: null });
+    }
   }
 
   onImagePicked(event: Event) {
@@ -90,7 +141,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.form.patchValue({ imagePath: fil });
       const reader = new FileReader();
       reader.onload = () => {
-        this.imagePreview.push(reader.result);
+        //  this.imagePreview.push(reader.result);
+         this.imagePreview = [...this.imagePreview, reader.result];
       };
       reader.readAsDataURL(fil);
     }

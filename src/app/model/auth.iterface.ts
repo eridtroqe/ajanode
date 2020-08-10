@@ -19,6 +19,11 @@ export interface Post {
     floor: string;
     type: string;
     price: string;
+    exclusive: boolean;
+    position?: number;
+    rented?: boolean;
+    sold?: boolean;
+    prenoted?: boolean;
     imagePath?: Array<string>;
     creator?: string;
     date?: string;
@@ -30,9 +35,9 @@ export interface PostResponse {
 }
 
 export interface PropertiesResponse {
-    message: string;
+    message?: string;
     properties: Array<any>;
-    postsCount: number;
+    postsCount?: number;
 }
 
 export enum UploadStatus {
@@ -42,3 +47,8 @@ export enum UploadStatus {
     Failed = 'Failed',
     Completed = 'Completed'
   }
+
+export enum Mode {
+    Create = 'create',
+    Update = 'update'
+}

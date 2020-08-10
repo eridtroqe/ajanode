@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Mail } from '../model/email.interface';
 import { environment } from '../../environments/environment';
 import { Post, PostResponse, PropertiesResponse } from '../model/auth.iterface';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 const BACKEND_URL = environment.apiUrl;
 
@@ -30,12 +30,53 @@ export class BackendService {
     postData.append('floor', property.floor);
     postData.append('type', property.type);
     postData.append('price', property.price);
+    postData.append('exclusive', property.exclusive.toString());
+    postData.append('position', property.position.toString());
+    postData.append('rented', property.rented.toString());
+    postData.append('sold', property.sold.toString());
+    postData.append('prenoted', property.sold.toString());
     for (let i = 0; i < imagePath.length; i++) {
       postData.append('imagePath', imagePath[i]);
     }
 
     postData.forEach(value => console.log('PostDAta ', value));
     return this.http.post<any>(BACKEND_URL + '/propertys', postData, {reportProgress: true, observe: 'events'});
+  }
+
+  updateProperty(id: string, property: Post, imagePath: Array<File>): Observable<any>{
+    let postData: Post | FormData;
+
+    if (imagePath.length > 0) {
+      postData = new FormData();
+      postData.append('_id', id);
+      postData.append('title', property.title);
+      postData.append('description', property.description);
+      postData.append('address', property.address);
+      postData.append('sip', property.sip);
+      postData.append('typology', property.typology);
+      postData.append('rooms', property.rooms);
+      postData.append('toilets', property.toilets);
+      postData.append('floor', property.floor);
+      postData.append('type', property.type);
+      postData.append('price', property.price);
+      postData.append('exclusive', property.exclusive.toString());
+      postData.append('position', property.position.toString());
+      postData.append('rented', property.rented.toString());
+      postData.append('sold', property.sold.toString());
+      postData.append('prenoted', property.sold.toString());
+      for (let i = 0; i < imagePath.length; i++) {
+        postData.append('imagePath', imagePath[i]);
+      }
+      console.log('property ', postData);
+    } else {
+      postData = {...property, _id: id};
+    }
+
+    console.log('imagePath ', imagePath);
+
+    // return of(true);
+
+    return this.http.put<any>(BACKEND_URL + '/propertys/' + id, postData);
   }
 
   getProperties(postsPerPage: number, currentPage: number): Observable<PropertiesResponse> {
@@ -49,6 +90,10 @@ export class BackendService {
 
   deleteProperty(id: string): Observable<void> {
     return this.http.delete<void>(BACKEND_URL + '/propertys/' + id);
+  }
+
+  getExclusive(): Observable<{exclusive: Array<any>}>{
+    return this.http.get<{exclusive: Array<any>}>(BACKEND_URL + '/exclusive');
   }
 
 }

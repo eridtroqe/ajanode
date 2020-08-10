@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const userRoutes = require("./routes/user");
 const propertysRoutes = require("./routes/posts");
 const EmailController = require("./controllers/email");
+const PostController = require("./controllers/posts");
 
 const app = express();
 
@@ -13,7 +14,7 @@ const app = express();
 mongoose
   .connect(
     "mongodb+srv://erid:" + process.env.MONGO_ATLAS_PW + "@cluster0-ambpl.mongodb.net/node-angular?retryWrites=true&w=majority",
-    { useNewUrlParser: true, useUnifiedTopology: true  })
+    { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connected to database!");
   })
@@ -39,6 +40,7 @@ app.use((req, res, next) => {
 });
 
 app.post("/api/email", EmailController.sendEmail);
+app.get("/api/exclusive", PostController.getExclusiveProperties);
 app.use("/api/user", userRoutes);
 app.use("/api/propertys", propertysRoutes);
 

@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
-
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -39,7 +38,7 @@ export class FooterComponent implements OnInit {
   @ViewChild(GoogleMap, { static: false }) map: GoogleMap;
   @ViewChild(MapInfoWindow, { static: false }) info: MapInfoWindow;
 
-  zoom = 17;
+  zoom = 18;
   center: google.maps.LatLngLiteral;
   options: google.maps.MapOptions = {
     zoomControl: true,
@@ -51,20 +50,20 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {
       this.center = {
-        lat: 41.322725,
-        lng: 19.808269
+        lat: 41.322555,
+        lng: 19.807965
       };
       this.markers.push({
         position: {
-          lat: 41.322425,
-          lng: 19.808269
+          lat: 41.322555,
+          lng: 19.807965
         },
-        label: {
-          color: '#31394d',
-          text: 'Ajafirstchoice'
-        },
-        title: 'Marker Title',
-        info: 'Marker info',
+        // label: {
+        //   color: '#31394d',
+        //   text: 'Ajafirstchoice'
+        // },
+        icons: '../../../../assets/logo/aja_logo_tab.png',
+        title: 'Ajafirstchoice',
         options: {
           animation: google.maps.Animation.BOUNCE
         }

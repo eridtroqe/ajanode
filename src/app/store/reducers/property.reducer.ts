@@ -1,13 +1,15 @@
 import { createReducer, Action, on, createFeatureSelector, createSelector } from '@ngrx/store';
 import * as propertyActions from '../actions/property.actions';
 import { logout } from '../actions/auth.actions';
-import { Post, UploadStatus } from 'src/app/model/auth.iterface';
+import { Post, UploadStatus, Mode } from '../../model/auth.iterface';
 
 export interface State {
     properties: Array<Post>;
+    exclusive?: Array<Post>;
     property: Post;
     totalProperties: number;
     postsPerPage: number;
+    mode: Mode,
     page: number;
     uploadStatus: UploadStatus;
     progress: number;
@@ -17,10 +19,12 @@ export interface State {
 
 export const initialState: State = {
     properties: [],
+    exclusive: [],
     property: null,
     totalProperties: 0,
     postsPerPage: 8,
     page: 1,
+    mode: Mode.Create,
     uploadStatus: UploadStatus.Ready,
     progress: null,
     error: null,
@@ -57,6 +61,15 @@ const propertyReducer = createReducer(
             totalProperties: payload.postsCount
         }
     ) ),
+    on(propertyActions.setUpdate, (state: State, {payload, mode}) => ({
+        ...state,
+        property: payload,
+        mode
+    })),
+    on(propertyActions.getExclusiveSuccess, (state: State, {exclusive}) => ({
+    ...state,
+    exclusive: exclusive.slice().sort((a,b) => a.position - b.position)
+    })),
     on(propertyActions.cancelUpload, (state) => ({ ...state, uploadStatus: UploadStatus.Ready, progress: null })),
     on(propertyActions.startedUpload, (state) => ({ ...state, uploadStatus: UploadStatus.Started, progress: 0 })),
     on(propertyActions.progressUpload, (state, { progress }) => ({ ...state, progress })),
@@ -77,6 +90,8 @@ export const getPostsPerPage = createSelector(propertyState, state => state.post
 export const getPage = createSelector(propertyState, state => state.page);
 export const isLoadingProperty = createSelector(propertyState, state => state.loading);
 export const getTotalProperties = createSelector(propertyState, state => state.totalProperties);
+export const getMode = createSelector(propertyState, state => state.mode);
+export const getExclusive = createSelector(propertyState, state => state.exclusive);
 
 export const getStarted = createSelector(propertyState, (state: State): boolean => state.uploadStatus === UploadStatus.Started);
 export const getRequested = createSelector(propertyState, (state: State): boolean => state.uploadStatus === UploadStatus.Requested);

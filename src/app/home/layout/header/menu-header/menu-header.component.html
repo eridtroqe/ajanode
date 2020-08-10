@@ -63,7 +63,7 @@
         >
           E-Apliki me ekspertizë tekniko-ligjore</a
         >
-        <a
+        <!-- <a
           mat-menu-item
           routerLinkActive="link-active"
           [routerLink]="['food-safety']"
@@ -76,7 +76,7 @@
           [routerLink]="['intermediation']"
         >
           Ndërmjetësim
-        </a>
+        </a> -->
       </div>
     </mat-menu>
   </li>
@@ -89,7 +89,7 @@
       Kontakt
     </a>
   </li>
-  <ng-container *ngIf="userIsAuth$ | async; else logout">
+  <ng-container *ngIf="userIsAuth$ | async">
   <li>
     <a
       mat-button
@@ -105,12 +105,12 @@
     </a>
   </li>
 </ng-container>
-<ng-template #logout>
+<!-- <ng-template #logout>
   <li>
     <a mat-button  (click)="onLogin()">
      <mat-icon fontSet="material-icons-outlined">lock</mat-icon>
     </a>
   </li>
-</ng-template>
+</ng-template> -->
   <li></li>
 </ul>

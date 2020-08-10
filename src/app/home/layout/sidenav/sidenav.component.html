@@ -15,21 +15,30 @@
     </a>
     <mat-menu #menu="matMenu">
         <div>
-            <a mat-menu-item [routerLink]="['services/pressure-equipment']"
-                routerLinkActive="router-link-active"
-                (click)="onClose()"
+            <a mat-menu-item 
+               [routerLink]="['real-estate-appraisal']"
+               routerLinkActive="router-link-active"
+               (click)="onClose()"
                 >Vlerësim i pasurive të paluajtshme</a>
-            <a mat-menu-item [routerLink]="['services/inspection-of-lifting-machinery']"
-            (click)="onClose()"
+            <a mat-menu-item 
+               routerLinkActive="router-link-active"
+               [routerLink]="['topographic-works']"
+               (click)="onClose()"
             >Projektime dhe punime topografike</a>
-            <a mat-menu-item [routerLink]="['services/volumetric-inspection']" (click)="onClose()">Konsulencë mjedisore</a>
-            <a mat-menu-item [routerLink]="['services/certification-of-personel']" (click)="onClose()">E-apliki me ekspertizë tekniko-ligjore</a>
-            <a mat-menu-item [routerLink]="['services/certifications-petroleum']" (click)="onClose()">
+            <a mat-menu-item 
+               routerLinkActive="router-link-active"
+               [routerLink]="['environmental-consultancy']" 
+               (click)="onClose()">Konsulencë mjedisore</a>
+            <a mat-menu-item 
+               routerLinkActive="router-link-active" 
+               [routerLink]="['e-apliki']" 
+               (click)="onClose()">E-apliki me ekspertizë tekniko-ligjore</a>
+            <!-- <a mat-menu-item [routerLink]="['services/certifications-petroleum']" (click)="onClose()">
             Sisteme të menaxhimit të sigurisë ushqimore dhe bujqësisë
             </a>
             <a mat-menu-item [routerLink]="['services/project-compliance-certificate']" (click)="onClose()">
             Ndërmjetësim
-            </a>
+            </a> -->
         </div>
     </mat-menu>
     <a mat-list-item [routerLink]="[ '/contact']" (click)="onClose()">
