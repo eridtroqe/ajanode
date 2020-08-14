@@ -15,6 +15,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatListModule} from '@angular/material/list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 
 
@@ -37,7 +40,9 @@ const material = [
   MatProgressSpinnerModule,
   MatProgressBarModule,
   MatListModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatExpansionModule,
+  MatAutocompleteModule
 ];
 
 @NgModule({

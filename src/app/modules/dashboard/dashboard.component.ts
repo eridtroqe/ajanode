@@ -10,6 +10,8 @@ import { getProgress, getInProgress, getReady, getFailed, isLoadingProperty, get
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Mode, Post } from 'src/app/model/auth.iterface';
+import { startWith, map } from 'rxjs/operators';
+import { cities } from '../../model/auth.iterface';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -19,6 +21,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   form: FormGroup;
   imagePreview = [];
   filesToUpload: Array<File> = [];
+ 
+  cities: Array<string> = cities;
 
   progress$: Observable<number>;
   error$: Observable<string>;
@@ -29,6 +33,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   isLoading$: Observable<boolean>;
   mode: string;
   property: Post;
+  filteredOptions: Observable<string[]>;
 
   faSpinner = faSpinner;
 
@@ -47,9 +52,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.propertySub = this.store.select(getProperty).subscribe(prop => this.property = prop);
 
     this.form = this.fb.group({
-      title: [''],
-      description: [''],
-      address: [''],
+      title: ['', Validators.required],
+      city: ['', Validators.required],
+      property_type: ['', Validators.required],
+      description: ['', Validators.required],
+      address: ['', Validators.required],
       sip: [''],
       typology: [''],
       rooms: [''],
@@ -68,9 +75,17 @@ export class DashboardComponent implements OnInit, OnDestroy {
       }]
     });
 
+    this.filteredOptions = this.form.get('city').valueChanges
+    .pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
+
     if (this.mode === Mode.Update) {
       this.form.setValue({
         title: this.property.title,
+        city: this.property.city,
+        property_type: this.property.property_type,
         description: this.property.description,
         address: this.property.address,
         sip: this.property.sip,
@@ -90,7 +105,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.imagePreview = this.form.get('imagePath').value;
     }
 
-    console.log('form ', this.form.value);
 
     this.progress$ = this.store.select(getProgress);
     this.isInProgress$ = this.store.select(getInProgress);
@@ -115,7 +129,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
       return;
     }
 
-    console.log(this.form.value);
     if (this.mode === Mode.Create) {
       this.store.dispatch(addPropertyRequest({ payload: this.form.value, imagePath: this.filesToUpload }));
     } else {
@@ -147,5 +160,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
       reader.readAsDataURL(fil);
     }
 
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.cities.filter(option => option.toLowerCase().includes(filterValue));
   }
 }

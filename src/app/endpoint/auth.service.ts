@@ -109,7 +109,6 @@ logout() {
 }
 
 private setAuthTimer(duration: number) {
-  console.log('Setting timer: ' + duration);
   this.tokenTimer = setTimeout(() => {
     this.logout();
   }, duration * 1000);

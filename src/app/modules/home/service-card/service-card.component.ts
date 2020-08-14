@@ -12,6 +12,8 @@ export class ServiceCardComponent implements OnInit {
   icon = faFacebook;
   @Input()
   title = 'title';
+  @Input()
+  description = '';
   constructor() { }
 
   ngOnInit() {

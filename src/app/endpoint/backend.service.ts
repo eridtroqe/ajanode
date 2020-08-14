@@ -21,6 +21,7 @@ export class BackendService {
   addProperty(property: Post, imagePath: Array<File>): Observable<any> {
     const postData = new FormData();
     postData.append('title', property.title);
+    postData.append('city', property.city);
     postData.append('description', property.description);
     postData.append('address', property.address);
     postData.append('sip', property.sip);
@@ -39,7 +40,6 @@ export class BackendService {
       postData.append('imagePath', imagePath[i]);
     }
 
-    postData.forEach(value => console.log('PostDAta ', value));
     return this.http.post<any>(BACKEND_URL + '/propertys', postData, {reportProgress: true, observe: 'events'});
   }
 
@@ -49,6 +49,7 @@ export class BackendService {
     if (imagePath.length > 0) {
       postData = new FormData();
       postData.append('_id', id);
+      postData.append('city', property.city);
       postData.append('title', property.title);
       postData.append('description', property.description);
       postData.append('address', property.address);
@@ -67,12 +68,10 @@ export class BackendService {
       for (let i = 0; i < imagePath.length; i++) {
         postData.append('imagePath', imagePath[i]);
       }
-      console.log('property ', postData);
     } else {
       postData = {...property, _id: id};
     }
 
-    console.log('imagePath ', imagePath);
 
     // return of(true);
 

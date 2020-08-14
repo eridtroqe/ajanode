@@ -44,7 +44,7 @@ export class CarouselHomeComponent implements OnInit {
         items: 4
       },
       1440: {
-        items: 4
+        items: 5
       }
     }
   }

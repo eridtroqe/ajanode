@@ -30,7 +30,6 @@ export class AuthEffects {
      return this.actions$.pipe(
              ofType(loginSuccess),
              tap((user) => {
-                 console.log('user ', user);
                  localStorage.setItem('token', user.token);
                  this.router.navigate(['dashboard']);
                 }));

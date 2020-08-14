@@ -56,7 +56,6 @@ export class RealEstateDetailsComponent implements OnInit, OnDestroy {
 
   getData(data: SlidesOutputData) {
     this.activeSlides = data;
-    console.log(this.activeSlides);
   }
 
 }

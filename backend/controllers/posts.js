@@ -1,12 +1,14 @@
 const Post = require("../models/post");
 const fs = require('fs');
 const path = require('path');
+require('locus');
 
 
 exports.addProperty = (req, res, next) => {
   const url = req.protocol + "://" + req.get("host");
   const post = new Post({
     title: req.body.title,
+    city: req.body.city,
     description: req.body.description,
     address: req.body.address,
     sip: req.body.sip,
@@ -36,7 +38,6 @@ exports.addProperty = (req, res, next) => {
   // }
 
   post.save().then(createdPost => {
-    console.log('createdPost ', createdPost);
     res.status(201).json({
       message: "Post added succesfully!",
     });
@@ -95,16 +96,12 @@ exports.deleteProperty = (req, res, next) => {
 
   Post.findOneAndDelete({ _id: req.params.id }).then(
     post => {
-      console.log('impagepath ', post.imagePath);
       const filenames = [];
       for (let i = 0; i < post.imagePath.length; i++) {
         const element = post.imagePath[i];
         filenames.push(path.basename(element));
       }
       const fileStoragePath = path.join(__dirname + '/../images/');
-      console.log(filenames);
-      console.log(fileStoragePath);
-      //  console.log('UNlink ', fileStoragePath + filenames);
 
       filenames.forEach(
         file => fs.unlink(fileStoragePath + file, (err) => {
@@ -125,8 +122,7 @@ exports.deleteProperty = (req, res, next) => {
 exports.updatePost = (req, res, next) => {
   const url = req.protocol + "://" + req.get("host");
   let imagePath = req.body.imagePath;
-  console.log('request ', req.body);
-  console.log('files ', req.files);
+
   if (req.files) {
     for (let i = 0; i < req.files.length; i++) {
       const element = req.files[i];
@@ -136,6 +132,7 @@ exports.updatePost = (req, res, next) => {
   }
   const post = new Post({
     _id: req.body._id,
+    city: req.body.city,
     title: req.body.title,
     description: req.body.description,
     address: req.body.address,
@@ -153,7 +150,6 @@ exports.updatePost = (req, res, next) => {
     position: req.body.position,
     imagePath: imagePath
   });
-  console.log('postToUpdate ', post);
   Post.updateOne({ _id: req.params.id }, post)
     .then(result => {
       // console.log('impagepath ', post.imagePath);
@@ -187,10 +183,8 @@ exports.updatePost = (req, res, next) => {
 
 exports.getExclusiveProperties = (req, res, next) => {
  
-  console.log('requset ', req);
  Post.find({exclusive: true})
  .then( result => {
-   console.log('find exlusive result ', result);
    res.status(200).json({
      exclusive: result
    });

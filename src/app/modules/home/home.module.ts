@@ -11,6 +11,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CarouselHomeComponent } from './carousel-home/carousel-home.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ExclusiveCarouselComponent } from './exclusive-carousel/exclusive-carousel.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Route[] = [
   {
@@ -23,6 +24,7 @@ const routes: Route[] = [
   imports: [CommonModule,
             RouterModule.forChild(routes),
             FontAwesomeModule,
+            ReactiveFormsModule,
             CarouselModule,
             SharedModule
           ],

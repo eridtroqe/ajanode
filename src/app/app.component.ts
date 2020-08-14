@@ -26,7 +26,6 @@ export class AppComponent implements OnInit {
       this.store.dispatch(authTrue());
     }
 
-    // this.be.getExclusive().subscribe(x => console.log('exclusive ', x));
   }
 
 }

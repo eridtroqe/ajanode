@@ -1,26 +1,33 @@
   <app-main-search></app-main-search>
   <!-- <app-what-we-do></app-what-we-do> -->
   <app-exclusive-carousel [exclusiveProp]="exclusiveProp$ | async"></app-exclusive-carousel>
-  <app-carousel-home [properties]="recentProperties$ | async"></app-carousel-home>
+      <app-carousel-home [properties]="recentProperties$ | async"></app-carousel-home>
   <div class="container">
     <div class="row justify-content-center">
       <h2 class="title">Shërbimet tona</h2>
     </div>
-    <div class="row justify-content-center">
+  </div>
+ <div class="container-fluid">
+    <div class="row justify-content-center mb-5">
       <app-service-card [icon]="faHome"
-                        [title]="'Imobiliare'" 
+                        [title]="'Imobiliare'"
+                        [description]="'Ofrojmë shërbime real-estate për pronën tuaj'" 
                         [routerLink]="['/real-estate']"></app-service-card>
       <app-service-card [icon]="faHandHoldingUsd" 
                         [title]="'Vlerësim pasurish'"
+                        [description]="'Shërbime të licencuara në fushën e vlerësimeve të paluajtshme'"
                         [routerLink]="['/real-estate-appraisal']"></app-service-card>
       <app-service-card [icon]="faMapMarkedAlt" 
                         [title]="'Projektime dhe punime topografike'"
+                        [description]="'Nëpërmjet eksperizës së kualifikuar dhe të licencuar, ne ju ofrojmë shërbime topo-gjeodezike në përputhje me praktikat më të mira'"
                         [routerLink]="['/topographic-works']"></app-service-card>
       <app-service-card [icon]="faEnvira" 
                         [title]="'Konsulencë mjedisore'"
+                        [description]="'A-JA Engineering, Consulting & Real Estate ofron shërbime mjedisore të liçencuara'"
                         [routerLink]="['/environmental-consultancy']"></app-service-card>
       <app-service-card [icon]="faAt" 
                         [title]="'E-Apliki'"
+                        [description]="'Ne ju asistojmë për të kryer gjithë aplikimet që ju nevojiten pranë portalit qeveritar E-Albania'"
                         [routerLink]="['/e-apliki']"></app-service-card>
       <!-- <app-service-card [icon]="faLock" [title]="'Sisteme të menaxhimit të sigurisë'"></app-service-card>
       <app-service-card [icon]="faHandsHelping" [title]="'Ndërmjetësim'"></app-service-card> -->

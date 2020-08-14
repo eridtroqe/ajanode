@@ -10,11 +10,30 @@
   <!-- <mat-spinner *ngIf="isLoading"></mat-spinner> -->
   <form [formGroup]="form" (submit)="onSavePost()">
     <mat-form-field>
-      <input matInput type="text" formControlName="title" placeholder="Titulli">
+      <input matInput type="text" formControlName="title" placeholder="Titulli" required>
       <mat-error *ngIf="form.get('title').invalid">Vendosni një titull</mat-error>
     </mat-form-field>
+<div class="row">
+  <mat-form-field class="col-md-6">
+    <input matInput type="text" formControlName="city" placeholder="Qyteti"  [matAutocomplete]="auto" required>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+    <mat-error *ngIf="form.get('city').invalid">Zgjidhni qytetin</mat-error>
+  </mat-form-field>
+  <mat-form-field class="col-md-6">
+    <mat-label>Tipi</mat-label>
+    <mat-select formControlName="property_type" required>
+      <mat-option [value]="'Land'">Tokë</mat-option>
+      <mat-option [value]="'Residential'">Rezidencial</mat-option>
+    </mat-select>
+  <mat-error *ngIf="form.get('property_type').invalid">Zgjidhni tipin e pronës</mat-error>
+  </mat-form-field>
+</div>
     <mat-form-field>
-      <input matInput type="text" formControlName="address" placeholder="Adresa">
+      <input matInput type="text" formControlName="address" placeholder="Adresa" required>
       <mat-error *ngIf="form.get('address').invalid">Vendosni adresën</mat-error>
     </mat-form-field>
     <div class="row align-items-center">
@@ -93,7 +112,7 @@
     </div>
     <!-- <mat-error *ngIf="form.get('imagePath').invalid">Please enter a valid format image.</mat-error> -->
     <mat-form-field>
-      <textarea matInput rows="7" formControlName="description" placeholder="Përshkrimi"></textarea>
+      <textarea matInput rows="7" formControlName="description" placeholder="Përshkrimi" required></textarea>
       <mat-error *ngIf="form.get('description').invalid">Vendosni një përshkrim</mat-error>
     </mat-form-field>
     <mat-card-actions>

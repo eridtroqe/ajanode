@@ -1,5 +1,6 @@
 <mat-card style="position: relative;" class="mat-elevation-z0">
-  <div class="bg-image"></div>
+  <!-- <div class="bg-image"></div> -->
+  <img class="wall" src="../../../../assets/wallpaper/white_house.jpg" alt="">
 
   <mat-card-content class="d-flex flex-column justify-content-center">
     <div class="container">
@@ -10,12 +11,62 @@
         class="logo col-md-6 col-xs-10 animated slideInDown slow"
       />
       </div> -->
-      <div class="row justify-content-center">
-        <mat-form-field  appearance="outline" class="search-input animated fadeInUp">
-          <input matInput  placeholder="Search..." />
-          <mat-icon matSuffix>search</mat-icon>
+      <form [formGroup]="form" (submit)="onSubmit()">
+      <div class="row justify-content-center mb-1">
+      <div class="search-container mat-elevation-z7 col-md-6">
+        <mat-form-field  appearance="standard" class="search-input animated fadeInUp">
+          <input matInput formControlName="search"   placeholder="Kërko prona..." />
         </mat-form-field>
       </div>
+      <button mat-raised-button  class="search-button mat-elevation-z7 col-md-1" color="accent">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <div class="row justify-content-center mb-1">
+      <button mat-flat-button (click)="acc.toggle()" color="warn" class="col-sm-5 col-md-3">Filtra të avancuar</button>
+      <div class="col-sm-2 col-md-4"></div>
+    </div>
+    <div class="row justify-content-center">
+      <mat-accordion  class="col-md-7">
+        <mat-expansion-panel #acc hideToggle >
+          <div class="row justify-content-around">
+          <mat-form-field class="col-md-5">
+            <input matInput type="text" formControlName="city" placeholder="Qyteti"  [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field class="col-md-5">
+            <mat-label>Tipi</mat-label>
+            <mat-select formControlName="property_type">
+              <mat-option [value]="'Land'">Tokë</mat-option>
+              <mat-option [value]="'Residential'">Rezidencial</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="col-md-5">
+            <mat-label>Qera / Shitje</mat-label>
+            <mat-select formControlName="type">
+              <mat-option [value]="'Rent'">Qera</mat-option>
+              <mat-option [value]="'Sale'">Shitje</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('type').invalid">Zgjidhni një nga opsionet</mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-md-5">
+            <mat-label>Tipologjia</mat-label>
+            <mat-select formControlName="typology">
+              <mat-option [value]="'1+1'">1 + 1</mat-option>
+              <mat-option [value]="'2+1'">2 + 1</mat-option>
+              <mat-option [value]="'3+1'">3 + 1</mat-option>
+              <mat-option [value]="'4+1'">4 + 1</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </form>
     </div>
 
 

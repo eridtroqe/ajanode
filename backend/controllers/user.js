@@ -5,10 +5,8 @@ const User = require("../models/user");
 
 exports.userLogin = (req, res, next) => {
     let fetchedUser;
-    console.log("req::: ", req.body)
     User.findOne({ email: req.body.email })
       .then(user => {
-        console.log("fetcheduser ", user);
         if (!user) {
           return res.status(401).json({
             message: "Auth failed"

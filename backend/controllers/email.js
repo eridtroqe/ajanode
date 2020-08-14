@@ -20,13 +20,10 @@ exports.sendEmail = (req, res, next) => {
               'Message: ' + req.body.message
       };
 
-      console.log("Body ", req.body);
     transporter.sendMail(mailOptions, function(error, info){
         if (error) {
-          console.log(error);
           res.sendStatus(500);
         } else {
-          console.log('Email sent: ' + info.response);
           res.sendStatus(200);
         }
       });
