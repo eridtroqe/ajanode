@@ -1,7 +1,6 @@
 const Post = require("../models/post");
 const fs = require('fs');
 const path = require('path');
-require('locus');
 
 
 exports.addProperty = (req, res, next) => {
