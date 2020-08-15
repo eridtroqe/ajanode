@@ -1,33 +1,26 @@
-<mat-card style="position: relative;" class="mat-elevation-z0">
+<div style="position: relative;" class="card-container bg-image  mat-elevation-z0">
   <!-- <div class="bg-image"></div> -->
-  <img class="wall" src="../../../../assets/wallpaper/white_house.jpg" alt="">
+  <!-- <img class="wall" src="../../../../assets/wallpaper/white_house _3.jpg" alt=""> -->
 
-  <mat-card-content class="d-flex flex-column justify-content-center">
+  <mat-card-content class="d-flex flex-column justify-content-center form-container">
     <div class="container">
-      <!-- <div class="row">
-        <img
-        src="../../../../assets/logo/aja_logo.png"
-        alt="logo"
-        class="logo col-md-6 col-xs-10 animated slideInDown slow"
-      />
-      </div> -->
       <form [formGroup]="form" (submit)="onSubmit()">
       <div class="row justify-content-center mb-1">
-      <div class="search-container mat-elevation-z7 col-md-6">
+      <div class="search-container mat-elevation-z7 col-md-10">
         <mat-form-field  appearance="standard" class="search-input animated fadeInUp">
           <input matInput formControlName="search"   placeholder="Kërko prona..." />
         </mat-form-field>
       </div>
-      <button mat-raised-button  class="search-button mat-elevation-z7 col-md-1" color="accent">
+      <button mat-raised-button  class="search-button mat-elevation-z7 col-md-2" color="accent">
         <mat-icon>search</mat-icon>
       </button>
     </div>
     <div class="row justify-content-center mb-1">
       <button mat-flat-button (click)="acc.toggle()" color="warn" class="col-sm-5 col-md-3">Filtra të avancuar</button>
-      <div class="col-sm-2 col-md-4"></div>
+      <div class="col"></div>
     </div>
     <div class="row justify-content-center">
-      <mat-accordion  class="col-md-7">
+      <mat-accordion  class="col">
         <mat-expansion-panel #acc hideToggle >
           <div class="row justify-content-around">
           <mat-form-field class="col-md-5">
@@ -62,6 +55,22 @@
               <mat-option [value]="'4+1'">4 + 1</mat-option>
             </mat-select>
           </mat-form-field>
+          <mat-form-field class="col-md-5">
+            <input matInput type="number" formControlName="minSip" placeholder="Sip. Min">
+            <span matSuffix>m2</span>
+          </mat-form-field>
+          <mat-form-field class="col-md-5">
+            <input matInput type="number" formControlName="maxSip" placeholder="Sip. Max">
+            <span matSuffix>m2</span>
+          </mat-form-field>
+          <mat-form-field class="col-md-5">
+            <input matInput type="number" formControlName="minPrice" placeholder="Cmimi Min">
+            <span matSuffix>m2</span>
+          </mat-form-field>
+          <mat-form-field class="col-md-5">
+            <input matInput type="number" formControlName="maxPrice" placeholder="Cmimi Max">
+            <span matSuffix>m2</span>
+          </mat-form-field>
         </div>
         </mat-expansion-panel>
       </mat-accordion>
@@ -72,4 +81,4 @@
 
 
   </mat-card-content>
-</mat-card>
+</div>

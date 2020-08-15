@@ -38,54 +38,25 @@ export class CarouselHomeComponent implements OnInit {
         margin: 10
       },
       740: {
-        items: 3
+        items: 3,
+        margin: 10
       },
       1024: {
-        items: 4
+        items: 4,
+        margin: 10
       },
-      1440: {
-        items: 5
+      1920: {
+        items: 4,
+        margin: 10
+      },
+      2500: {
+        items: 6,
+        margin: 30
       }
     }
   }
 
  @Input() properties: Array<Post>;
-//  [
-//     {
-//       imagePath: [
-//         'http://localhost:3000/images/aja-1.jpg-1595796068064.jpg'
-//       ],
-//       _id: '5f1dea64ef89a845c024ed33',
-//       title: 'test 2',
-//       description: 'sdvdfvdgbfgbfg',
-//       address: 'sdckpoj',
-//       sip: '60',
-//       typology: '1+1',
-//       rooms: '1',
-//       toilets: '1',
-//       floor: '5',
-//       type: 'Rent',
-//       price: '250',
-//       date: '2020-07-26T20:41:08.072Z',
-//     },
-//     {
-//       imagePath: [
-//         'http://localhost:3000/images/wallpaper.jpg-1595795032589.jpg'
-//       ],
-//       _id: '5f1de658198c72479807b887',
-//       title: 'Test',
-//       description: 'sdckljsdfiojaosdc\ndvdfv;ldsfvd\nfvdfpvmd[fv\ndf,vmdpfov\n',
-//       address: 'adrea',
-//       sip: '50',
-//       typology: '1+1',
-//       rooms: '1',
-//       toilets: '1',
-//       floor: '5',
-//       type: 'Rent',
-//       price: '150',
-//       date: '2020-07-26T20:23:52.612Z',
-//     }
-//   ];
 
   constructor() { }
 
