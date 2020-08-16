@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Mail } from '../model/email.interface';
 import { environment } from '../../environments/environment';
-import { Post, PostResponse, PropertiesResponse } from '../model/auth.iterface';
+import { Post, PostResponse, PropertiesResponse, SearchQuery } from '../model/auth.iterface';
 import { Observable, of } from 'rxjs';
 
 const BACKEND_URL = environment.apiUrl;
@@ -20,17 +20,19 @@ export class BackendService {
 
   addProperty(property: Post, imagePath: Array<File>): Observable<any> {
     const postData = new FormData();
+    console.log('property ', property);
     postData.append('title', property.title);
     postData.append('city', property.city);
+    postData.append('property_type', property.property_type);
     postData.append('description', property.description);
     postData.append('address', property.address);
-    postData.append('sip', property.sip);
+    postData.append('sip', property.sip.toString());
     postData.append('typology', property.typology);
-    postData.append('rooms', property.rooms);
-    postData.append('toilets', property.toilets);
-    postData.append('floor', property.floor);
+    postData.append('rooms', property.rooms.toString());
+    postData.append('toilets', property.toilets.toString());
+    postData.append('floor', property.floor.toString());
     postData.append('type', property.type);
-    postData.append('price', property.price);
+    postData.append('price', property.price.toString());
     postData.append('exclusive', property.exclusive.toString());
     postData.append('position', property.position.toString());
     postData.append('rented', property.rented.toString());
@@ -50,16 +52,17 @@ export class BackendService {
       postData = new FormData();
       postData.append('_id', id);
       postData.append('city', property.city);
+      postData.append('property_type', property.property_type);
       postData.append('title', property.title);
       postData.append('description', property.description);
       postData.append('address', property.address);
-      postData.append('sip', property.sip);
+      postData.append('sip', property.sip.toString());
       postData.append('typology', property.typology);
-      postData.append('rooms', property.rooms);
-      postData.append('toilets', property.toilets);
-      postData.append('floor', property.floor);
+      postData.append('rooms', property.rooms.toString());
+      postData.append('toilets', property.toilets.toString());
+      postData.append('floor', property.floor.toString());
       postData.append('type', property.type);
-      postData.append('price', property.price);
+      postData.append('price', property.price.toString());
       postData.append('exclusive', property.exclusive.toString());
       postData.append('position', property.position.toString());
       postData.append('rented', property.rented.toString());
@@ -78,8 +81,8 @@ export class BackendService {
     return this.http.put<any>(BACKEND_URL + '/propertys/' + id, postData);
   }
 
-  getProperties(postsPerPage: number, currentPage: number): Observable<PropertiesResponse> {
-    const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`;
+  getProperties(searchQuery: SearchQuery, postsPerPage: number, currentPage: number): Observable<PropertiesResponse> {
+    const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}&search=${searchQuery.search}&minSip=${searchQuery.minSip}&maxSip=${searchQuery.maxSip}&minPrice=${searchQuery.minPrice}&maxPrice=${searchQuery.maxPrice}&city=${searchQuery.city}&type=${searchQuery.type}&property_type=${searchQuery.peoperty_type}&floor=${searchQuery.floor}&typology=${encodeURIComponent(searchQuery.typology)}`;
     return  this.http.get<PropertiesResponse>(BACKEND_URL + '/propertys' + queryParams);
   }
 

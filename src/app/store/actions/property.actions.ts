@@ -1,5 +1,5 @@
 import { Action, createAction, createFeatureSelector, createReducer, createSelector, on, props } from '@ngrx/store';
-import { User, Post, PostResponse, PropertiesResponse, Mode } from '../../model/auth.iterface';
+import { User, Post, PostResponse, PropertiesResponse, Mode, SearchQuery } from '../../model/auth.iterface';
 
 
 export const featureKey = 'property';
@@ -21,9 +21,11 @@ export const deletePropertySuccess = createAction(`[${featureKey}] deletePropert
 export const deletePropertyFailure = createAction(`[${featureKey}] deletePropertyFailure`, props<{ error: string }>());
 
 export const getPropertiesRequest = createAction(`[${featureKey}] getPropertiesRequest`,
-props<{ postsPerPage: number, currentPage: number }>());
+props<{searchQuery?: SearchQuery, postsPerPage: number, currentPage: number }>());
 export const getPropertiesSuccess = createAction(`[${featureKey}] getPropertiesSuccess`, props<{ payload: PropertiesResponse }>());
 export const getPropertiesFailure = createAction(`[${featureKey}] getPropertiesFailure`, props<{ error: string }>());
+
+export const setQuery = createAction(`[${featureKey}] setQuery`, props<{searchQuery: SearchQuery}>());
 
 export const getExclusiveRequest = createAction(`[${featureKey}] getExclusiveRequest`);
 export const getExclusiveSuccess = createAction(`[${featureKey}] getExclusiveSuccess`, props<{ exclusive: Array<Post>  }>());

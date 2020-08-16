@@ -73,7 +73,7 @@ export class PropertyEffects {
         return this.actions$.pipe(
             ofType(getPropertiesRequest),
             mergeMap((action) =>
-                this.propertyService.getProperties(action.postsPerPage, action.currentPage).pipe(
+                this.propertyService.getProperties(action.searchQuery, action.postsPerPage, action.currentPage).pipe(
                     map(data => {
                         return getPropertiesSuccess({ payload: data })
                     }

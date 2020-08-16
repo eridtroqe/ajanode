@@ -95,3 +95,23 @@ mat-card{
 //     max-width: 100%;
 //     height: 100%;
 // }
+
+@media only screen and (max-width: 748px){
+    :host{
+        margin-top: 56px;
+    }
+    .header {
+      padding: .4rem  0;
+    }
+    ::ng-deep .owl-item .img-container{
+        height: 320px;
+        width: 100%;
+    }
+    .nav-img {
+        height: 50px;
+     }
+
+     .title{
+        font-size: 1.9rem;
+    }
+  }

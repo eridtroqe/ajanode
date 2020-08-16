@@ -4,14 +4,14 @@
 
   <mat-card-content class="d-flex flex-column justify-content-center form-container">
     <div class="container">
-      <form [formGroup]="form" (submit)="onSubmit()">
+      <form [formGroup]="form">
       <div class="row justify-content-center mb-1">
       <div class="search-container mat-elevation-z7 col-md-10">
         <mat-form-field  appearance="standard" class="search-input animated fadeInUp">
           <input matInput formControlName="search"   placeholder="Kërko prona..." />
         </mat-form-field>
       </div>
-      <button mat-raised-button  class="search-button mat-elevation-z7 col-md-2" color="accent">
+      <button mat-raised-button (click)="onSubmit()"  class="search-button mat-elevation-z7 col-md-2" color="accent">
         <mat-icon>search</mat-icon>
       </button>
     </div>

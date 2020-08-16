@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-right-side-info',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RightSideInfoComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      phone: ['', Validators.required],
+      message: ['', Validators.required]
+    });
   }
 
+  onSendMail(){
+
+  }
 }

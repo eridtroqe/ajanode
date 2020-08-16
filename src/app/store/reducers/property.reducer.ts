@@ -1,11 +1,12 @@
 import { createReducer, Action, on, createFeatureSelector, createSelector } from '@ngrx/store';
 import * as propertyActions from '../actions/property.actions';
 import { logout } from '../actions/auth.actions';
-import { Post, UploadStatus, Mode } from '../../model/auth.iterface';
+import { Post, UploadStatus, Mode, SearchQuery } from '../../model/auth.iterface';
 
 export interface State {
     properties: Array<Post>;
     exclusive?: Array<Post>;
+    searchQuery: SearchQuery;
     property: Post;
     totalProperties: number;
     postsPerPage: number;
@@ -20,6 +21,19 @@ export interface State {
 export const initialState: State = {
     properties: [],
     exclusive: [],
+    searchQuery: {
+        city: '',
+        peoperty_type: '',
+        search: '',
+        type: '',
+        typology: '',
+        floor: null,
+        maxPrice: null,
+        maxSip: null,
+        minPrice: null,
+        minSip: null,
+        rooms: null
+    },
     property: null,
     totalProperties: 0,
     postsPerPage: 8,
@@ -66,6 +80,7 @@ const propertyReducer = createReducer(
         property: payload,
         mode
     })),
+    on(propertyActions.setQuery, (state: State, {searchQuery}) => ({...state, searchQuery})),
     on(propertyActions.getExclusiveSuccess, (state: State, {exclusive}) => ({
     ...state,
     exclusive: exclusive.slice().sort((a,b) => a.position - b.position)
@@ -93,6 +108,7 @@ export const isLoadingProperty = createSelector(propertyState, state => state.lo
 export const getTotalProperties = createSelector(propertyState, state => state.totalProperties);
 export const getMode = createSelector(propertyState, state => state.mode);
 export const getExclusive = createSelector(propertyState, state => state.exclusive);
+export const getSearchQuery = createSelector(propertyState, state => state.searchQuery);
 
 export const getStarted = createSelector(propertyState, (state: State): boolean => state.uploadStatus === UploadStatus.Started);
 export const getRequested = createSelector(propertyState, (state: State): boolean => state.uploadStatus === UploadStatus.Requested);

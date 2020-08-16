@@ -12,6 +12,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { getPaginatorIntl } from './paginator-init';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -31,6 +32,7 @@ const routes: Route[] = [
     CommonModule,
     RouterModule.forChild(routes),
     MaterialModule,
+    ReactiveFormsModule,
     FontAwesomeModule,
     SharedModule,
     CarouselModule

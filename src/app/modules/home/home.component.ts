@@ -29,7 +29,19 @@ export class HomeComponent implements OnInit {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    this.store.dispatch(getPropertiesRequest({ postsPerPage: 8, currentPage: 1 }));
+    this.store.dispatch(getPropertiesRequest({    searchQuery: {
+      city: '',
+      peoperty_type: '',
+      search: '',
+      type: '',
+      typology: '',
+      floor: null,
+      maxPrice: null,
+      maxSip: null,
+      minPrice: null,
+      minSip: null,
+      rooms: null
+  }, postsPerPage: 10, currentPage: 1 }));
     this.store.dispatch(getExclusiveRequest());
     this.recentProperties$ = this.store.select(getProperties);
     this.exclusiveProp$ = this.store.select(getExclusive);

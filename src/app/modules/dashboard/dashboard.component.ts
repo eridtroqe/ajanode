@@ -54,7 +54,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.form = this.fb.group({
       title: ['', Validators.required],
       city: ['', Validators.required],
-      property_type: ['', Validators.required],
+      property_type: ['Residential'],
       description: ['', Validators.required],
       address: ['', Validators.required],
       sip: [''],

@@ -5,9 +5,11 @@ const path = require('path');
 
 exports.addProperty = (req, res, next) => {
   const url = req.protocol + "://" + req.get("host");
+  console.log('req add ', req.body);
   const post = new Post({
     title: req.body.title,
     city: req.body.city,
+    property_type: req.body.property_type,
     description: req.body.description,
     address: req.body.address,
     sip: req.body.sip,
@@ -51,16 +53,76 @@ exports.addProperty = (req, res, next) => {
 exports.getPropertys = (req, res, next) => {
   const pageSize = +req.query.pagesize;
   const currentPage = +req.query.page;
-  const postQuery = Post.find();
+  const search = req.query.search;
+  const minSip = +req.query.minSip;
+  const maxSip = +req.query.maxSip;
+  const minPrice = +req.query.minPrice;
+  const maxPrice = +req.query.maxPrice;
+  const city = req.query.city;
+  const type = req.query.type;
+  const property_type = req.query.property_type;
+  const typology = req.query.typology;
+  const floor = +req.query.floor;
+  const rooms = +req.query.rooms;
+
+  let query = {};
+
+  if (search !== '') {
+    const regex = new RegExp(escapeRegex(search), 'gi');
+    query.title = regex;
+  } 
+  if(minSip && !maxSip) {
+    query.sip = {$gt: minSip - 1};
+  }
+  if(maxSip && !minSip){
+    query.sip = {$lt: maxSip + 1};
+  }
+  if(maxSip && minSip){
+    query.sip = {$gt: minSip - 1, $lt: maxSip + 1 }
+  }
+  if(minPrice && !maxPrice) {
+    query.price = {$gt: minPrice - 1};
+  }
+  if(maxPrice && !minPrice){
+    query.price = {$lt: maxPrice + 1};
+  }
+  if(maxPrice && minPrice){
+    query.price = {$gt: minPrice - 1, $lt: maxPrice + 1 }
+  }
+  if(city){
+    query.city = city;
+  }
+  if(type){
+    query.type = type;
+  }
+  if(property_type){
+    query.property_type = property_type;
+  }
+  if(typology){
+    query.typology = typology;
+  }
+  if(rooms){
+    query.rooms = rooms;
+  }
+  if(floor){
+    query.floor = floor;
+  }
+
+
+console.log('query ', query);
+  const postQuery = Post.find(query);
+
+
   let fetchedPosts = [];
   postQuery.sort({ date: 'desc' });
   if (pageSize && currentPage) {
     postQuery.skip(pageSize * (currentPage - 1))
       .limit(pageSize);
   }
+
   postQuery.then(documents => {
     fetchedPosts = documents;
-    return Post.countDocuments();
+    return postQuery.countDocuments();
   })
     .then(count => {
       res.status(200).json({
@@ -132,6 +194,7 @@ exports.updatePost = (req, res, next) => {
   const post = new Post({
     _id: req.body._id,
     city: req.body.city,
+    property_type: req.body.property_type,
     title: req.body.title,
     description: req.body.description,
     address: req.body.address,
@@ -191,3 +254,8 @@ exports.getExclusiveProperties = (req, res, next) => {
 
  ).catch(err  => res.status(500));
 };
+
+
+function escapeRegex(text){
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}

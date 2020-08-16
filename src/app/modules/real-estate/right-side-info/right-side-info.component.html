@@ -1,3 +1,30 @@
-<p>
-  right-side-info works!
-</p>
+<mat-card>
+  <mat-card-header>
+  <mat-card-title>Kontakto për pronën</mat-card-title>
+</mat-card-header>
+<form [formGroup]="form" (submit)="onSendMail()">
+  <mat-card-content>
+      <mat-form-field  color="primary" appearance="fill">
+        <mat-label>Emri</mat-label>
+        <input matInput type="text" formControlName="name" required>
+      <mat-error *ngIf="form.get('name').invalid">Vendosni emrin.</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>E-mail</mat-label>
+        <input matInput type="email" formControlName="email" required>
+      <mat-error *ngIf="form.get('email').invalid">Vendosni emailin.</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Tel</mat-label>
+        <input matInput type="tel" formControlName="phone" required>
+      <mat-error *ngIf="form.get('phone').invalid">Vendosni numrin e telefonit.</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Mesazhi</mat-label>
+        <textarea matInput rows="7" formControlName="message"></textarea>
+      <mat-error *ngIf="form.get('message').invalid && form.get('message')">Vendosni mesazhin.</mat-error>
+      </mat-form-field>
+      <button mat-raised-button class="col-md-4 align-self-end" color="primary" type="submit">Dërgo</button>
+    </mat-card-content>
+    </form>
+  </mat-card>
