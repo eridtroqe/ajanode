@@ -1,6 +1,6 @@
 <mat-card class="card" (click)="navigateToDetails(property._id)">
   <img mat-card-image [src]="url" [alt]="property.title">
-  <mat-card-title class="mb-1">{{ property.title }}</mat-card-title>
+  <mat-card-title class="mb-1 text-oneline">{{ property.title }}</mat-card-title>
   <mat-card-subtitle class="d-flex align-items-center my-1">
     <mat-icon>location_on</mat-icon> &nbsp;
     <span class="align-middle">{{ property.address }}</span>
