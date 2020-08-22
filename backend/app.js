@@ -7,7 +7,7 @@ const userRoutes = require("./routes/user");
 const propertysRoutes = require("./routes/posts");
 const EmailController = require("./controllers/email");
 const PostController = require("./controllers/posts");
-const helmet = require('helmet');
+// const helmet = require('helmet');
 const compression = require('compression');
 
 const app = express();
@@ -25,7 +25,7 @@ mongoose
   });
 
 
-app.use(helmet());
+// app.use(helmet());
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
