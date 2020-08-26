@@ -9,9 +9,25 @@ const transporter = nodemailer.createTransport({
   });
 
 exports.sendEmail = (req, res, next) => {
-    const mailOptions = {
+  const url = req.protocol + "://" + req.get("host");
+  console.log('email ', req.body);
+  let mailOptions = {};
+     if(req.body.postUrl){
+       mailOptions = {
         from: "'Aja Real Estate'",
-        to: 'erid.troqe@gmail.com',
+        to: 'erid11.troqe@gmail.com',
+        subject: 'Real Estate',
+        text: 'Name: ' + req.body.name + "\n" + 
+              'Email: ' + req.body.email + '\n' + 
+              'Property link: ' + url + req.body.postUrl + '\n' + 
+              'Phone: ' + req.body.phone + '\n' + 
+              'Message: ' + req.body.message
+      };
+
+     } else {
+       mailOptions = {
+        from: "'Aja Real Estate'",
+        to: 'erid11.troqe@gmail.com',
         subject: 'Real Estate',
         text: 'Name: ' + req.body.name + "\n" + 
               'Email: ' + req.body.email + '\n' + 
@@ -19,6 +35,9 @@ exports.sendEmail = (req, res, next) => {
               'Phone: ' + req.body.phone + '\n' + 
               'Message: ' + req.body.message
       };
+
+     }
+
 
     transporter.sendMail(mailOptions, function(error, info){
         if (error) {

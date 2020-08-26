@@ -1,12 +1,13 @@
 .service-container {
   position: relative;
-  max-width: 260px;
+  max-width: 320px;
+  height: 450px;
 }
 .service-box {
   text-align: center;
-  padding: 50px 15px 40px;
+  padding: 100px 15px 40px;
   background: #fff;
-  min-height: 373px;
+  height: 100%;
   box-shadow: 0 6px 40px -6px rgba(0,0,0,.09);
   .icon {
     color: #73778e;

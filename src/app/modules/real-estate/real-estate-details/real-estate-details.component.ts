@@ -42,7 +42,6 @@ export class RealEstateDetailsComponent implements OnInit, OnDestroy {
 
     this.activatedRouteSub = this.activatedRoute.paramMap.subscribe(params => {
       const id = params.get('id');
-      console.log('params ', params);
       this.store.dispatch(getPropertyRequest({ id }));
     });
   }

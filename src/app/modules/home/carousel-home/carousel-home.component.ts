@@ -29,8 +29,8 @@ export class CarouselHomeComponent implements OnInit {
     responsive: {
       0: {
         items: 1,
-        // stagePadding: 10,
-        margin: 10
+        // stagePadding: 0,
+        // margin: 10
       },
       400: {
         items: 2,
