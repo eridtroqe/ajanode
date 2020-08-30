@@ -12,6 +12,7 @@ import { CarouselHomeComponent } from './carousel-home/carousel-home.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ExclusiveCarouselComponent } from './exclusive-carousel/exclusive-carousel.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ContactActionAreaComponent } from './contact-action-area/contact-action-area.component';
 
 const routes: Route[] = [
   {
@@ -35,7 +36,8 @@ const routes: Route[] = [
     WhatWeDoComponent,
     ServiceCardComponent,
     CarouselHomeComponent,
-    ExclusiveCarouselComponent
+    ExclusiveCarouselComponent,
+    ContactActionAreaComponent
   ]
 })
 export class HomeModule {}

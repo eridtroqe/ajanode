@@ -1,7 +1,11 @@
 :host{
-    width: 200px;
+    width: 250px;
     display: block;
     // position: fixed;
     // top: 0;
     // left: 0;
+}
+
+mat-nav-list:first-child {
+ margin-top: 50px;
 }

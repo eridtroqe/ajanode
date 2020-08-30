@@ -1,7 +1,14 @@
 <mat-card class="card" (click)="navigateToDetails(property._id)">
 
-  <div class="ribbon ribbon-top-right">
-    <span>Dhene me qera</span>
+  <div class="ribbon-top-right" 
+    *ngIf="showRibbon()" 
+    [ngClass]="{ 
+      'ribbon--prenoted': property.prenoted,
+      'ribbon--sold': property.sold || property.rented
+  }">
+    <span *ngIf="property.rented">Dhënë me qera</span>
+    <span *ngIf="property.sold">Shitur</span>
+    <span *ngIf="property.prenoted">Prenotuar</span>
   </div>
   <img mat-card-image [src]="url" [alt]="property.title">
   <mat-card-title class="mb-1 text-oneline">{{ property.title }}</mat-card-title>

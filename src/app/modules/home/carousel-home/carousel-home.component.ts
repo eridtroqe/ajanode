@@ -23,31 +23,30 @@ export class CarouselHomeComponent implements OnInit {
     dots: true,
     // center: true,
     startPosition: 1,
-    margin: 7,
     navSpeed: 700,
     autoplaySpeed: 1000,
     responsive: {
       0: {
         items: 1,
         // stagePadding: 0,
-        // margin: 10
+        margin: 15
       },
       400: {
         items: 2,
         // stagePadding: 10,
-        margin: 10
+        margin: 15
       },
       740: {
         items: 3,
-        margin: 10
+        margin: 15
       },
       1024: {
         items: 4,
-        margin: 10
+        margin: 15
       },
       1920: {
         items: 4,
-        margin: 10
+        margin: 15
       },
       2500: {
         items: 6,

@@ -114,4 +114,11 @@ padding: 0;
   .form-container{
     padding: 20vh 3vw 5vh 3vw;
   }
+  .search-container{
+    border-radius: 4px 4px 0 0;
+  }
+  .search-button {
+    border-radius: 0 0 4px 4px;
+    padding-bottom: 0.5rem;
+  }
 }

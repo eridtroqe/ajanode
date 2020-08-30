@@ -44,3 +44,24 @@
   // button{
   //   height: 3.5rem;
   // }
+
+  @media only screen and (max-width: 768px){
+    :host{
+      margin-top: 4rem;
+    }
+
+    .title{
+      font-size: 2.2rem;
+    }
+    .contact {
+      border-top-right-radius: 10px;
+      border-bottom-left-radius: 0px;
+      fa-icon {
+        font-size: 8rem;
+      }
+    }
+    mat-card{
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }

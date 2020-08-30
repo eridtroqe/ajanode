@@ -39,4 +39,7 @@ export class CardRealEstateComponent implements OnInit {
      this.store.dispatch(setUpdate({payload: this.property, mode: Mode.Update}));
      this.router.navigate(['dashboard']);
   }
+  showRibbon(): boolean {
+    return this.property.rented || this.property.sold || this.property.prenoted;
+  }
 }
