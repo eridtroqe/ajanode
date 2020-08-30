@@ -7,6 +7,7 @@ import { getPropertyRequest } from '../../../store/actions/property.actions';
 import { Post } from '../../../model/auth.iterface';
 import { getProperty } from 'src/app/store/reducers/property.reducer';
 import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
+import { faBuilding, faRulerCombined, faBed } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-real-estate-details',
@@ -33,6 +34,9 @@ export class RealEstateDetailsComponent implements OnInit, OnDestroy {
   }
 
   activeSlides: SlidesOutputData;
+  faBuilding = faBuilding;
+  faRulerCombined = faRulerCombined;
+  faBed = faBed;
 
   slidesStore: any[];
 

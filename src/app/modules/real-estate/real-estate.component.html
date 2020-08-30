@@ -1,4 +1,7 @@
 <div class="container-fluid">
+  <div class="row">
+    <app-search></app-search>
+  </div>
 <div class="row" *ngIf="properties$ | async as properties">
  <div class="col-md-3 card-padding" *ngFor="let property of properties"> 
   <app-card-real-estate  [property]='property'></app-card-real-estate>

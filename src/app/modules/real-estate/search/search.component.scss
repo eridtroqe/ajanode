@@ -1,0 +1,133 @@
+//@import "~@angular/material/theming";
+:host{
+    display: block;
+    margin: 0 .7rem .7rem;
+}
+.bg-image {
+    background-image: url("~/assets/wallpaper/white_house.jpg");
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    // background-position: 110%;
+    background-repeat: no-repeat;
+    // background-blend-mode: multiply;
+    // z-index: -1;
+    // opacity: 0.18;
+    // background-attachment: fixed;
+  
+    // background-size: 110% 110%;
+    background-position: center center;
+    // animation: shrink 5s infinite alternate;
+  }
+  
+  .wall{
+    max-width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  mat-card {
+    padding: 0;
+    border-radius: 0;
+    height: fit-content;
+  }
+  
+  .logo {
+    width: 100%;
+    height: auto;
+    z-index: 5;
+    margin: 0 auto;
+  }
+  
+  mat-card-content {
+    // position: absolute;
+    // top: 0;
+    // width: 100%;
+    // height: 100%;
+  }
+  .form-container{
+    padding: 40vh 25vw 30vh 25vw;
+  }
+  
+  // input {
+  //   padding-left: 1rem;
+  //   font-size: large;
+  // }
+  
+  .container-submit, .search-input {
+    // @include mat-color()
+     width: 100%;
+  }
+  
+  mat-accordion{
+  padding: 0;
+  }
+  
+  .search-container{
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 4px 0 0 4px;
+    // padding: 0 1rem 0 1rem;
+  }
+  
+  // input::placeholder {
+  //   font-size: 1rem;
+  //   font-weight: 700;
+  //   color: rgba(36, 20, 20, 0.6);
+  // }
+  
+  ::ng-deep .mat-expansion-panel-body{
+    padding-top: 16px !important;
+  }
+  .search-button{
+    // margin-left: .5rem;
+    // padding: .5rem 2rem;
+    border-radius: 0 4px 4px 0;
+    mat-icon{
+      // margin-left: .2rem;
+      font-size: 2rem;
+    }
+  }
+  
+  // ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  //   color: rgba(36, 20, 20, 1);
+  // }
+
+  mat-form-field {
+
+    //   padding: 0;
+      box-sizing: border-box;
+  }
+  
+  @keyframes shrink {
+    0% {
+      background-size: 105% 105%;
+    }
+    100% {
+      background-size: 100% 100%;
+    }
+  }
+  
+  // @mixin main-search-input-theme($theme){
+  //   $accent: map-get($theme, accent);
+  //   mat-form-field{
+  
+  //   .search-input {
+  //     color:  mat-color($accent, 200);
+  //     // width: 35rem;
+  //   }
+  // }
+  
+  // }
+  
+  @media only screen and (max-width: 450px) {
+    .form-container{
+      padding: 20vh 3vw 5vh 3vw;
+    }
+    .search-container{
+      border-radius: 4px 4px 0 0;
+    }
+    .search-button {
+      border-radius: 0 0 4px 4px;
+      padding-bottom: 0.5rem;
+    }
+  }

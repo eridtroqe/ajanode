@@ -13,6 +13,7 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { getPaginatorIntl } from './paginator-init';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -42,7 +43,8 @@ const routes: Route[] = [
                  RealEstateComponent,
                  RealEstateDetailsComponent, 
                  InfoElementComponent,
-                 RightSideInfoComponent
+                 RightSideInfoComponent,
+                 SearchComponent
                 ],
   providers: [
     { provide: MatPaginatorIntl, useValue: getPaginatorIntl() }

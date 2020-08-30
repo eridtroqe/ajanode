@@ -51,11 +51,11 @@
               Informacion
             </mat-card-title>
             <div class="row">
-              <app-info-element *ngIf="property.rooms" [label]="'Dhoma'" [value]="property.rooms" class="col-md-6">
+              <app-info-element *ngIf="property.rooms" [label]="'Dhoma'" [icon]="faBed" [value]="property.rooms" class="col-md-6">
               </app-info-element>
-              <app-info-element *ngIf="property.sip" [label]="'Sipërfaqja (m²)'" [value]="property.sip"
+              <app-info-element *ngIf="property.sip" [label]="'Sipërfaqja (m²)'" [icon]="faRulerCombined" [value]="property.sip"
                 class="col-md-6"></app-info-element>
-              <app-info-element *ngIf="property.floor" [label]="'Kati'" [value]="property.floor" class="col-md-6">
+              <app-info-element *ngIf="property.floor" [label]="'Kati'" [icon]="faBuilding" [value]="property.floor" class="col-md-6">
               </app-info-element>
               <app-info-element *ngIf="property.toilets" [label]="'Tualete'" [value]="property.toilets"
                 class="col-md-6"></app-info-element>

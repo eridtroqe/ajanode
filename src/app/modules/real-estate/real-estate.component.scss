@@ -38,3 +38,10 @@
 .mat-paginator{
   background-color: transparent;
 }
+
+@media only screen and (max-width: 450px) {
+
+:host{
+  margin-top: 4.5rem;
+}
+}
