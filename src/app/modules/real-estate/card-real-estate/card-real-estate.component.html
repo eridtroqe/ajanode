@@ -34,10 +34,10 @@
   <mat-divider></mat-divider>
   <mat-card-content style="margin-bottom: 0;">
     <div class="row justify-content-around  description mt-3">
-      <div class="d-flex flex-column">Sip.<span class="mt-2">{{ property.sip }} m<sup>2</sup></span></div>
-      <div class="d-flex flex-column">Dhoma <span class="mt-2">{{ property.rooms }}</span></div>
-      <div class="d-flex flex-column">Tualete <span class="mt-2">{{ property.toilets }}</span></div>
-      <div class="d-flex flex-column">Kati <span class="mt-2">{{ property.floor }}</span></div>
+      <div class="d-flex flex-column" *ngIf="property.sip">Sip.<span class="mt-2">{{ property.sip }} m<sup>2</sup></span></div>
+      <div class="d-flex flex-column" *ngIf="property.rooms">Dhoma <span class="mt-2">{{ property.rooms }}</span></div>
+      <div class="d-flex flex-column" *ngIf="property.toilets">Tualete <span class="mt-2">{{ property.toilets }}</span></div>
+      <div class="d-flex flex-column" *ngIf="property.floor">Kati <span class="mt-2">{{ property.floor }}</span></div>
     </div>
 
   </mat-card-content>

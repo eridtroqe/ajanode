@@ -6,7 +6,16 @@ import { mimeType } from '../../mime-type.validator';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app.state';
 import { addPropertyRequest, updatePropertyRequest } from '../../store/actions/property.actions';
-import { getProgress, getInProgress, getReady, getFailed, isLoadingProperty, getCompleted, getMode, getProperty } from '../../store/reducers/property.reducer';
+import {
+  getProgress,
+  getInProgress,
+  getReady,
+  getFailed,
+  isLoadingProperty,
+  getCompleted,
+  getMode,
+  getProperty
+} from '../../store/reducers/property.reducer';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Mode, Post } from 'src/app/model/auth.iterface';
@@ -21,7 +30,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   form: FormGroup;
   imagePreview = [];
   filesToUpload: Array<File> = [];
- 
+
   cities: Array<string> = cities;
 
   progress$: Observable<number>;
@@ -76,10 +85,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
 
     this.filteredOptions = this.form.get('city').valueChanges
-    .pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
 
     if (this.mode === Mode.Update) {
       this.form.setValue({
@@ -122,6 +131,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     return this.form.get('exclusive').value;
   }
 
+  isResidetial(){
+    return this.form.get('property_type').value === 'Residential';
+  }
+
   isTypeRent() { return this.form.get('type').value === 'Rent' ? true : false; }
 
   onSavePost() {
@@ -155,7 +168,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       const reader = new FileReader();
       reader.onload = () => {
         //  this.imagePreview.push(reader.result);
-         this.imagePreview = [...this.imagePreview, reader.result];
+        this.imagePreview = [...this.imagePreview, reader.result];
       };
       reader.readAsDataURL(fil);
     }
