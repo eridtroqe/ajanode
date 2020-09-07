@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AppState } from 'src/app/store/app.state';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Blog } from 'src/app/model/auth.iterface';
+import { getBlog } from 'src/app/store/reducers/blog.reducer';
 
 @Component({
   selector: 'app-contact-action-area',
@@ -7,9 +12,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactActionAreaComponent implements OnInit {
 
-  constructor() { }
+  latestBlog$: Observable<Blog>;
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
+    this.latestBlog$ = this. store.select(getBlog);
   }
 
 }

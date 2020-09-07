@@ -8,6 +8,7 @@ import { Post } from '../../model/auth.iterface';
 import { getProperties, getExclusive } from 'src/app/store/reducers/property.reducer';
 import { tap } from 'rxjs/operators';
 import { getPropertiesRequest, getExclusiveRequest } from 'src/app/store/actions/property.actions';
+import { getLastBlogRequest } from 'src/app/store/actions/blog.actions';
 
 
 @Component({
@@ -43,6 +44,7 @@ export class HomeComponent implements OnInit {
       rooms: null
   }, postsPerPage: 10, currentPage: 1 }));
     this.store.dispatch(getExclusiveRequest());
+    this.store.dispatch(getLastBlogRequest());
     this.recentProperties$ = this.store.select(getProperties);
     this.exclusiveProp$ = this.store.select(getExclusive);
   }

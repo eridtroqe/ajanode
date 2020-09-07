@@ -15,6 +15,7 @@ exports.addProperty = (req, res, next) => {
     sip: req.body.sip,
     typology: req.body.typology,
     rooms: req.body.rooms,
+    areas: req.body.areas,
     toilets: req.body.toilets,
     floor: req.body.floor,
     type: req.body.type,
@@ -64,6 +65,7 @@ exports.getPropertys = (req, res, next) => {
   const typology = req.query.typology;
   const floor = +req.query.floor;
   const rooms = +req.query.rooms;
+  const areas = +req.query.areas;
 
   let query = {};
 
@@ -103,6 +105,9 @@ exports.getPropertys = (req, res, next) => {
   }
   if(rooms){
     query.rooms = rooms;
+  }
+  if(areas){
+    query.areas = areas;
   }
   if(floor){
     query.floor = floor;
@@ -201,6 +206,7 @@ exports.updatePost = (req, res, next) => {
     sip: req.body.sip,
     typology: req.body.typology,
     rooms: req.body.rooms,
+    areas: req.body.areas,
     toilets: req.body.toilets,
     floor: req.body.floor,
     type: req.body.type,

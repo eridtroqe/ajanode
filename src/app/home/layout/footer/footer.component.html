@@ -92,7 +92,7 @@
 
 
 <!-- verion 2 of maps--> 
-<google-map class="col-md-4 col-sm-12" height="350px" width="100%" [zoom]="zoom" [center]="center"
+<google-map class="col-md-4 col-sm-12" height="320px" width="100%" [zoom]="zoom" [center]="center"
 [options]="options" >
   
   <map-marker #markerElem *ngFor="let marker of markers" 
@@ -107,7 +107,7 @@
         <div class="row">
           <div class="col-12 socials">
             <span class="row justify-content-center align-items-center">Follow</span>
-            <div class="row  justify-content-center align-items-center my-4">
+            <div class="row  justify-content-center align-items-center mt-4">
               <svg width="0" height="0">
                 <radialGradient id="rg" r="150%" cx="30%" cy="107%">
                   <stop stop-color="#fdf497" offset="0" />
@@ -118,9 +118,9 @@
                 </radialGradient>
               </svg>
               <div class="social-icons">
-              <fa-icon [icon]="faFacebookF"></fa-icon>
+              <a href="https://www.facebook.com/AJAFirstChoice/"><fa-icon [icon]="faFacebookF"></fa-icon></a>
               <!-- <fa-icon [icon]="faTwitter"></fa-icon> -->
-              <fa-icon [icon]="faInstagram"></fa-icon>
+              <a href="https://www.instagram.com/ajafirstchoice/?utm_source=qr"><fa-icon [icon]="faInstagram"></fa-icon></a>
             </div>
             </div>
           </div>

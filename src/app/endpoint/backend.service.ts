@@ -19,6 +19,7 @@ export class BackendService {
   }
 
   addBlog(blog: Blog) {
+    console.log('add blog ', blog);
     const postData = new FormData();
     postData.append('title', blog.title);
     postData.append('content', blog.content);
@@ -31,8 +32,16 @@ export class BackendService {
     return this.http.get<BlogsResponse>(BACKEND_URL + '/blogs' + queryParams);
   }
 
+  getLastBlog(): Observable<Blog>{
+    return this.http.get<Blog>(BACKEND_URL + '/last-blog');
+  }
+
   getBlog(id: string): Observable<Blog> {
     return this.http.get<Blog>(BACKEND_URL + '/blogs/' + id);
+  }
+
+  deleteBlog(id: string): Observable<void>{
+    return this.http.delete<void>(BACKEND_URL + '/blogs/' + id);
   }
 
   addProperty(property: Post, imagePath: Array<File>): Observable<any> {
@@ -46,6 +55,7 @@ export class BackendService {
     postData.append('sip', property.sip.toString());
     postData.append('typology', property.typology);
     postData.append('rooms', property.rooms.toString());
+    postData.append('areas', property.areas.toString());
     postData.append('toilets', property.toilets.toString());
     postData.append('floor', property.floor.toString());
     postData.append('type', property.type);
@@ -76,6 +86,7 @@ export class BackendService {
       postData.append('sip', property.sip.toString());
       postData.append('typology', property.typology);
       postData.append('rooms', property.rooms.toString());
+      postData.append('areas', property.areas.toString());
       postData.append('toilets', property.toilets.toString());
       postData.append('floor', property.floor.toString());
       postData.append('type', property.type);

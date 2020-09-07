@@ -42,7 +42,8 @@ import { getPostsPerPage, getPage } from '../reducers/property.reducer';
 @Injectable()
 export class PropertyEffects {
 
-    constructor(private actions$: Actions,
+    constructor(
+        private actions$: Actions,
         private router: Router,
         private store: Store<AppState>,
         private toastr: ToastrService,

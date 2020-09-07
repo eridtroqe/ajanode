@@ -26,6 +26,7 @@
     <mat-select formControlName="property_type" required>
       <mat-option [value]="'Land'">Tokë</mat-option>
       <mat-option [value]="'Residential'">Rezidencial</mat-option>
+      <mat-option [value]="'Commercial'">Komercial</mat-option>
     </mat-select>
   <mat-error *ngIf="form.get('property_type').invalid">Zgjidhni tipin e pronës</mat-error>
   </mat-form-field>
@@ -62,13 +63,14 @@
       <mat-checkbox class="col-md-2" formControlName="prenoted" labelPosition="before">Prenotuar</mat-checkbox>
     </div>
     <div class="row">
-    <mat-form-field class="col-md-6" *ngIf="isResidetial()">
+    <mat-form-field class="col-md-6" *ngIf="isResidetial() || isCommercial()">
       <mat-label>Tipologjia</mat-label>
       <mat-select formControlName="typology">
         <mat-option [value]="'1+1'">1 + 1</mat-option>
         <mat-option [value]="'2+1'">2 + 1</mat-option>
         <mat-option [value]="'3+1'">3 + 1</mat-option>
         <mat-option [value]="'4+1'">4 + 1</mat-option>
+        <mat-option [value]="'Villa'">Vilë</mat-option>
       </mat-select>
     <mat-error *ngIf="form.get('typology').invalid">Zgjidhni tipologjinë</mat-error>
     </mat-form-field>
@@ -88,11 +90,15 @@
       <input matInput type="number" formControlName="rooms" placeholder="Dhoma">
       <mat-error *ngIf="form.get('rooms').invalid">Vendosni nr e dhomave</mat-error>
     </mat-form-field>
-    <mat-form-field class="col-md-2" *ngIf="isResidetial()">
+    <mat-form-field class="col-md-2" *ngIf="isCommercial()">
+      <input matInput type="number" formControlName="rooms" placeholder="Ambjente">
+      <mat-error *ngIf="form.get('areas').invalid">Vendosni nr e ambjenteve</mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-md-2" *ngIf="isResidetial() || isCommercial()">
       <input matInput type="number" formControlName="toilets" placeholder="Tualete">
       <mat-error *ngIf="form.get('toilets').invalid">Vendosni nr e tualeteve</mat-error>
     </mat-form-field>
-    <mat-form-field class="col-md-2" *ngIf="isResidetial()">
+    <mat-form-field class="col-md-2" *ngIf="isResidetial() || isCommercial()">
       <input matInput type="number" formControlName="floor" placeholder="Kati">
       <mat-error *ngIf="form.get('floor').invalid">Vendosni katin</mat-error>
     </mat-form-field>

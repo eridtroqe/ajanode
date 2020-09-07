@@ -27,7 +27,7 @@ exports.addBlog = (req, res, next) => {
 exports.getBlogs = (req, res, next) => {
   const pageSize = +req.query.pagesize;
   const currentPage = +req.query.page;
-  const blogQuery = Blog.find();
+  const blogQuery = Blog.find().sort({ createdAt: 'desc' });
   let fetchedBlogs;
   if (pageSize && currentPage) {
     blogQuery.skip(pageSize * (currentPage - 1))
@@ -63,6 +63,41 @@ exports.getBlog = (req, res, next) => {
     .catch(error => {
       res.status(500).json({
         message: "Fetching blog failed!"
+      });
+    });
+};
+
+exports.getLastBlog = (req, res, next) => {
+  Blog.find({})
+  .sort({ createdAt: 'desc' })
+  .limit(1)
+  .then(post => {
+    if (post) {
+      res.status(200).json(post[0]);
+    } else {
+      res.status(404).json({ message: "Blog not found!" });
+    }
+  })
+  .catch(error => {
+    res.status(500).json({
+      message: "Fetching last blog failed!"
+    });
+  });
+};
+
+exports.deleteBlog = (req, res, next) => {
+  Blog.deleteOne({ _id: req.params.id })
+    .then(result => {
+      console.log(result);
+      if (result.n > 0) {
+        res.status(200).json({ message: "Deletion successful!" });
+      } else {
+        res.status(401).json({ message: "Not authorized!" });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "Deleting posts failed!"
       });
     });
 };

@@ -16,3 +16,11 @@ export const getBlogsFailure = createAction(`[${featureKey}] getBlogsFailure`, p
 export const getBlogRequest = createAction(`[${featureKey}] getBlogRequest`, props<{ id: string }>());
 export const getBlogSuccess = createAction(`[${featureKey}] getBlogSuccess`, props<{ payload: Blog }>());
 export const getBlogFailure = createAction(`[${featureKey}] getBlogFailure`, props<{ error: string }>());
+
+export const deleteBlogRequest = createAction(`[${featureKey}] deleteBlogRequest`, props<{ id: string}>());
+export const deleteBlogSuccess = createAction(`[${featureKey}] deleteBlogSuccess`);
+export const deleteBlogFailure = createAction(`[${featureKey}] deleteBlogFailure`, props<{ error: string }>());
+
+export const getLastBlogRequest = createAction(`[${featureKey}] getLastBlogRequest`);
+export const getLastBlogSuccess = createAction(`[${featureKey}] getLastBlogSuccess`, props<{blog: Blog}>());
+export const getLastBlogFailure = createAction(`[${featureKey}] getLastBlogFailure`, props<{ error: string }>());

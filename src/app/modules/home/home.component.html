@@ -9,24 +9,28 @@
     </div>
   </div>
  <div class="container-fluid">
-    <div class="row justify-content-center mb-5">
+    <div class="row justify-content-start mb-5">
       <!-- <app-service-card [icon]="faHome"
                         [title]="'Imobiliare'"
                         [description]="'Ofrojmë shërbime real-estate për pronën tuaj'" 
                         [routerLink]="['/real-estate']"></app-service-card> -->
-      <app-service-card [icon]="faHandHoldingUsd" 
+      <app-service-card class="col-md-3"
+                        [icon]="faHandHoldingUsd" 
                         [title]="'Vlerësim pasurish'"
                         [description]="'Shërbime të licencuara në fushën e vlerësimeve të paluajtshme'"
                         [routerLink]="['/real-estate-appraisal']"></app-service-card>
-      <app-service-card [icon]="faMapMarkedAlt" 
+      <app-service-card class="col-md-3"
+                        [icon]="faMapMarkedAlt" 
                         [title]="'Projektime dhe punime topografike'"
                         [description]="'Nëpërmjet eksperizës së kualifikuar dhe të licencuar, ne ju ofrojmë shërbime topo-gjeodezike në përputhje me praktikat më të mira'"
                         [routerLink]="['/topographic-works']"></app-service-card>
-      <app-service-card [icon]="faEnvira" 
+      <app-service-card class="col-md-3"
+                        [icon]="faEnvira" 
                         [title]="'Konsulencë mjedisore'"
                         [description]="'A-JA Engineering, Consulting & Real Estate ofron shërbime mjedisore të liçencuara'"
                         [routerLink]="['/environmental-consultancy']"></app-service-card>
-      <app-service-card [icon]="faAt" 
+      <app-service-card class="col-md-3"
+                        [icon]="faAt" 
                         [title]="'E-Apliki'"
                         [description]="'Ne ju asistojmë për të kryer gjithë aplikimet që ju nevojiten pranë portalit qeveritar E-Albania'"
                         [routerLink]="['/e-apliki']"></app-service-card>

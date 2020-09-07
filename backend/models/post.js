@@ -9,6 +9,7 @@ const postSchema = mongoose.Schema({
   sip: { type: Number},
   typology: { type: String},
   rooms: { type: Number},
+  areas: { type: Number},
   toilets: { type: Number},
   floor: { type: Number},
   type: { type: String, required: true},

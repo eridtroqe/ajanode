@@ -8,6 +8,7 @@ const propertysRoutes = require("./routes/posts");
 const blogsRoutes = require("./routes/blogs");
 const EmailController = require("./controllers/email");
 const PostController = require("./controllers/posts");
+const BlogController = require("./controllers/blogs");
 // const helmet = require('helmet');
 // const compression = require('compression');
 
@@ -50,6 +51,7 @@ app.get("/api/exclusive", PostController.getExclusiveProperties);
 app.use("/api/user", userRoutes);
 app.use("/api/propertys", propertysRoutes);
 app.use("/api/blogs", blogsRoutes);
+app.get("/api/last-blog", BlogController.getLastBlog);
 
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname,"aja-angular", "index.html"));

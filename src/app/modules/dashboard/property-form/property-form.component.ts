@@ -71,6 +71,7 @@ export class PropertyFormComponent implements OnInit, OnDestroy {
       sip: [''],
       typology: [''],
       rooms: [''],
+      areas: [''],
       toilets: [''],
       floor: [''],
       type: ['Rent'],
@@ -102,6 +103,7 @@ export class PropertyFormComponent implements OnInit, OnDestroy {
         sip: this.property.sip,
         typology: this.property.typology,
         rooms: this.property.rooms,
+        areas: this.property.areas,
         toilets: this.property.toilets,
         floor: this.property.floor,
         type: this.property.type,
@@ -135,6 +137,10 @@ export class PropertyFormComponent implements OnInit, OnDestroy {
 
   isResidetial(){
     return this.form.get('property_type').value === 'Residential';
+  }
+
+  isCommercial(){
+    return this.form.get('property_type').value === 'Commercial';
   }
 
   isTypeRent() { return this.form.get('type').value === 'Rent' ? true : false; }

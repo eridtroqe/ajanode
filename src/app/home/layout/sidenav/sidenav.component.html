@@ -41,7 +41,7 @@
             </a> -->
         </div>
     </mat-menu>
-        <a mat-list-item [routerLink]="['/blog']" routerLinkActive="router-link-active">
+        <a mat-list-item [routerLink]="['/blog']" routerLinkActive="router-link-active" (click)="onClose()">
             Blog
         </a>
     <a mat-list-item [routerLink]="[ '/contact']" (click)="onClose()">

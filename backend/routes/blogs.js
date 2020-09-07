@@ -9,9 +9,11 @@ const extractFile = require("../middleware/single-file");
 const router = express.Router();
 
 router.post("", checkAuth, extractFile, BlogController.addBlog);
-router.get("", extractFiles, BlogController.getBlogs);
+router.get("", BlogController.getBlogs);
 router.get("/:id", BlogController.getBlog);
+// router.get("/last-blog", BlogController.getLastBlog);
+router.delete("/:id", checkAuth, BlogController.deleteBlog);
 // router.put("/:id", checkAuth, extractFile, PostController.updatePost);
-// router.delete("/:id", checkAuth, PostController.deleteProperty);
+
 
 module.exports = router;

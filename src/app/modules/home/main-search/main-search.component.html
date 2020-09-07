@@ -6,7 +6,7 @@
     <div class="container">
       <form [formGroup]="form">
       <div class="row justify-content-center mb-1">
-      <div class="search-container mat-elevation-z7 col-md-10">
+      <div class="search-container mat-elevation-z7 col-md-7">
         <mat-form-field  appearance="standard" class="search-input animated fadeInUp">
           <input matInput formControlName="search"   placeholder="Kërko prona..." />
         </mat-form-field>
@@ -16,11 +16,13 @@
       </button>
     </div>
     <div class="row justify-content-center mb-1">
-      <button mat-flat-button (click)="acc.toggle()" color="warn" class="col-sm-5 col-md-3">Filtra të avancuar</button>
-      <div class="col"></div>
+      <div class="col-md-9 advanced-filter-button">
+      <button mat-raised-button (click)="acc.toggle()" color="accent">Filtra të avancuar</button>
+      <!-- <div class="col"></div> -->
+    </div>
     </div>
     <div class="row justify-content-center">
-      <mat-accordion  class="col">
+      <mat-accordion  class="col-md-9">
         <mat-expansion-panel #acc hideToggle >
           <div class="row justify-content-around">
           <mat-form-field class="col-md-5">

@@ -23,6 +23,7 @@ export interface Post {
     sip: number;
     typology: string;
     rooms?: number;
+    areas?: number;
     toilets: number;
     floor: number;
     type: string;
