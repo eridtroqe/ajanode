@@ -90,7 +90,8 @@ const propertyReducer = createReducer(
     on(propertyActions.startedUpload, (state) => ({ ...state, uploadStatus: UploadStatus.Started, progress: 0 })),
     on(propertyActions.progressUpload, (state, { progress }) => ({ ...state, progress })),
     on(propertyActions.completedUpload, (state) => ({ ...state, uploadStatus: UploadStatus.Ready, progress: 0 })),
-    on(propertyActions.uploadFailure, (state, {errorMessage}) => ({ ...state, uploadStatus: UploadStatus.Failed, progress: null, error: errorMessage })),
+    on(propertyActions.uploadFailure, (state, {errorMessage}) => (
+        { ...state, uploadStatus: UploadStatus.Failed, progress: null, error: errorMessage })),
     on(logout, () => initialState),
 );
 

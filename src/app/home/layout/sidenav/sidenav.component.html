@@ -41,7 +41,14 @@
             </a> -->
         </div>
     </mat-menu>
+        <a mat-list-item [routerLink]="['/blog']" routerLinkActive="router-link-active">
+            Blog
+        </a>
     <a mat-list-item [routerLink]="[ '/contact']" (click)="onClose()">
         Kontakt
+    </a>
+    <a *ngIf="isAuth$ | async" mat-list-item (click)="onLogout()">
+        <mat-icon>power_settings_new</mat-icon>&nbsp;&nbsp;
+        Logout
     </a>
 </mat-nav-list>

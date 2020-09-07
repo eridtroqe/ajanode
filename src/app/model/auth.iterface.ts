@@ -6,6 +6,11 @@ export interface User {
     expiresIn?: number;
 }
 
+export interface Blog {
+    _id?: string;
+    title: string;
+    content: string;
+}
 
 export interface Post {
     _id?: string;

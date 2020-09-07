@@ -33,11 +33,11 @@ export class MenuHeaderComponent implements OnInit, OnDestroy {
 
   navigateToDashboard(){
     this.store.dispatch(setCreateMode({mode: Mode.Create}));
-    this.router.navigate(['dashboard']);
+    // this.router.navigate(['dashboard']);
   }
 
   onLogout() {
-    this.store.dispatch(logout())
+    this.store.dispatch(logout());
   }
   onLogin() {
     this.router.navigate(['login']);

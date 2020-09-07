@@ -1,0 +1,17 @@
+<mat-card>
+    <form [formGroup]="form" (submit)="onSubmitBlog()" class="d-flex flex-column align-items-center">
+    <mat-form-field>
+        <input matInput type="text" formControlName="title" placeholder="Titulli" required>
+        <mat-error *ngIf="form.get('title').invalid">Vendosni një titull</mat-error>
+      </mat-form-field>
+    <quill-editor 
+                  [styles]="{'min-height': '450px'}" 
+                  [modules]="modules"
+                  formControlName="content"
+    ></quill-editor>
+    <quill-view-html [content]="form.get('content').value" theme="snow"></quill-view-html>
+    <button mat-raised-button color="accent" type="submit" [disabled]="this.form.invalid">
+        Krijo Blog
+      </button>
+</form>
+</mat-card>

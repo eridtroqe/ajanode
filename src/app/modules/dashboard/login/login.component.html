@@ -1,8 +1,8 @@
 <div class="container animated fadeInDownBig">
 <div class="row">
 <mat-card class="col-md-7 m-auto">
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
+  <mat-spinner *ngIf="isLoading$ | async else loginForm"></mat-spinner>
+  <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
     <mat-form-field>
       <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
       <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>

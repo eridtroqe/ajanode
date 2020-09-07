@@ -24,9 +24,12 @@
     <mat-card-content class="price-description">
       <div class="row">
         <div class="price d-flex align-items-center align-middle">
+          <ng-container *ngIf="property.price;else text">
           <mat-icon>euro</mat-icon>
           <span>{{ property.price | number }}</span>
           <div *ngIf="property.type === 'Rent'" class="rent align-self-end">/ muaj</div>
+        </ng-container>
+        <ng-template #text>Me marrëveshje</ng-template>
         </div>
       </div>
     </mat-card-content>

@@ -25,9 +25,11 @@ import { FormsModule } from '@angular/forms';
 import { AuthInterceptor, ErrorInterceptor } from './modules/dashboard/login/auth-interceptor';
 import { AuthGuard } from './auth.guard';
 import { AuthEffects } from './store/effects/auth.effects';
+import { BlogEffects } from './store/effects/blog.effects';
 import { PropertyEffects } from './store/effects/property.effects';
 import { reducers } from './store/app.state';
-import {ToastrModule} from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
+import { QuillModule } from 'ngx-quill';
 
 
 
@@ -57,12 +59,12 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PerfectScrollbarModule,
     StoreModule.forRoot(reducers, {}),
     ToastrModule.forRoot({
-                          // positionClass: 'toast-top-center',
-                          closeButton: true,
-                          preventDuplicates: true
-                        }),
+      // positionClass: 'toast-top-center',
+      closeButton: true,
+      preventDuplicates: true
+    }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([AuthEffects, PropertyEffects])
+    EffectsModule.forRoot([AuthEffects, PropertyEffects, BlogEffects])
   ],
   providers: [
     AuthGuard,
@@ -75,4 +77,4 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

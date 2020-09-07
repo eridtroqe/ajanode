@@ -7,6 +7,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor, ErrorInterceptor } from './login/auth-interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PropertyFormComponent } from './property-form/property-form.component';
+import { BlogFormComponent } from './blog-form/blog-form.component';
+import { QuillModule } from 'ngx-quill';
 
 
 const routes: Route[] = [
@@ -23,10 +26,11 @@ const routes: Route[] = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
+    QuillModule.forRoot(),
     MaterialModule,
     FontAwesomeModule
   ],
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent, PropertyFormComponent, BlogFormComponent],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

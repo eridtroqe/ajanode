@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Mail } from '../model/email.interface';
 import { environment } from '../../environments/environment';
-import { Post, PostResponse, PropertiesResponse, SearchQuery } from '../model/auth.iterface';
+import { Post, PostResponse, PropertiesResponse, SearchQuery, Blog } from '../model/auth.iterface';
 import { Observable, of } from 'rxjs';
 
 const BACKEND_URL = environment.apiUrl;
@@ -16,6 +16,10 @@ export class BackendService {
 
   sendMail(email: Mail) {
     this.http.post(BACKEND_URL + '/email', email).subscribe();
+  }
+
+  addBlog(blog: Blog) {
+    return this.http.post(BACKEND_URL + '/blogs', blog);
   }
 
   addProperty(property: Post, imagePath: Array<File>): Observable<any> {
@@ -42,10 +46,10 @@ export class BackendService {
       postData.append('imagePath', imagePath[i]);
     }
 
-    return this.http.post<any>(BACKEND_URL + '/propertys', postData, {reportProgress: true, observe: 'events'});
+    return this.http.post<any>(BACKEND_URL + '/propertys', postData, { reportProgress: true, observe: 'events' });
   }
 
-  updateProperty(id: string, property: Post, imagePath: Array<File>): Observable<any>{
+  updateProperty(id: string, property: Post, imagePath: Array<File>): Observable<any> {
     let postData: Post | FormData;
 
     if (imagePath.length > 0) {
@@ -72,7 +76,7 @@ export class BackendService {
         postData.append('imagePath', imagePath[i]);
       }
     } else {
-      postData = {...property, _id: id};
+      postData = { ...property, _id: id };
     }
 
 
@@ -83,19 +87,19 @@ export class BackendService {
 
   getProperties(searchQuery: SearchQuery, postsPerPage: number, currentPage: number): Observable<PropertiesResponse> {
     const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}&search=${searchQuery.search}&minSip=${searchQuery.minSip}&maxSip=${searchQuery.maxSip}&minPrice=${searchQuery.minPrice}&maxPrice=${searchQuery.maxPrice}&city=${searchQuery.city}&type=${searchQuery.type}&property_type=${searchQuery.peoperty_type}&floor=${searchQuery.floor}&typology=${encodeURIComponent(searchQuery.typology)}`;
-    return  this.http.get<PropertiesResponse>(BACKEND_URL + '/propertys' + queryParams);
+    return this.http.get<PropertiesResponse>(BACKEND_URL + '/propertys' + queryParams);
   }
 
   getProperty(id: string): Observable<Post> {
-    return  this.http.get<Post>(BACKEND_URL + '/propertys/' + id);
+    return this.http.get<Post>(BACKEND_URL + '/propertys/' + id);
   }
 
   deleteProperty(id: string): Observable<void> {
     return this.http.delete<void>(BACKEND_URL + '/propertys/' + id);
   }
 
-  getExclusive(): Observable<{exclusive: Array<any>}>{
-    return this.http.get<{exclusive: Array<any>}>(BACKEND_URL + '/exclusive');
+  getExclusive(): Observable<{ exclusive: Array<any> }> {
+    return this.http.get<{ exclusive: Array<any> }>(BACKEND_URL + '/exclusive');
   }
 
 }

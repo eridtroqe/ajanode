@@ -43,10 +43,10 @@ import { getPostsPerPage, getPage } from '../reducers/property.reducer';
 export class PropertyEffects {
 
     constructor(private actions$: Actions,
-                private router: Router,
-                private store: Store<AppState>,
-                private toastr: ToastrService,
-                private propertyService: BackendService) { }
+        private router: Router,
+        private store: Store<AppState>,
+        private toastr: ToastrService,
+        private propertyService: BackendService) { }
 
     AddPropertyRequest$ = createEffect(() => {
         return this.actions$.pipe(
@@ -65,7 +65,7 @@ export class PropertyEffects {
 
     OnAddPropertySuccess$ = createEffect(() => {
         return this.actions$.pipe(
-            ofType(addPropertySuccess),
+            ofType(addPropertySuccess, updatePropertySuccess),
             tap(() => this.router.navigate(['real-estate'])));
     }, { dispatch: false });
 
@@ -114,48 +114,49 @@ export class PropertyEffects {
 
     DeletePropertyRequest$ = createEffect(() => {
         return this.actions$.pipe(
-                ofType(deletePropertyRequest),
-                map(action => action.id),
-                withLatestFrom(this.store.select(getPostsPerPage), 
-                               this.store.select(getPage)), 
-                mergeMap(([id, postsPerPage, currentPage]) =>
-                    this.propertyService.deleteProperty(id).pipe(
-                        switchMap(data => [deletePropertySuccess(), 
-                                          globalSuccess({message: 'Prona u fshi me sukses!'}),
-                                          getPropertiesRequest({postsPerPage, currentPage})
-                                          ]),
-                        catchError(error => of(deletePropertyFailure({error}), 
-                                               globalError({error: 'Një gabim ndodhi gjatë fshirjes së pronës!'}))))
-                    ),
+            ofType(deletePropertyRequest),
+            map(action => action.id),
+            withLatestFrom(this.store.select(getPostsPerPage),
+                this.store.select(getPage)),
+            mergeMap(([id, postsPerPage, currentPage]) =>
+                this.propertyService.deleteProperty(id).pipe(
+                    switchMap(data => [deletePropertySuccess(),
+                    globalSuccess({ message: 'Prona u fshi me sukses!' }),
+                    getPropertiesRequest({ postsPerPage, currentPage })
+                    ]),
+                    catchError(error => of(deletePropertyFailure({ error }),
+                        globalError({ error: 'Një gabim ndodhi gjatë fshirjes së pronës!' }))))
+            ),
         );
     });
 
+
     GetExclusiveProperties$ = createEffect(() => {
         return this.actions$.pipe(
-                ofType(getExclusiveRequest),
-                mergeMap(() =>
-                    this.propertyService.getExclusive().pipe(
-                        map(data => getExclusiveSuccess({exclusive: data.exclusive})),
-                        catchError(error => of(getExclusiveFailure({error}))))
-                    ),
+            ofType(getExclusiveRequest),
+            mergeMap(() =>
+                this.propertyService.getExclusive().pipe(
+                    map(data => getExclusiveSuccess({ exclusive: data.exclusive })),
+                    catchError(error => of(getExclusiveFailure({ error }))))
+            ),
         );
     });
 
 
     UpdatePropertyRequest$ = createEffect(() => {
         return this.actions$.pipe(
-                ofType(updatePropertyRequest),
-                withLatestFrom(this.store.select(getPostsPerPage), 
-                this.store.select(getPage)), 
-                mergeMap(([action, postsPerPage, currentPage]) =>
-                    this.propertyService.updateProperty(action.id, action.payload, action.imagePath).pipe(
-                        switchMap(data =>[ updatePropertySuccess(),
-                             globalSuccess({message: 'Prona u ndryshua me sukses!'}),
-                             getPropertiesRequest({postsPerPage, currentPage})
-                        ]),
-                        catchError(error => of(updatePropertyFailure({error}), 
-                        globalError({error: 'Një gabim ndodhi gjatë ndryshimit së pronës!'}))))
-                    ),
+            ofType(updatePropertyRequest),
+            withLatestFrom(this.store.select(getPostsPerPage),
+                this.store.select(getPage)),
+            mergeMap(([action, postsPerPage, currentPage]) =>
+                this.propertyService.updateProperty(action.id, action.payload, action.imagePath).pipe(
+                    switchMap(data => [updatePropertySuccess(),
+                    globalSuccess({ message: 'Prona u ndryshua me sukses!' }),
+                    getPropertiesRequest({ postsPerPage, currentPage })
+                    ]),
+                    catchError(error => of(updatePropertyFailure({ error }),
+                        globalError({ error: 'Një gabim ndodhi gjatë ndryshimit së pronës!' }))))
+            ),
         );
     });
 

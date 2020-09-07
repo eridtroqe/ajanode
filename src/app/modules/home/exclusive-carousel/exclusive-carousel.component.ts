@@ -19,30 +19,30 @@ export class ExclusiveCarouselComponent implements OnInit {
     pullDrag: false,
     stagePadding: 5,
     dots: true,
-    margin: 10,
     navSpeed: 700,
     autoplaySpeed: 1000,
     responsive: {
       0: {
         items: 1,
         // stagePadding: 10,
-        margin: 10
+        margin: 15
       },
       400: {
         items: 2,
         // stagePadding: 10,
-        margin: 10
+        margin: 15
       },
       740: {
         items: 3,
-        margin: 10
+        margin: 15
       },
       1024: {
         items: 4,
-        margin: 10
+        margin: 15
       },
       1440: {
-        items: 4
+        items: 4,
+        margin: 15
       },
       2500: {
         items: 4,

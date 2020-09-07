@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { HomeComponent } from './modules/home/home.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { LoginComponent } from './modules/dashboard/login/login.component';
@@ -17,7 +17,6 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    // component: DashboardComponent,
     loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
     canActivate: [AuthGuard]
   },
@@ -28,6 +27,10 @@ const routes: Routes = [
   {
     path: 'aboutus',
     loadChildren: () => import('./modules/aboutus/aboutus.module').then(m => m.AboutusModule)
+  },
+  {
+    path: 'blog',
+    loadChildren: () => import('./modules/blog/blog.module').then(m => m.BlogModule)
   },
   {
     path: 'contact',
@@ -43,7 +46,8 @@ const routes: Routes = [
   },
   {
     path: 'environmental-consultancy',
-    loadChildren: () => import('./modules/environmental-consultancy/environmental-consultancy.module').then(m => m.EnvironmentalConsultancyModule)
+    loadChildren: () => import('./modules/environmental-consultancy/environmental-consultancy.module')
+    .then(m => m.EnvironmentalConsultancyModule)
   },
   {
     path: 'food-safety',
@@ -65,7 +69,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled', preloadingStrategy: PreloadAllModules })
   ],
   exports: [RouterModule]
 })

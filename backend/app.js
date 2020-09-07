@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 
 const userRoutes = require("./routes/user");
 const propertysRoutes = require("./routes/posts");
+const blogsRoutes = require("./routes/blogs");
 const EmailController = require("./controllers/email");
 const PostController = require("./controllers/posts");
 // const helmet = require('helmet');
@@ -48,6 +49,7 @@ app.post("/api/email", EmailController.sendEmail);
 app.get("/api/exclusive", PostController.getExclusiveProperties);
 app.use("/api/user", userRoutes);
 app.use("/api/propertys", propertysRoutes);
+app.use("/api/blogs", blogsRoutes);
 
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname,"aja-angular", "index.html"));

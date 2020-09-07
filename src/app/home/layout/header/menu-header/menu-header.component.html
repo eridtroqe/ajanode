@@ -83,6 +83,15 @@
   <li>
     <a
       mat-button
+      [routerLink]="['/blog']"
+      routerLinkActive="router-link-active"
+    >
+      Blog
+    </a>
+  </li>
+  <li>
+    <a
+      mat-button
       [routerLink]="['/contact']"
       routerLinkActive="router-link-active"
     >
@@ -93,6 +102,7 @@
   <li>
     <a
       mat-button
+      [routerLink]="['/dashboard']"
       (click)="navigateToDashboard()"
       routerLinkActive="router-link-active"
     >

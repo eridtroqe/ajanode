@@ -18,7 +18,8 @@
               <div class="chip sale" *ngIf="property.type === 'Sale'">Shitet</div>
             </div>
           </div>
-          <div>{{property.price | number}} €</div>
+          <div *ngIf="property.price;else text">{{property.price | number}} €</div>
+          <ng-template #text>Me marrëveshje</ng-template>
         </div>
       </div>
     </div>
