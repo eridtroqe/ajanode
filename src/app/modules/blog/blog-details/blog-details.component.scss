@@ -1,0 +1,12 @@
+:host{
+    display: block;
+    margin-top: 7rem;
+    margin-bottom: 2rem;
+}
+
+.blog-image{
+    width: calc(100% + 32px);
+    margin: -16px -16px 16px -16px !important;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+}

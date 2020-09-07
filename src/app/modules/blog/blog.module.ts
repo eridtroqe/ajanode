@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BlogComponent } from './blog.component';
 import { Route, RouterModule } from '@angular/router';
-import { MaterialModule } from 'src/app/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BlogDetailsComponent } from './blog-details/blog-details.component';
-import { QuillModule } from 'ngx-quill';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { BlogCardComponent } from './blog-card/blog-card.component';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { getBlogPaginatorIntl } from './blog-paginator';
 
 const routes: Route[] = [
   {
@@ -26,6 +27,7 @@ const routes: Route[] = [
     RouterModule.forChild(routes),
     SharedModule
   ],
-  declarations: [BlogComponent, BlogDetailsComponent]
+  declarations: [BlogComponent, BlogDetailsComponent, BlogCardComponent],
+  providers: [{ provide: MatPaginatorIntl, useValue: getBlogPaginatorIntl() }]
 })
 export class BlogModule { }

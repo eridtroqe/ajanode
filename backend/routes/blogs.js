@@ -10,8 +10,8 @@ const router = express.Router();
 
 router.post("", checkAuth, extractFile, BlogController.addBlog);
 router.get("", extractFiles, BlogController.getBlogs);
+router.get("/:id", BlogController.getBlog);
 // router.put("/:id", checkAuth, extractFile, PostController.updatePost);
 // router.delete("/:id", checkAuth, PostController.deleteProperty);
-// router.get("/:id", PostController.getProperty);
 
 module.exports = router;

@@ -22,13 +22,17 @@ export class BackendService {
     const postData = new FormData();
     postData.append('title', blog.title);
     postData.append('content', blog.content);
-    postData.append('imagePath', blog.image);
+    postData.append('imagePath', blog.imagePath);
     return this.http.post(BACKEND_URL + '/blogs', postData, { reportProgress: true, observe: 'events' });
   }
 
   getBlogs(blogsPerPage: number, currentPage: number): Observable<BlogsResponse> {
     const queryParams = `?pagesize=${blogsPerPage}&page=${currentPage}`;
     return this.http.get<BlogsResponse>(BACKEND_URL + '/blogs' + queryParams);
+  }
+
+  getBlog(id: string): Observable<Blog> {
+    return this.http.get<Blog>(BACKEND_URL + '/blogs/' + id);
   }
 
   addProperty(property: Post, imagePath: Array<File>): Observable<any> {

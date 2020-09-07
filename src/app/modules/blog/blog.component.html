@@ -1,9 +1,24 @@
-<!-- <p>
-  {{ blogs$ | async | json }}
-</p> -->
+<div class="container">
+  <div class="row justify-content-center align-items-center loading" *ngIf="isLoading$ | async;else blogs">
+  <mat-spinner></mat-spinner>
+</div>
+  <ng-template #blogs>
+  <div class="row justify-content-between">
+  
+    <ng-container  *ngFor="let item of blogs$ | async as list">
+      <app-blog-card class="col-md-6 mb-4" 
+                     [blog]="item"
+                     ></app-blog-card>
 
-<ng-container *ngFor="let item of blogs$ | async as list">
-  <h1>{{ item.title }}</h1>
-  <img [src]="item.image">
-  <quill-view-html [content]="item.content" theme="snow"></quill-view-html>
-</ng-container>
+      </ng-container>
+<mat-paginator
+class="col-md-12"
+[length]="totalBlogs$ | async"
+[pageSize]="blogsPerPage"
+[pageSizeOptions]="[8,12,16,20]"
+(page)="onChangedPage($event)"
+[showFirstLastButtons]="true"></mat-paginator>
+  </div>
+</ng-template>
+
+</div>

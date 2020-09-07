@@ -1,7 +1,7 @@
 //@import "~@angular/material/theming";
 
 .bg-image {
-  background-image: url("~/assets/wallpaper/outdoor-pool-1.jpg");
+  background-image: url("~/assets/wallpaper/outdoor-pool.jpg");
   width: 100%;
   height: auto;
   background-size: cover;
@@ -13,7 +13,7 @@
   // background-attachment: fixed;
 
   // background-size: 110% 110%;
-  background-position: center center;
+  background-position: center 70%;
   // animation: shrink 5s infinite alternate;
 }
 
@@ -52,7 +52,7 @@ mat-card-content {
   // height: 100%;
 }
 .form-container{
-  padding: 40vh 25vw 30vh 25vw;
+  padding: 30vh 25vw 22vh 25vw;
 }
 
 // input {

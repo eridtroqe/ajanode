@@ -9,7 +9,7 @@ export interface User {
 export interface Blog {
     _id?: string;
     title: string;
-    image?: string | File;
+    imagePath?: string | File;
     content: string;
 }
 

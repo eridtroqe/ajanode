@@ -50,3 +50,19 @@ exports.getBlogs = (req, res, next) => {
       });
     });
 }
+
+exports.getBlog = (req, res, next) => {
+  Blog.findById(req.params.id)
+    .then(post => {
+      if (post) {
+        res.status(200).json(post);
+      } else {
+        res.status(404).json({ message: "Blog not found!" });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "Fetching blog failed!"
+      });
+    });
+};

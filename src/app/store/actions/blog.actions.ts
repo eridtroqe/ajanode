@@ -12,3 +12,7 @@ export const addBlogFailure = createAction(`[${featureKey}] addBlogFailure`, pro
 export const getBlogsRequest = createAction(`[${featureKey}] getBlogsRequest`, props<{ blogsPerPage: number, currentPage: number }>());
 export const getBlogsSuccess = createAction(`[${featureKey}] getBlogsSuccess`, props<{ blogs: BlogsResponse }>());
 export const getBlogsFailure = createAction(`[${featureKey}] getBlogsFailure`, props<{ error: string }>());
+
+export const getBlogRequest = createAction(`[${featureKey}] getBlogRequest`, props<{ id: string }>());
+export const getBlogSuccess = createAction(`[${featureKey}] getBlogSuccess`, props<{ payload: Blog }>());
+export const getBlogFailure = createAction(`[${featureKey}] getBlogFailure`, props<{ error: string }>());

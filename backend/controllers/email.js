@@ -15,7 +15,7 @@ exports.sendEmail = (req, res, next) => {
      if(req.body.postUrl){
        mailOptions = {
         from: "'Aja Real Estate'",
-        to: 'erid11.troqe@gmail.com',
+        to: 'ajafirstchoice@gmail.com',
         subject: 'Real Estate',
         text: 'Name: ' + req.body.name + "\n" + 
               'Email: ' + req.body.email + '\n' + 
@@ -27,7 +27,7 @@ exports.sendEmail = (req, res, next) => {
      } else {
        mailOptions = {
         from: "'Aja Real Estate'",
-        to: 'erid11.troqe@gmail.com',
+        to: 'ajafirstchoice@gmail.com',
         subject: 'Real Estate',
         text: 'Name: ' + req.body.name + "\n" + 
               'Email: ' + req.body.email + '\n' + 

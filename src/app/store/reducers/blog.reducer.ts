@@ -34,7 +34,10 @@ const blogReducer = createReducer(
             error: null
         }
     )),
-    on(blogActions.getBlogsFailure, (state: State, { error }) => ({ ...state, loading: false, error }))
+    on(blogActions.getBlogsFailure, (state: State, { error }) => ({ ...state, loading: false, error })),
+    on(blogActions.getBlogRequest, (state: State) => ({ ...state, loading: true, error: null })),
+    on(blogActions.getBlogSuccess, (state: State, { payload }) => ({ ...state, blog: payload, loading: false, error: null })),
+    on(blogActions.getBlogFailure, (state: State, { error }) => ({ ...state, loading: false, error }))
 );
 
 export function reducer(state: State | undefined, action: Action) {
