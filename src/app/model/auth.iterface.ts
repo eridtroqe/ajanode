@@ -9,6 +9,7 @@ export interface User {
 export interface Blog {
     _id?: string;
     title: string;
+    image?: string | File;
     content: string;
 }
 
@@ -46,6 +47,11 @@ export interface PropertiesResponse {
     properties: Array<any>;
     postsCount?: number;
 }
+export interface BlogsResponse {
+    message?: string;
+    blogs: Array<Blog>;
+    blogsCount?: number;
+}
 
 export enum UploadStatus {
     Ready = 'Ready',
@@ -64,7 +70,7 @@ export interface SearchQuery {
     search: string;
     city: string;
     typology: string;
-    peoperty_type: string;
+    property_type: string;
     type: string;
     minSip?: number;
     maxSip?: number;

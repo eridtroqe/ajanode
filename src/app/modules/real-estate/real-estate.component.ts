@@ -6,6 +6,7 @@ import { Observable, Subscription } from 'rxjs';
 import { getPostsPerPage, getPage, getProperties, getTotalProperties, getSearchQuery } from '../../store/reducers/property.reducer';
 import { Post, SearchQuery } from 'src/app/model/auth.iterface';
 import { PageEvent } from '@angular/material/paginator';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-real-estate',
@@ -19,11 +20,10 @@ export class RealEstateComponent implements OnInit, OnDestroy {
   properties$: Observable<Array<Post>>;
   totalProperties$: Observable<number>;
   query: SearchQuery;
+  form: FormGroup;
   subscriptions = new Subscription();
 
-  
-
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, private fb: FormBuilder) {
     this.properties$ = this.store.select(getProperties);
     this.totalProperties$ = this.store.select(getTotalProperties);
     this.subscriptions.add(this.store.select(getPostsPerPage).subscribe(val => this.postsPerPage = val));
@@ -32,7 +32,7 @@ export class RealEstateComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-   this.store.dispatch(getPropertiesRequest({searchQuery: this.query,  postsPerPage: this.postsPerPage, currentPage: this.page }));
+   this.store.dispatch(getPropertiesRequest({ searchQuery: this.query, postsPerPage: this.postsPerPage, currentPage: this.page }));
   }
 
   ngOnDestroy() {

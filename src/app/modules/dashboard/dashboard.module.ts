@@ -10,6 +10,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PropertyFormComponent } from './property-form/property-form.component';
 import { BlogFormComponent } from './blog-form/blog-form.component';
 import { QuillModule } from 'ngx-quill';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 const routes: Route[] = [
@@ -26,9 +27,9 @@ const routes: Route[] = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
-    QuillModule.forRoot(),
     MaterialModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    SharedModule
   ],
   declarations: [DashboardComponent, PropertyFormComponent, BlogFormComponent],
   providers: [

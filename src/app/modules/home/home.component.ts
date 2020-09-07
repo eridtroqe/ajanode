@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(getPropertiesRequest({    searchQuery: {
       city: '',
-      peoperty_type: '',
+      property_type: '',
       search: '',
       type: '',
       typology: '',

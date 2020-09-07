@@ -1,3 +1,9 @@
-<p>
-  blog works!
-</p>
+<!-- <p>
+  {{ blogs$ | async | json }}
+</p> -->
+
+<ng-container *ngFor="let item of blogs$ | async as list">
+  <h1>{{ item.title }}</h1>
+  <img [src]="item.image">
+  <quill-view-html [content]="item.content" theme="snow"></quill-view-html>
+</ng-container>

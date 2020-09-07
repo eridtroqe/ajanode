@@ -4,9 +4,11 @@ const path = require('path');
 
 
 exports.addBlog = (req, res, next) => {
-  console.log('req add ', req.body);
+  const url = req.protocol + "://" + req.get("host");
+
   const blog = new Blog({
       title: req.body.title,
+      imagePath: url + "/images/" + req.file.filename,
       content: req.body.content
   })
 
@@ -21,3 +23,30 @@ exports.addBlog = (req, res, next) => {
       });
     });
 };
+
+exports.getBlogs = (req, res, next) => {
+  const pageSize = +req.query.pagesize;
+  const currentPage = +req.query.page;
+  const blogQuery = Blog.find();
+  let fetchedBlogs;
+  if (pageSize && currentPage) {
+    blogQuery.skip(pageSize * (currentPage - 1))
+      .limit(pageSize);
+  }
+  blogQuery.then(documents => {
+    fetchedBlogs = documents;
+    return Blog.countDocuments();
+  })
+    .then(count => {
+      res.status(200).json({
+        message: "Blogs fetched succesfully",
+        blogs: fetchedBlogs,
+        blogsCount: count
+      });
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "Fetching blogs failed!"
+      });
+    });
+}

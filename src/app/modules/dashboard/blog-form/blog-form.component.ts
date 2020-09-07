@@ -5,6 +5,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
 import { addBlogRequest } from 'src/app/store/actions/blog.actions';
+import { Observable } from 'rxjs';
+import { getProgress, getInProgress, getReady, getFailed, isLoadingProperty } from 'src/app/store/reducers/property.reducer';
 
 @Component({
   selector: 'app-blog-form',
@@ -15,6 +17,14 @@ export class BlogFormComponent implements OnInit {
   modules = {};
   content = '';
   form: FormGroup;
+  imagePreview: string;
+  progress$: Observable<number>;
+  error$: Observable<string>;
+
+  isInProgress$: Observable<boolean>;
+  isReady$: Observable<boolean>;
+  hasFailed$: Observable<boolean>;
+  isLoading$: Observable<boolean>;
 
   constructor(private fb: FormBuilder, private store: Store<AppState>) {
     this.modules = {
@@ -49,8 +59,26 @@ export class BlogFormComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       title: ['', Validators.required],
-      content: ['', Validators.required]
+      content: ['', Validators.required],
+      image: [null, Validators.required]
     });
+
+    this.progress$ = this.store.select(getProgress);
+    this.isInProgress$ = this.store.select(getInProgress);
+    this.isReady$ = this.store.select(getReady);
+    this.hasFailed$ = this.store.select(getFailed);
+    this.isLoading$ = this.store.select(isLoadingProperty);
+  }
+
+  onImagePicked(event){
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({ image: file });
+    this.form.get("image").updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
   }
   onSubmitBlog() {
 

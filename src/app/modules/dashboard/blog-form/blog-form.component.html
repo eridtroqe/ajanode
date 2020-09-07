@@ -4,12 +4,23 @@
         <input matInput type="text" formControlName="title" placeholder="Titulli" required>
         <mat-error *ngIf="form.get('title').invalid">Vendosni një titull</mat-error>
       </mat-form-field>
+      <ng-container *ngIf="(isInProgress$ | async) && progress$ | async as progress">
+        <mat-progress-bar class="mb-1"  [value]="progress"></mat-progress-bar>
+        <div class="text-center"> {{progress }} %</div>
+      </ng-container>
+      <div style="margin-bottom: 1rem;" *ngIf="(isReady$ | async) || (hasFailed$ | async)">
+        <button mat-stroked-button type="button" (click)="filePicker.click()">Zgjidh foton</button>
+        <input type="file" multiple #filePicker (change)="onImagePicked($event)">
+      </div>
+      <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+        <img  [src]="imagePreview" height="150" width="200px" style="margin: 3px;" [alt]="form.value.title">
+      </div>
     <quill-editor 
                   [styles]="{'min-height': '450px'}" 
                   [modules]="modules"
                   formControlName="content"
     ></quill-editor>
-    <quill-view-html [content]="form.get('content').value" theme="snow"></quill-view-html>
+    <!-- <quill-view-html [content]="form.get('content').value" theme="snow"></quill-view-html> -->
     <button mat-raised-button color="accent" type="submit" [disabled]="this.form.invalid">
         Krijo Blog
       </button>

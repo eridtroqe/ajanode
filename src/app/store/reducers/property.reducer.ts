@@ -23,7 +23,7 @@ export const initialState: State = {
     exclusive: [],
     searchQuery: {
         city: '',
-        peoperty_type: '',
+        property_type: '',
         search: '',
         type: '',
         typology: '',

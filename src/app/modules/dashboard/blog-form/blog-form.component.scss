@@ -16,3 +16,22 @@ mat-card{
  button{
      width: 200px;
  }
+
+ mat-spinner {
+    margin: auto;
+  }
+  
+  input[type="file"] {
+    visibility: hidden;
+  }
+  
+  .image-preview {
+    margin: 1rem 0;
+    img{
+     height: 5rem;
+    }
+  }
+  
+  .image-preview img {
+    height: 100%;
+  }

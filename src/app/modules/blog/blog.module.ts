@@ -4,21 +4,28 @@ import { BlogComponent } from './blog.component';
 import { Route, RouterModule } from '@angular/router';
 import { MaterialModule } from 'src/app/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BlogDetailsComponent } from './blog-details/blog-details.component';
+import { QuillModule } from 'ngx-quill';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const routes: Route[] = [
   {
     path: '',
     component: BlogComponent
+  },
+  {
+    path: ':id',
+    component: BlogDetailsComponent
   }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    MaterialModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule
   ],
-  declarations: [BlogComponent]
+  declarations: [BlogComponent, BlogDetailsComponent]
 })
 export class BlogModule { }
