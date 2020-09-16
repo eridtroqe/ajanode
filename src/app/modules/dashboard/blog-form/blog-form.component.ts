@@ -87,7 +87,6 @@ export class BlogFormComponent implements OnInit {
     }
 
     this.store.dispatch(addBlogRequest({blog: this.form.value}));
-    console.log('blog-form ', this.form.value);
   }
 
 }

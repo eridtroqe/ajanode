@@ -22,3 +22,12 @@ img{
     max-width: 100%;
     height: auto;
 }
+
+@media only screen and (max-width: 576px) {
+    :host{
+        margin-top: 64px;
+    }
+   h1 {
+    line-height: 1.3;
+   }
+  }

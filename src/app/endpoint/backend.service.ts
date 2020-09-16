@@ -103,7 +103,7 @@ export class BackendService {
       postData = { ...property, _id: id };
     }
 
-
+    console.log('postdata ', postData);
     // return of(true);
 
     return this.http.put<any>(BACKEND_URL + '/propertys/' + id, postData);

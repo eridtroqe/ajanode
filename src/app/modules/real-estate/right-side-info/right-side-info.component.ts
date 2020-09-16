@@ -38,7 +38,6 @@ export class RightSideInfoComponent implements OnInit {
     });
     this.route.paramMap.subscribe(param => {
       this.propertyId = param.get('id');
-      // console.log('params ', param.);
     });
 
     this.latestBlog$ = this.store.select(getBlog);

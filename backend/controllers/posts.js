@@ -189,13 +189,7 @@ exports.updatePost = (req, res, next) => {
   const url = req.protocol + "://" + req.get("host");
   let imagePath = req.body.imagePath;
 
-  if (req.files) {
-    for (let i = 0; i < req.files.length; i++) {
-      const element = req.files[i];
-      imagePath = [];
-      imagePath.push(url + "/images/" + req.files[i].filename);
-    }
-  }
+
   const post = new Post({
     _id: req.body._id,
     city: req.body.city,
@@ -218,6 +212,15 @@ exports.updatePost = (req, res, next) => {
     position: req.body.position,
     imagePath: imagePath
   });
+
+  if (req.files) {
+    for (let i = 0; i < req.files.length; i++) {
+      const element = req.files[i];
+      imagePath = [];
+      post.imagePath.push(url + "/images/" + req.files[i].filename);
+    }
+  }
+
   Post.updateOne({ _id: req.params.id }, post)
     .then(result => {
       // console.log('impagepath ', post.imagePath);

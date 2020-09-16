@@ -95,20 +95,20 @@ export class PropertyFormComponent implements OnInit, OnDestroy {
 
     if (this.mode === Mode.Update) {
       this.form.setValue({
-        title: this.property.title,
-        city: this.property.city,
-        property_type: this.property.property_type,
-        description: this.property.description,
-        address: this.property.address,
-        sip: this.property.sip,
-        typology: this.property.typology,
-        rooms: this.property.rooms,
-        areas: this.property.areas,
-        toilets: this.property.toilets,
-        floor: this.property.floor,
-        type: this.property.type,
-        exclusive: this.property.exclusive,
-        position: this.property.position,
+        title: this.property.title || '',
+        city: this.property.city || '',
+        property_type: this.property.property_type || '',
+        description: this.property.description || '',
+        address: this.property.address || '',
+        sip: this.property.sip || '',
+        typology: this.property.typology || '',
+        rooms: this.property.rooms || '',
+        areas: this.property.areas || '',
+        toilets: this.property.toilets || '',
+        floor: this.property.floor || '',
+        type: this.property.type || '',
+        exclusive: this.property.exclusive || '',
+        position: this.property.position || '',
         rented: this.property.rented,
         sold: this.property.sold,
         prenoted: this.property.prenoted,
@@ -118,7 +118,7 @@ export class PropertyFormComponent implements OnInit, OnDestroy {
       this.imagePreview = this.form.get('imagePath').value;
     }
 
-
+    console.table('form ', this.form.value);
     this.progress$ = this.store.select(getProgress);
     this.isInProgress$ = this.store.select(getInProgress);
     this.isReady$ = this.store.select(getReady);
@@ -167,7 +167,6 @@ export class PropertyFormComponent implements OnInit, OnDestroy {
   onImagePicked(event: Event) {
     const file = (event.target as HTMLInputElement).files;
     const fileArray = Array.from(file);
-
     if (file === undefined) { return; }
     for (const fil of fileArray) {
       this.form.get('imagePath').updateValueAndValidity();
@@ -178,6 +177,8 @@ export class PropertyFormComponent implements OnInit, OnDestroy {
         //  this.imagePreview.push(reader.result);
         this.imagePreview = [...this.imagePreview, reader.result];
       };
+      console.log('imagepreview ', this.imagePreview);
+      console.log('filesToUpload ', this.filesToUpload);
       reader.readAsDataURL(fil);
     }
 

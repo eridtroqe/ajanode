@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Blog } from 'src/app/model/auth.iterface';
 import { getBlog } from 'src/app/store/reducers/blog.reducer';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact-action-area',
@@ -13,10 +14,13 @@ import { getBlog } from 'src/app/store/reducers/blog.reducer';
 export class ContactActionAreaComponent implements OnInit {
 
   latestBlog$: Observable<Blog>;
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>, private router: Router) { }
 
   ngOnInit() {
     this.latestBlog$ = this. store.select(getBlog);
+  }
+  navigateToBlog(id){
+    this.router.navigateByUrl(`blog/${id}`);
   }
 
 }

@@ -10,13 +10,12 @@ const transporter = nodemailer.createTransport({
 
 exports.sendEmail = (req, res, next) => {
   const url = req.protocol + "://" + req.get("host");
-  console.log('email ', req.body);
   let mailOptions = {};
      if(req.body.postUrl){
        mailOptions = {
-        from: "'Aja Real Estate'",
-        to: 'ajafirstchoice@gmail.com',
-        subject: 'Real Estate',
+        from: `<${req.body.email}>`,
+        to: 'erid.troqe@gmail.com',
+        subject: `Aja Real Estate <${req.body.name}>`,
         text: 'Name: ' + req.body.name + "\n" + 
               'Email: ' + req.body.email + '\n' + 
               'Property link: ' + url + req.body.postUrl + '\n' + 
@@ -26,9 +25,9 @@ exports.sendEmail = (req, res, next) => {
 
      } else {
        mailOptions = {
-        from: "'Aja Real Estate'",
-        to: 'ajafirstchoice@gmail.com',
-        subject: 'Real Estate',
+        from: `<${req.body.email}>`,
+        to: 'erid.troqe@gmail.com',
+        subject: `Aja Real Estate <${req.body.name}>`,
         text: 'Name: ' + req.body.name + "\n" + 
               'Email: ' + req.body.email + '\n' + 
               'Service: ' + req.body.service + '\n' + 
@@ -40,6 +39,7 @@ exports.sendEmail = (req, res, next) => {
 
 
     transporter.sendMail(mailOptions, function(error, info){
+
         if (error) {
           res.sendStatus(500);
         } else {

@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col mt-3">
         <div class="contact-area mat-elevation-z2">
             <h1 class="col-xs-12">Keni një pronë ose kërkoni një?</h1>
             <h5 class="col-xs-12">A-JA First choice është zgjedhja juaj e parë.</h5>
@@ -11,8 +11,8 @@
                 </button>
         </div>
     </div>
-        <div class="col-md-3" *ngIf="latestBlog$ | async as blog">
-          <mat-card>
+        <div class="col-md-3 mt-3" *ngIf="latestBlog$ | async as blog">
+          <mat-card class="blog" (click)="navigateToBlog(blog._id)">
               <img mat-card-image [src]="blog.imagePath">
               <h1>{{ blog.title }}</h1>
           </mat-card>
