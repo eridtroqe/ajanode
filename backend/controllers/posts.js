@@ -5,7 +5,6 @@ const path = require('path');
 
 exports.addProperty = (req, res, next) => {
   const url = req.protocol + "://" + req.get("host");
-  console.log('req add ', req.body);
   const post = new Post({
     title: req.body.title,
     city: req.body.city,
@@ -30,7 +29,7 @@ exports.addProperty = (req, res, next) => {
   if (req.files) {
     for (let i = 0; i < req.files.length; i++) {
       const element = req.files[i];
-      post.imagePath.push(url + "/images/" + req.files[i].filename);
+      post.imagePath.push(req.files[i].location);
     }
   }
 
@@ -114,7 +113,6 @@ exports.getPropertys = (req, res, next) => {
   }
 
 
-console.log('query ', query);
   const postQuery = Post.find(query);
 
 
@@ -162,19 +160,19 @@ exports.deleteProperty = (req, res, next) => {
 
   Post.findOneAndDelete({ _id: req.params.id }).then(
     post => {
-      const filenames = [];
-      for (let i = 0; i < post.imagePath.length; i++) {
-        const element = post.imagePath[i];
-        filenames.push(path.basename(element));
-      }
-      const fileStoragePath = path.join(__dirname + '/../images/');
+      // const filenames = [];
+      // for (let i = 0; i < post.imagePath.length; i++) {
+      //   const element = post.imagePath[i];
+      //   filenames.push(path.basename(element));
+      // }
+      // const fileStoragePath = path.join(__dirname + '/../images/');
 
-      filenames.forEach(
-        file => fs.unlink(fileStoragePath + file, (err) => {
-          if (err) { throw err; }
-        }
-        )
-      );
+      // filenames.forEach(
+      //   file => fs.unlink(fileStoragePath + file, (err) => {
+      //     if (err) { throw err; }
+      //   }
+      //   )
+      // );
 
       res.status(200).json({ message: "Deleted successful!" });
 
@@ -217,7 +215,7 @@ exports.updatePost = (req, res, next) => {
     for (let i = 0; i < req.files.length; i++) {
       const element = req.files[i];
       imagePath = [];
-      post.imagePath.push(url + "/images/" + req.files[i].filename);
+      post.imagePath.push(req.files[i].location);
     }
   }
 

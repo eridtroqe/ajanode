@@ -67,11 +67,10 @@ mat-card{
 ::ng-deep .owl-carousel .owl-item .main-img {
     width: auto !important;
     max-width: 100% !important;
-    height: 100% !important;
+    max-height: 100% !important;
 //    object-fit: cover;
-   margin-left: auto;
-   margin-right: auto;
-    
+//    margin-left: auto;
+//    margin-right: auto;
 }
 
 .stage-container ::ng-deep .owl-stage{
@@ -80,9 +79,9 @@ mat-card{
 ::ng-deep .owl-item .img-container{
     height: 450px;
     width: 100%;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav-img {

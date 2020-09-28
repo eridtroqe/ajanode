@@ -19,7 +19,6 @@ export class BackendService {
   }
 
   addBlog(blog: Blog) {
-    console.log('add blog ', blog);
     const postData = new FormData();
     postData.append('title', blog.title);
     postData.append('content', blog.content);
@@ -46,7 +45,6 @@ export class BackendService {
 
   addProperty(property: Post, imagePath: Array<File>): Observable<any> {
     const postData = new FormData();
-    console.log('property ', property);
     postData.append('title', property.title);
     postData.append('city', property.city);
     postData.append('property_type', property.property_type);
@@ -103,14 +101,12 @@ export class BackendService {
       postData = { ...property, _id: id };
     }
 
-    console.log('postdata ', postData);
     // return of(true);
 
     return this.http.put<any>(BACKEND_URL + '/propertys/' + id, postData);
   }
 
   getProperties(searchQuery: SearchQuery, postsPerPage: number, currentPage: number): Observable<PropertiesResponse> {
-    console.log('getProperties ', searchQuery);
     const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}&search=${searchQuery.search}&minSip=${searchQuery.minSip}&maxSip=${searchQuery.maxSip}&minPrice=${searchQuery.minPrice}&maxPrice=${searchQuery.maxPrice}&city=${searchQuery.city}&type=${searchQuery.type}&property_type=${searchQuery.property_type}&floor=${searchQuery.floor}&typology=${encodeURIComponent(searchQuery.typology)}`;
     return this.http.get<PropertiesResponse>(BACKEND_URL + '/propertys' + queryParams);
   }

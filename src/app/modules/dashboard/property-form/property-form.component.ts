@@ -177,8 +177,6 @@ export class PropertyFormComponent implements OnInit, OnDestroy {
         //  this.imagePreview.push(reader.result);
         this.imagePreview = [...this.imagePreview, reader.result];
       };
-      console.log('imagepreview ', this.imagePreview);
-      console.log('filesToUpload ', this.filesToUpload);
       reader.readAsDataURL(fil);
     }
 

@@ -8,7 +8,7 @@ exports.addBlog = (req, res, next) => {
 
   const blog = new Blog({
       title: req.body.title,
-      imagePath: url + "/images/" + req.file.filename,
+      imagePath: req.file.location,
       content: req.body.content
   })
 
@@ -88,7 +88,6 @@ exports.getLastBlog = (req, res, next) => {
 exports.deleteBlog = (req, res, next) => {
   Blog.deleteOne({ _id: req.params.id })
     .then(result => {
-      console.log(result);
       if (result.n > 0) {
         res.status(200).json({ message: "Deletion successful!" });
       } else {
