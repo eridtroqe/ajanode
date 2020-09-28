@@ -1,113 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>AJA Real Estate</title>
-    <base href="/" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#47536c" />
-    <meta name="msapplication-navbutton-color" content="#47536c">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="icon"  type="image/x-icon" href="./assets/logo/aja_logo_tab.png">
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
-      rel="stylesheet"
-    />
-    <!-- <link
+
+<head>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179216613-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-179216613-1');
+  </script>
+
+  <meta charset="utf-8" />
+  <title>AJA Real Estate</title>
+  <base href="/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#47536c" />
+  <meta name="msapplication-navbutton-color" content="#47536c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" type="image/x-icon" href="./assets/logo/aja_logo_tab.png">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+  <!-- <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     /> -->
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
-rel="stylesheet" />
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVlUknPGnRnqiPNtgJHSQndT979Jv3t7o"></script>
+  <link
+    href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+    rel="stylesheet" />
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVlUknPGnRnqiPNtgJHSQndT979Jv3t7o"></script>
 
-    <style type="text/css">
-      /* width */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
+  <style type="text/css">
+    /* width */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
 
-      /* Track */
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-      }
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
 
-      /* Handle */
-      ::-webkit-scrollbar-thumb {
-        background: #67738fe5;
-        border-radius: 10px;
-      }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #67738fe5;
+      border-radius: 10px;
+    }
 
-      /* Handle on hover */
-      ::-webkit-scrollbar-thumb:hover {
-        background: #8492b3;
-      }
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #8492b3;
+    }
 
-      body, html {
-        height: 100%;
+    body,
+    html {
+      height: 100%;
+    }
+
+    .app-loading {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .app-loading .spinner {
+      height: 200px;
+      width: 200px;
+      animation: rotate 2s linear infinite;
+      transform-origin: center center;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+
+    .app-loading .spinner .path {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+      animation: dash 1.5s ease-in-out infinite;
+      stroke-linecap: round;
+      stroke: #31394d;
+    }
+
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
       }
-      .app-loading {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-      }
-  
-      .app-loading .spinner {
-        height: 200px;
-        width: 200px;
-        animation: rotate 2s linear infinite;
-        transform-origin: center center;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-      }
-  
-      .app-loading .spinner .path {
+    }
+
+    @keyframes dash {
+      0% {
         stroke-dasharray: 1, 200;
         stroke-dashoffset: 0;
-        animation: dash 1.5s ease-in-out infinite;
-        stroke-linecap: round;
-        stroke: #31394d;
       }
-  
-      @keyframes rotate {
-        100% {
-          transform: rotate(360deg);
-        }
+
+      50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
       }
-  
-      @keyframes dash {
-        0% {
-          stroke-dasharray: 1, 200;
-          stroke-dashoffset: 0;
-        }
-        50% {
-          stroke-dasharray: 89, 200;
-          stroke-dashoffset: -35px;
-        }
-        100% {
-          stroke-dasharray: 89, 200;
-          stroke-dashoffset: -124px;
-        }
+
+      100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
       }
-    </style>
-  </head>
-  <body class="mat-typography">
-    <app-root>
-      <div class="app-loading">
-        <div class="logo">
-          <svg class="spinner" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
-          </svg>
-        </div>
+    }
+  </style>
+</head>
+
+<body class="mat-typography">
+  <app-root>
+    <div class="app-loading">
+      <div class="logo">
+        <svg class="spinner" viewBox="25 25 50 50">
+          <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
       </div>
-    </app-root>
-  </body>
+    </div>
+  </app-root>
+</body>
+
 </html>

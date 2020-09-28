@@ -19,8 +19,7 @@ mongoose
   .connect(
     "mongodb+srv://erid:" + process.env.MONGO_ATLAS_PW +"@aja-prod-cluster.ambpl.mongodb.net/aja-node?retryWrites=true&w=majority",
     { useNewUrlParser: true, 
-      useUnifiedTopology: true,
-      useCreateIndexes: true })
+      useUnifiedTopology: true})
   .then(() => {
     console.log("Connected to database!");
   })
