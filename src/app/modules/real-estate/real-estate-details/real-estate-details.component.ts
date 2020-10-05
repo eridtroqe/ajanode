@@ -41,8 +41,8 @@ export class RealEstateDetailsComponent implements OnInit, OnDestroy {
   slidesStore: any[];
 
   constructor(private store: Store<AppState>,
-              private router: Router,
-              private activatedRoute: ActivatedRoute) {
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
 
     this.activatedRouteSub = this.activatedRoute.paramMap.subscribe(params => {
       const id = params.get('id');

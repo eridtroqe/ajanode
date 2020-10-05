@@ -71,44 +71,44 @@ exports.getPropertys = (req, res, next) => {
   if (search !== '') {
     const regex = new RegExp(escapeRegex(search), 'gi');
     query.title = regex;
-  } 
-  if(minSip && !maxSip) {
-    query.sip = {$gt: minSip - 1};
   }
-  if(maxSip && !minSip){
-    query.sip = {$lt: maxSip + 1};
+  if (minSip && !maxSip) {
+    query.sip = { $gt: minSip - 1 };
   }
-  if(maxSip && minSip){
-    query.sip = {$gt: minSip - 1, $lt: maxSip + 1 }
+  if (maxSip && !minSip) {
+    query.sip = { $lt: maxSip + 1 };
   }
-  if(minPrice && !maxPrice) {
-    query.price = {$gt: minPrice - 1};
+  if (maxSip && minSip) {
+    query.sip = { $gt: minSip - 1, $lt: maxSip + 1 }
   }
-  if(maxPrice && !minPrice){
-    query.price = {$lt: maxPrice + 1};
+  if (minPrice && !maxPrice) {
+    query.price = { $gt: minPrice - 1 };
   }
-  if(maxPrice && minPrice){
-    query.price = {$gt: minPrice - 1, $lt: maxPrice + 1 }
+  if (maxPrice && !minPrice) {
+    query.price = { $lt: maxPrice + 1 };
   }
-  if(city){
+  if (maxPrice && minPrice) {
+    query.price = { $gt: minPrice - 1, $lt: maxPrice + 1 }
+  }
+  if (city) {
     query.city = city;
   }
-  if(type){
+  if (type) {
     query.type = type;
   }
-  if(property_type){
+  if (property_type) {
     query.property_type = property_type;
   }
-  if(typology){
+  if (typology) {
     query.typology = typology;
   }
-  if(rooms){
+  if (rooms) {
     query.rooms = rooms;
   }
-  if(areas){
+  if (areas) {
     query.areas = areas;
   }
-  if(floor){
+  if (floor) {
     query.floor = floor;
   }
 
@@ -125,9 +125,10 @@ exports.getPropertys = (req, res, next) => {
 
   postQuery.then(documents => {
     fetchedPosts = documents;
-    return postQuery.countDocuments();
+    return Post.count();
   })
     .then(count => {
+
       res.status(200).json({
         message: "Posts fetched succesfully",
         properties: fetchedPosts,
@@ -251,18 +252,18 @@ exports.updatePost = (req, res, next) => {
 };
 
 exports.getExclusiveProperties = (req, res, next) => {
- 
- Post.find({exclusive: true})
- .then( result => {
-   res.status(200).json({
-     exclusive: result
-   });
- }
 
- ).catch(err  => res.status(500));
+  Post.find({ exclusive: true })
+    .then(result => {
+      res.status(200).json({
+        exclusive: result
+      });
+    }
+
+    ).catch(err => res.status(500));
 };
 
 
-function escapeRegex(text){
+function escapeRegex(text) {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }

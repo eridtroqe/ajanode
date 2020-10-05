@@ -31,7 +31,7 @@ export class BackendService {
     return this.http.get<BlogsResponse>(BACKEND_URL + '/blogs' + queryParams);
   }
 
-  getLastBlog(): Observable<Blog>{
+  getLastBlog(): Observable<Blog> {
     return this.http.get<Blog>(BACKEND_URL + '/last-blog');
   }
 
@@ -39,7 +39,7 @@ export class BackendService {
     return this.http.get<Blog>(BACKEND_URL + '/blogs/' + id);
   }
 
-  deleteBlog(id: string): Observable<void>{
+  deleteBlog(id: string): Observable<void> {
     return this.http.delete<void>(BACKEND_URL + '/blogs/' + id);
   }
 
