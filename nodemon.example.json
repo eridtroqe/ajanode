@@ -1,0 +1,10 @@
+{
+  "env": {
+    "MONGO_ATLAS_PW": "<mongo-atlas-password>",
+    "JWT_KEY": "<long-random-string>",
+    "AWS_SECRET_ACCESS_KEY": "<aws-secret-access-key>",
+    "AWS_ACCESS_KEY_ID": "<aws-access-key-id>",
+    "EMAIL_USER": "<smtp-gmail-address>",
+    "EMAIL_PASSWORD": "<smtp-gmail-app-password>"
+  }
+}

@@ -44,3 +44,10 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# secrets / local environment
+.env
+.env.*
+!.env.example
+nodemon.json
+!nodemon.example.json
